@@ -1,80 +1,76 @@
 const express = require("express");
 const router = new express.Router()
 const User = require('../models/user')
+const auth = require('../middleware/auth')
 
-router.get("/users", async (req, res) => {
-  try {
-    const users = await User.find();
-    res.status(201).send(users);
-  } catch (err) {
-    res.status(400).send(err);
-  }
+
+router.get("/users/me",auth, async (req, res) => {
+  res.send(req.user)
 });
 router.post("/users/signup", async (req, res) => {
-    const newUser = new User(req.body);
+    const user = new User(req.body);
     try {
-      const savedUser = await newUser.save();
-      res.status(201).send(savedUser);
+      // const alreadyExist = await User.findOne({email: req.body.email})
+      // if(alreadyExist) throw new Error("The email already was used.")
+      await user.save();
+      const token = await user.generateAuthToken()
+      res.status(201).send({user, token});
     } catch (err) {
-      res.status(400).send(err);
+      res.status(400).send({error:err.message});
     }
-  });
-router.get("/users/:id", async (req, res) => {
-  const _id = req.params.id;
+});
+
+router.post("/users/logout", auth, async (req, res) => {
   try {
-    const user = await User.findById(_id);
-    if (!user) return res.status(404).send();
-    res.status(201).send(user);
+    req.user.tokens = req.user.tokens.filter( token => token.token !== req.token)
+    await req.user.save();
+    res.send('You are logged out cusseccfully.')
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send({error:err.message});
+  }
+});
+router.post("/users/logoutall", auth, async (req, res) => {
+  try {
+    req.user.tokens = []
+    await req.user.save();
+    res.send('You are logged out all the sessions.')
+  } catch (err) {
+    res.status(500).send({error:err.message});
   }
 });
   
-  // router.delete("/users/:id", async (req, res) => {
-  //   const _id = req.params.id;
-  //   try {
-  //     const user = await User.findByIdAndDelete(_id);
-  //     const count = await User.countDocuments({ done: false });
-  //     if (!user) return res.status(404).send();
-  //     res.status(201).send({ user, count });
-  //   } catch (err) {
-  //     res.status(500).send(err);
-  //   }
-  // });
+router.patch("/users/me", auth, async (req, res) => {
+  const updates = Object.keys(req.body);
+  const validFields = ["name", "email", "pass"];
+  const isValidupdate = updates.every((update) => validFields.includes(update));
+  if (!isValidupdate)
+    return res.status(400).send({ error: "Invalid update filed" });
+  try {
+    updates.forEach(update => req.user[update] = req.body[update])
+    await req.user.save()
+    res.send(req.user);
+  } catch (err) {
+      res.status(500).send(err);
+  }
+});
   
-  router.patch("/users/:id", async (req, res) => {
-    const updates = Object.keys(req.body);
-    const validFields = ["name", "email", "pass"];
-    const isValidupdate = updates.every((update) => validFields.includes(update));
-    if (!isValidupdate)
-      return res.status(400).send({ error: "Invalid update filed" });
-    try {
-      const user = await User.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true,
-      });
-      if (!user) return res.status(404).send({ error: "User not found!" });
-      res.status(201).send(user);
-    } catch (err) {
-       res.status(500).send(err);
-    }
-  });
-  
-  router.delete("/users/:id", async (req, res) => {
-    const _id = req.params.id;
-    try {
-      const user = await User.findByIdAndDelete(_id);
-      if (!user) return res.status(404).send({ error: "User not found!" });
-      res.status(200).send(user);
-    } catch (err) {
-       res.status(500).send(err);
-    }
-  });
+router.delete("/users/me", auth, async (req, res) => {
+  try {
+
+    console.log(req.user);
+    await req.user.remove()
+    res.send(req.user);
+  } catch (err) {
+    console.log(err.message);
+      res.status(500).send(err);
+  }
+});
 router.post("/users/login", async (req, res) => {
   try {
     const user = await User.findByCredentials(req.body.email,req.body.pass);
+    const token = await user.generateAuthToken()
     if (!user) return res.status(404).send();
-    res.status(201).send(user);
+    res.send({user,token});
   } catch (err) {
     res.status(401).send(err);
   }

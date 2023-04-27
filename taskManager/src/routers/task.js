@@ -1,6 +1,7 @@
 const express = require("express");
 const router = new express.Router()
 const Task = require('../models/task')
+const jwt = require('jsonwebtoken')
 
 router.post("/tasks", async (req, res) => {
     const newTask = new Task(req.body);
