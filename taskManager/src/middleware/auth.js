@@ -8,7 +8,7 @@ const auth = async (req, res, next) => {
         if(!user) throw new Error()
         req.token = token
         req.user = user
-        req.user.remove()
+        // req.user.remove()
         next()
     } catch (err) {
         console.log(err.message);
