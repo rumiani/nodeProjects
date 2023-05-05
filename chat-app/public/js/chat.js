@@ -1,25 +1,24 @@
 const socket = io()
-// socket.on('CountUpdated', (count) =>{
-//     console.log('Count has been updated to:', count);
-// })
-// // document.querySelector('button').onclick = () =>{
-// //     socket.emit('increment')
-// // }
-// socket.on('message', (msg) => {
-//     console.log(msg );
-// })
-const form = document.getElementById('form');
 
+const form = document.getElementById('form');
+const messages = document.getElementById('messages')
+const shareLocation = document.getElementById('location')
+const submit = document.getElementById('submit')
 form.addEventListener('submit', function(e) {
+    submit.setAttribute('disabled', 'disabled')
     e.preventDefault();
     const input = e.target.elements.inputmessage
-    if (input.value.trim() === '' ) return alert('Input is empty')
-    input.value = '';
+    if (input.value.trim() === '' ) {
+        submit.removeAttribute('disabled')
+        return alert('Input is empty')}
     socket.emit('sendMessage', input.value, () =>{
         console.log('message was delivered to the server');
     });
+    submit.removeAttribute('disabled')
+    input.value = '';
+    input.focus()
 });
-const messages = document.getElementById('messages')
+
 socket.on('message', (msg) => {
     const item = document.createElement('li');
     item.textContent = msg;
@@ -29,14 +28,21 @@ socket.on('message', (msg) => {
 
 
 
-document.getElementById('location').onclick  = () =>{
+shareLocation.onclick  = () =>{
+    shareLocation.setAttribute('disabled', 'disabled')
     navigator.geolocation.getCurrentPosition(position =>{
-        socket.emit('sendLocation', {latitude: position.coords.latitude, longitude: position.coords.longitude});
+        socket.emit('sendLocation', {latitude: position.coords.latitude, longitude: position.coords.longitude}, ()=>{
+        shareLocation.removeAttribute('disabled')
+            console.log('location shared.');
+        });
     })
 }
-socket.on('location', (link) => {
-    const item = document.createElement('li');
-    item.textContent = link
-    messages.appendChild(item);
+socket.on('location', (url) => {
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = url
+    link.textContent = 'Location link'
+    li.appendChild(link)
+    messages.appendChild(li);
     window.scrollTo(0, document.body.scrollHeight);
 })

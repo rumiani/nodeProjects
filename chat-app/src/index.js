@@ -16,27 +16,17 @@ app.use(express.static(publicDirectoryPath))
 
 
 
-let count = 0
 io.on('connection', (socket) =>{
     console.log("Now websocket connection");
-    
-    // socket.emit('CountUpdated', count)
-    // socket.on('increment', () =>{
-    //     count++
-    //     io.emit('CountUpdated', count)
-    // })
-    // socket.emit('message','welcome')
     socket.broadcast.emit('message','A new user has joined')
     socket.on('sendMessage', (text , callback) => {
-        // console.log(filter.clean('text'));
-        console.log(text);
-        io.emit('message', text)
+        io.emit('message', filter.clean(text))
         callback()
 
     })
-    socket.on('sendLocation', (coords) =>{
-        console.log('coords: ', coords);
+    socket.on('sendLocation', (coords, callback) =>{
         io.emit('location', `https://google.com/maps?q=${coords.latitude},${coords.longitude}`)
+        callback()
     })
     socket.on('disconnect', () =>{
         io.emit('message', 'A user has left')
