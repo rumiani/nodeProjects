@@ -9,7 +9,6 @@ const server = http.createServer(app)
 const io = socketio(server)
 
 const PORT = process.env.PORT
-const chatRouter = require('./routers/chatRouter');
 
 const publicDirectoryPath = path.join(__dirname+'../../public')
 app.use(express.static(publicDirectoryPath))
