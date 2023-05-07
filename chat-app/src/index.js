@@ -1,6 +1,8 @@
 const Filter = require('bad-words')
 const filter = new Filter();
- const path = require("path");
+const {generateMessage, generateLocationMessage} = require('./utils/message')
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users')
+const path = require("path");
 const http = require('http')
 const express = require("express");
 const socketio = require('socket.io')
@@ -16,19 +18,29 @@ app.use(express.static(publicDirectoryPath))
 
 
 io.on('connection', (socket) =>{
-    console.log("Now websocket connection");
-    socket.broadcast.emit('message','A new user has joined')
-    socket.on('sendMessage', (text , callback) => {
-        io.emit('message', filter.clean(text))
+    console.log("New websocket connection");
+    
+    socket.on('join', (options, callback) =>{
+        const {error, user} = addUser({id: socket.id, ...options})
+        if(error) return callback(error)
+        socket.join(user.room)
+        socket.to(user.room).emit('message',generateMessage(`Welcome to the room ${user.username}`))
+        socket.broadcast.to(user.room).emit('message',generateMessage(`${user.room} has joined!`))
+        
         callback()
+    })
 
+    socket.on('sendMessage', (text , callback) => {
+        io.emit('message', generateMessage(filter.clean(text)))
+        callback()
     })
     socket.on('sendLocation', (coords, callback) =>{
-        io.emit('location', `https://google.com/maps?q=${coords.latitude},${coords.longitude}`)
+        io.emit('location', generateLocationMessage(`https://google.com/maps?q=${coords.latitude},${coords.longitude}`))
         callback()
     })
     socket.on('disconnect', () =>{
-        io.emit('message', 'A user has left')
+        const user = removeUser(socket.id)
+        if(user) io.to(user.room).emit('message', generateMessage(`${user.username } has left`))
     })
 })
 
