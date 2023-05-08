@@ -2,82 +2,39 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-    <style>
-      body { 
-        margin: 0;
-         padding-bottom: 3rem;
-         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-      }
-      .container{
-        background-color: white;
-        width: 500px;
-      }
-      #chat_options {
-          background: rgba(0, 0, 0, 0.15);
-          padding: 0.25rem; position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          display: flex;
-          flex-direction: column;
-          height: 5rem;
-          box-sizing: border-box;
-          backdrop-filter: blur(10px); 
-          justify-content: center;
-      }
-      #form{
-        display: flex;
-        flex-direction: row;
-      }
-      #input { 
-          border: none; 
-          padding: 0 1rem; 
-          flex-grow: 1; 
-          border-radius: 2rem; 
-          margin: 0.25rem; 
-      }
-      #input:focus { 
-        outline: none; 
-      }
-      #form > button , #location { 
-        background: #333; 
-        border: none; 
-        padding:4px 4px; 
-        margin: 4px; 
-        border-radius: 3px; 
-        outline: none; 
-        color: #fff; 
-        cursor: pointer;
-      }
-
-      #messages { 
-        list-style-type: none; 
-        margin: 0; 
-        padding: 0; 
-      }
-      #messages > li { 
-        padding: 0.5rem 1rem; 
-      }
-      #messages > li:nth-child(odd) { 
-        background: #efefef; 
-      }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-    <div class="container">
-      <ul id="messages"></ul>
-      <div id="chat_options">
-        <button id="location">Share Location</button>
-        <form id="form">
-          <input name="inputmessage" id="input" autocomplete="off" />
-          <button id="submit">Send</button>
-        </form>
+    <div id="container">
+      <div id="nav">
+        <img id="location_icon" src="./images//location.png" alt="Location" title="Location">
+        <img id="show_hide_users" src="./images/users.png" title="Show users" alt="show hide users">
       </div>
+      <main>
+        <div id="users">
+          <span id="room"></span>
+          <p>
+            Users:
+          </p>
+          <ul id="users_list">
+          </ul>
+        </div>
+        <div id="chat">
+          <ul id="messages">
+          </ul>
+          <form id="chat_form">
+            <input name="inputmessage" id="input" autocomplete="off" required/>
+            <button id="submit">Send</button>
+          </form>
+        </div>
+      </main>
     </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="./js/chat.js"></script>
+<script src="./js/ux.js"></script>
+
 </body>
 </html>

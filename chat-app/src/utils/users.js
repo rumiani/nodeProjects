@@ -2,7 +2,6 @@ const users = []
 const addUser = ({id, username, room}) =>{
     username = username.trim().toLowerCase()
     room = room.trim().toLowerCase()
-    if(!username || username === '' || !room || room === '') {return { error : 'Username and room are required!'}}
     const existingUser = users.find((user) => user.room === room && user.username === username)
     if(existingUser) return {error: 'Username is in use'}
     
@@ -16,6 +15,7 @@ const removeUser = (id) =>{
     // filter will keep running even after finding a match so we use splice
 }
 const getUser = (id) => users.find(user => user.id === id)
+
 const getUsersInRoom = room => users.filter(user => user.room === room) 
 
 module.exports = {
