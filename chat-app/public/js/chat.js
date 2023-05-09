@@ -3,17 +3,15 @@ const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix: true})
 const messages = document.getElementById('messages')
 const shareLocation = document.getElementById('location_icon')
 const sendBtn = document.getElementById('sendBtn')
-let input = document.getElementById('inputmessage')
+const input = document.getElementById('inputmessage')
 
 input.addEventListener('input', function() {
     const newText = this.innerText;
     if(newText !== '')
         sendBtn.removeAttribute('disabled')
   });
-  input.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-      sendBtn.click();
-    }
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') sendBtn.click();
   });
 sendBtn.onclick = () => {
     sendBtn.setAttribute('disabled', 'disabled')
@@ -21,7 +19,6 @@ sendBtn.onclick = () => {
     if(input.innerText === '') return alert('Input is empty')
     if(input.innerText.length > 1000) return alert('Large input')
     socket.emit('sendMessage', input.innerText, (message) =>{
-        // console.log('message: ',message) 
     });
     input.innerText = '';
     input.focus()
@@ -33,7 +30,6 @@ socket.on('message', (message) => {
     // document.querySelectorAll(".message_status").lastElementChild.style.color = 'green'
 })
 
-
 shareLocation.onclick  = () =>{
     shareLocation.setAttribute('disabled', 'disabled')
     navigator.geolocation.getCurrentPosition(position =>{
@@ -42,11 +38,11 @@ shareLocation.onclick  = () =>{
     });
 })
 }
+
 socket.on('location', (message) => {
     const link = `<a _blank href=${message.url}>My location</a>`
     appendMsg(message.username, link, message.createdAt)
 })
-
 
 socket.emit('join', {username, room}, error => {
     if(error) {
@@ -63,9 +59,9 @@ socket.on('roomData', roomData =>{
     let lis = ``
     roomData.users.forEach(user => {
         if(user.username === username)
-        lis += `<li><h2>${user.username}</h2></li>`
+            lis += `<li><h2>${user.username}</h2></li>`
         else
-        lis += `<li>${user.username}</li>`
+            lis += `<li>${user.username}</li>`
     })
     usersList.innerHTML = lis
 })
