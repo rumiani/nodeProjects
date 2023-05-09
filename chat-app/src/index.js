@@ -35,7 +35,8 @@ io.on('connection', (socket) =>{
 
     socket.on('sendMessage', (text , callback) => {
         const user = getUser(socket.id)
-        io.to(user.room).emit('message', generateMessage(user.username, filter.clean(text)))
+        // filter.clean(text)
+        io.to(user.room).emit('message', generateMessage(user.username, text))
         callback()
     })
     socket.on('sendLocation', (coords, callback) =>{

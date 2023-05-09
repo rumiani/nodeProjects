@@ -51,7 +51,7 @@ main{
   flex-direction: row;
   box-sizing: border-box;
   justify-content: center;
-  height: 10vh;
+  max-height: 30vh;
   width: 100%;
 }
 #users{
@@ -78,6 +78,17 @@ input {
   height: 40px;
   font-size: 20px;
   overflow-y: scroll;
+  background-color: white;
+}
+#inputmessage{
+  padding: 0.5rem 1rem; 
+  flex-grow: 1; 
+  border-radius: 1rem; 
+  margin: 0.25rem; 
+  max-height: 40rem;
+  font-size: 16px;
+  overflow-y: auto;
+  background-color: white;
 }
 input:focus { 
   outline: none; 
@@ -91,18 +102,25 @@ button {
   outline: none; 
   border: none; 
   background: #333; 
-  padding: 15px; 
+  padding: 5px; 
   margin: 4px; 
   border-radius: 3px; 
   color: #fff; 
   cursor: pointer;
+  height: 30px;
+}
+button:disabled, button:disabled:hover{
+  background: gray;
+  cursor: default;
 }
 
 button:hover{
   background: black;
 }
 #messages > li { 
+  width: 100%;
   padding: 0.5rem 1rem;
+  word-wrap: break-word;
 }
 #messages > li:nth-child(odd) { 
   background: #efefef; 
@@ -113,7 +131,7 @@ button:hover{
 
 #registerForm{
   background: gray;
-  width: 200px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -130,6 +148,16 @@ button:hover{
   display: block;
   margin: 15px 0;
 }
+.message_text{
+  
+}
+.message_info{
+  display: flex;
+  justify-content: space-between;
+}
+.message_time, .message_status{
+  color: gray;
+}
 img{
   height: 30px;
   width: 30px;
@@ -138,6 +166,9 @@ img{
   cursor: pointer;
 }
 @media (max-width: 600px) {
+  #container{
+    width: 100%;
+  }
   #show_hide_users{
     display: inline;
   }
@@ -152,5 +183,20 @@ img{
   #chat_form{
     width: 100%;
   }
-
+  #registerForm{
+    width: 70%;
+    height: 70%;
+  }
+}
+@media (max-width: 320px) {
+  #show_hide_users{
+    display: inline;
+  }
+  #users{
+    display: none;
+  }
+  #registerForm{
+    width: 100%;
+    height: 100%;
+  }
 }

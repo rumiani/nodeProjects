@@ -22,10 +22,11 @@
         <div id="chat">
           <ul id="messages">
           </ul>
-          <form id="chat_form">
-            <input name="inputmessage" id="input" autocomplete="off" required/>
-            <button id="submit">Send</button>
-          </form>
+          <div id="chat_form">
+            <span role="textbox" id="inputmessage" contenteditable>
+            </span>
+            <button id="sendBtn" disabled>Send</button>
+          </div>
         </div>
       </main>
     </div>
@@ -34,7 +35,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="./js/chat.js"></script>
-<script src="./js/ux.js"></script>
+<!-- <script  type="module" src="./js/sidebar/sidebar.js"></script> -->
+<!-- <script  type="module" src="./js/sidebar/hideSidebar.js"></script> -->
 
 </body>
 </html>
