@@ -131,5 +131,5 @@ const appendMsg = (messageUsername,messageText,createdAt) =>{
 // mark library instead of writting lemititions
 // imoji
 // reactions and options to message
-// avatar 
 // reply
+// avatar 

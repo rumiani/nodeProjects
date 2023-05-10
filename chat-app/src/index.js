@@ -24,7 +24,7 @@ io.on('connection', (socket) =>{
         const {error, user} = addUser({id: socket.id, ...options})
         if(error) return callback(error)
         socket.join(user.room)
-        socket.emit('message',generateMessage('Admin' , `Welcome to the room ${user.username}`))
+        socket.emit('message',generateMessage('Admin' , `Welcome ${user.username}!`))
         socket.broadcast.to(user.room).emit('message',generateMessage('Admin',`${user.username} has joined!`))
         io.to(user.room).emit('roomData', {
             room: user.room,

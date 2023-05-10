@@ -17,6 +17,7 @@
     max-width: 300px;
     box-shadow: 1px 1px 2px gray;
     padding:0.25rem 0.5rem;
+    
     /* margin: 0.5rem; */
 }
 .message_time, .message_status{
@@ -38,6 +39,7 @@
 .user_message{
     border-radius:0 1rem 1rem 0;
     float: left;
+    background: rgba(255, 242, 0, 0.246);
 }
 .user_message > .message_username{
     font-size: 16px;
@@ -46,6 +48,7 @@
 /* admin */
 .admin_message{
     margin: 0 auto;
+    width: 300px;
     border: 5px solid rgba(245, 7, 7, 0.843);
 }
 .admin_message > .message_username{
