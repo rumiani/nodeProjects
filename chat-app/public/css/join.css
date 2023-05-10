@@ -11,10 +11,10 @@
     border-radius: 0.5rem;
     box-shadow: 8px 8px 16px rgba(129, 118, 118, 0.563);
     position: relative;
-    animation:merge_join_form 0.5s ease-in;
+    animation:slow_fall 0.5s ease-in;
 }
 
-@keyframes merge_join_form {
+@keyframes slow_fall {
 from {top: -100px;}
 to {top: 0;}
 }
@@ -60,4 +60,7 @@ to {top: 0;}
 .limitition{
     color: rgba(255, 0, 0, 0.886);
     text-align: center;
+    width: 100;
+    padding: 1rem;
+    word-wrap: break-word;
   }
