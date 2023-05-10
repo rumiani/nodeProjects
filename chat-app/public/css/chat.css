@@ -48,6 +48,7 @@
   #chat_inputs{
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 100%;
   }
   #users{
@@ -76,7 +77,7 @@
   width: 90%;
   height: 100%;
 }
-#chat_nav{
+#chat_bar{
   position: absolute;
   left: 0;
   top: 0;
@@ -96,6 +97,10 @@
   transition:box-shadow 0.3s;
   word-wrap: break-word;
 }
+#message_input > br {
+  display: none;
+  visibility: hidden;
+}
 .input_bg {
   position: relative;
 }
@@ -109,6 +114,9 @@
   color: gray;
   font-weight: bold;
   cursor: text;
+}
+.mark_red{
+  background: red;
 }
 #imoji_btn{
   font-size: 2rem;

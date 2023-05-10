@@ -4,46 +4,56 @@ const messages = document.getElementById('messages')
 const shareLocation = document.getElementById('location_icon')
 const send_btn = document.getElementById('send_btn')
 const input = document.getElementById('message_input')
-const chat_nav = document.getElementById('chat_nav')
+const chat_bar = document.getElementById('chat_bar')
 
+const limit = 10
 input.addEventListener('input', function() {
     input.classList.add('input_bg')
-    chat_nav.style.background = 'green'
+    send_btn.setAttribute('disabled', 'disabled')
+
+    chat_bar.style.background = 'green'
 
     const newText = this.innerText;
-    const width = newText.length /10
-    if(width < 100){
-        chat_nav.style.width = `${width}%`
-    }
-    if(width > 90){
-        chat_nav.style.background = 'red'
-    }
-    if(width >=100){
-        chat_nav.style.width = '100%'
-    }
-    if(newText.length > 0 ){
+    const width = (newText.length * 100) /limit
+    if(width > 0 ){
         input.classList.remove('input_bg')
         send_btn.removeAttribute('disabled')
     }
-    if(newText.length > 1000){
+    if(width <= 100){
+        chat_bar.style.width = `${width}%`
+    }
+    if(width >= 90){
+        chat_bar.style.background = 'yellow'
+    }
+    if(width > 100){
+        chat_bar.style.background = 'red'
+        chat_bar.style.width = '100%'
         send_btn.setAttribute('disabled', 'disabled')
     }
   });
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') send_btn.click();
-  });
 
-send_btn.onclick = () => {
-    input.classList.add('input_bg')
-    send_btn.setAttribute('disabled', 'disabled')
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        // Prevent the browser to add a </br> inside the editable tag:
+        e.preventDefault()
+        sendMessageHandler()
+    }
+});
+
+send_btn.onclick = () => sendMessageHandler()
+
+const sendMessageHandler = ()=>{
     if(input.innerText === '') return alert('Input is empty')
-    if(input.innerText.length > 1000) return alert('Large input')
+    if(input.innerText.length > limit) return alert('Large input')
+    
     socket.emit('sendMessage', input.innerText, (message) =>{
     });
+    chat_bar.style.width = '0'
     input.innerText = '';
+    input.classList.add('input_bg')
     input.focus()
-};
-
+    send_btn.setAttribute('disabled', 'disabled')
+} 
 
 socket.on('message', (message) => {
     appendMsg(message.username,message.text,message.createdAt)
@@ -124,3 +134,11 @@ document.onclick = (e) => {
         show = false
     }
 }
+
+
+
+
+// const charLimitControler = (text) =>{
+//     if(text === '') return alert('Input is empty')
+//     if(text.length > 1000) return alert('Large input')
+// }
