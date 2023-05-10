@@ -117,19 +117,9 @@ const appendMsg = (username,message,createdAt) =>{
     messages.scrollTop = messages.scrollHeight;
 }
 
-const users = document.getElementById('users')
-const show_users_icon = document.querySelector('.show_users_icon')
-const hide_users_icon = document.querySelector('.hide_users_icon')
-
-document.onclick = (e) => {
-    if(e.target === show_users_icon){
-        hide_users_icon.style.display = 'inline'
-        users.style.display = 'inline'
-        show_users_icon.style.display = 'none'
-    }
-    else if (!users.contains(e.target) ){
-        show_users_icon.style.display = 'inline'
-        hide_users_icon.style.display = 'none'
-        users.style.display = 'none'
-    }
-}
+// admin font and ui diffrent
+// my chats on the right
+// imoji
+// avatar 
+// reply
+// reactions and options to message
