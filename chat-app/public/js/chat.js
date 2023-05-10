@@ -6,7 +6,7 @@ const send_btn = document.getElementById('send_btn')
 const input = document.getElementById('message_input')
 const chat_bar = document.getElementById('chat_bar')
 
-const limit = 10
+const limit = 100
 input.addEventListener('input', function() {
     input.classList.add('input_bg')
     send_btn.setAttribute('disabled', 'disabled')
@@ -117,28 +117,19 @@ const appendMsg = (username,message,createdAt) =>{
     messages.scrollTop = messages.scrollHeight;
 }
 
-let show = false
 const users = document.getElementById('users')
-const show_hide_users = document.getElementById('show_hide_users')
-show_hide_users.onclick = () => {
-    show_hide_users.src = show?'./images/users.png' : './images/close.png'
-    show_hide_users.title = show?'Show users' : 'Close list'
-    users.style.display = show?'none':'inline'
-    show = !show
-}
+const show_users_icon = document.querySelector('.show_users_icon')
+const hide_users_icon = document.querySelector('.hide_users_icon')
+
 document.onclick = (e) => {
-    if (e.target !== show_hide_users && e.target !== users){
-        show_hide_users.src = './images/users.png'
-        show_hide_users.title = 'Show users'
+    if(e.target === show_users_icon){
+        hide_users_icon.style.display = 'inline'
+        users.style.display = 'inline'
+        show_users_icon.style.display = 'none'
+    }
+    else if (!users.contains(e.target) ){
+        show_users_icon.style.display = 'inline'
+        hide_users_icon.style.display = 'none'
         users.style.display = 'none'
-        show = false
     }
 }
-
-
-
-
-// const charLimitControler = (text) =>{
-//     if(text === '') return alert('Input is empty')
-//     if(text.length > 1000) return alert('Large input')
-// }

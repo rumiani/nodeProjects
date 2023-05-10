@@ -167,8 +167,8 @@
   #messages > li:nth-child(odd) { 
     background: #efefef; 
   }
-  #show_hide_users{
-    display: none;
+  .show_users_icon{
+
   }
 
   #messages > li > a{
@@ -194,18 +194,22 @@
     position: absolute;
     right: 0;
   }
-   #show_hide_users{
+   .show_users_icon, .hide_users_icon{
     height: 30px;
     width: 30px;
     margin: 1rem;
     cursor: pointer;
+    display: none;
   }
 @media  screen and (max-width: 600px) {
   #container{
     width: 100%;
   }
-  #show_hide_users{
+  .show_users_icon{
     display: inline;
+  }
+  .hide_users_icon{
+    display: none;
   }
   #users{
     display: none; 
