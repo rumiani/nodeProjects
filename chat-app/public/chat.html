@@ -4,21 +4,23 @@
     <title>Socket.IO chat</title>
     <link rel="stylesheet" href="./css/chat.css">
     <link rel="stylesheet" href="./css/general.css">
+    <link rel="stylesheet" href="./css/message.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
 
   </head>
   <body>
     <div id="container">
-      <div id="nav">
-        <img class="show_users_icon" src="./images/users.png" title="Show users" alt="show users">
-        <img class="hide_users_icon" src="./images/close.png" title="Hide users" alt="Hide users">
-        <img id="location_icon" src="./images//location.png" alt="Location" title="Location">
+      <div id="sidebar">
+        <span id="room">room</span>
+        <h2>Users:</h2>
+        <ul id="users_list">
+        </ul>
       </div>
       <main>
-        <div id="users">
-          <span id="room">room</span>
-          <h2>Users:</h2>
-          <ul id="users_list">
-          </ul>
+        <div id="nav">
+          <img class="show_users_icon" src="./images/users.png" title="Show users" alt="show users">
+          <img class="hide_users_icon" src="./images/close.png" title="Hide users" alt="Hide users">
+          <img id="location_icon" src="./images//location.png" alt="Location" title="Location">
         </div>
         <div id="chat_component">
           <ul id="messages">

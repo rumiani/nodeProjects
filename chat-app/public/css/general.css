@@ -11,4 +11,6 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
+    margin: 0 auto;
+    justify-content: end;
 }
