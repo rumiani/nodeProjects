@@ -4,14 +4,29 @@ const messages = document.getElementById('messages')
 const shareLocation = document.getElementById('location_icon')
 const send_btn = document.getElementById('send_btn')
 const input = document.getElementById('message_input')
+const chat_nav = document.getElementById('chat_nav')
 
 input.addEventListener('input', function() {
     input.classList.add('input_bg')
+    chat_nav.style.background = 'green'
 
     const newText = this.innerText;
-    if(newText !== ''){
+    const width = newText.length /10
+    if(width < 100){
+        chat_nav.style.width = `${width}%`
+    }
+    if(width > 90){
+        chat_nav.style.background = 'red'
+    }
+    if(width >=100){
+        chat_nav.style.width = '100%'
+    }
+    if(newText.length > 0 ){
         input.classList.remove('input_bg')
         send_btn.removeAttribute('disabled')
+    }
+    if(newText.length > 1000){
+        send_btn.setAttribute('disabled', 'disabled')
     }
   });
   input.addEventListener('keydown', (e) => {
