@@ -2,20 +2,20 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/chat.css">
+    <link rel="stylesheet" href="./css/general.css">
+
   </head>
   <body>
     <div id="container">
       <div id="nav">
-        <img id="location_icon" src="./images//location.png" alt="Location" title="Location">
         <img id="show_hide_users" src="./images/users.png" title="Show users" alt="show hide users">
+        <img id="location_icon" src="./images//location.png" alt="Location" title="Location">
       </div>
       <main>
         <div id="users">
-          <span id="room"></span>
-          <p>
-            Users:
-          </p>
+          <span id="room">room</span>
+          <h2>Users:</h2>
           <ul id="users_list">
           </ul>
         </div>
@@ -23,17 +23,20 @@
           <ul id="messages">
           </ul>
           <div id="chat_form">
-            <span role="textbox" id="inputmessage" contenteditable>
+            <button id="imoji_btn">&#9786;</button>
+            <span role="textbox" id="message_input" class="input_bg" contenteditable placeholder="Message">
             </span>
-            <button id="sendBtn" disabled>Send</button>
+            <button id="send_btn" disabled>
+              <!-- <img src="./images/send.png" alt=""> -->
+            </button>
           </div>
         </div>
       </main>
     </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="./js/chat.js"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/chat.js"></script>
+  </body>
 </html>

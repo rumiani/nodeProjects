@@ -2,20 +2,25 @@ const socket = io()
 const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix: true})
 const messages = document.getElementById('messages')
 const shareLocation = document.getElementById('location_icon')
-const sendBtn = document.getElementById('sendBtn')
-const input = document.getElementById('inputmessage')
+const send_btn = document.getElementById('send_btn')
+const input = document.getElementById('message_input')
 
 input.addEventListener('input', function() {
+    input.classList.add('input_bg')
+
     const newText = this.innerText;
-    if(newText !== '')
-        sendBtn.removeAttribute('disabled')
+    if(newText !== ''){
+        input.classList.remove('input_bg')
+        send_btn.removeAttribute('disabled')
+    }
   });
   input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') sendBtn.click();
+    if (e.key === 'Enter') send_btn.click();
   });
-sendBtn.onclick = () => {
-    sendBtn.setAttribute('disabled', 'disabled')
-    
+
+send_btn.onclick = () => {
+    input.classList.add('input_bg')
+    send_btn.setAttribute('disabled', 'disabled')
     if(input.innerText === '') return alert('Input is empty')
     if(input.innerText.length > 1000) return alert('Large input')
     socket.emit('sendMessage', input.innerText, (message) =>{
@@ -90,10 +95,17 @@ const appendMsg = (username,message,createdAt) =>{
 let show = false
 const users = document.getElementById('users')
 const show_hide_users = document.getElementById('show_hide_users')
-
 show_hide_users.onclick = () => {
     show_hide_users.src = show?'./images/users.png' : './images/close.png'
     show_hide_users.title = show?'Show users' : 'Close list'
     users.style.display = show?'none':'inline'
     show = !show
+}
+document.onclick = (e) => {
+    if (e.target !== show_hide_users && e.target !== users){
+        show_hide_users.src = './images/users.png'
+        show_hide_users.title = 'Show users'
+        users.style.display = 'none'
+        show = false
+    }
 }
