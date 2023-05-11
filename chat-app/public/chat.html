@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./css/message.css">
     <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="stylesheet" href="./css/scrollbar.css">
+    <link rel="stylesheet" href="./css/imoji.css">
+
   </head>
   <body>
     <div class="container">
@@ -33,6 +35,13 @@
             <div id="chat_bar">
             </div>
             <div id="chat_inputs">
+              <div id="imoji_box">
+                <div id="imoji_search">
+                  <input type="text" id="input_imoji" placeholder="Search imoji">
+                  <span id="search_result"></span>
+                </div>
+                <div id="imoji_list"></div>
+              </div>
               <button id="imoji_btn">
                 &#9786;
               </button>
@@ -52,6 +61,8 @@
     <script src="./js/chat.js"></script>
     <script src="./js/sidebar.js"></script>
     <script src="./js/bg.js"></script>
+    <script src="./js/imoji.js"></script>
+
     <!-- <script src="vendor/mark.js/dist/mark.min.js" charset="UTF-8"></script> -->
 
 

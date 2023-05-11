@@ -2,7 +2,7 @@ const users = document.getElementById('sidebar')
 const show_users_icon = document.querySelector('.show_users_icon')
 const hide_users_icon = document.querySelector('.hide_users_icon')
 
-document.onclick = (e) => {
+window.onclick = (e) => {
     if(e.target === show_users_icon){
         hide_users_icon.style.display = 'inline'
         users.style.display = 'inline'

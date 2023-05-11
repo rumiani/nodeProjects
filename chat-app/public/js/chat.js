@@ -134,7 +134,6 @@ const appendMsg = (messageUsername,messageText,createdAt) =>{
     messages.scrollTop = messages.scrollHeight;
 }
 
-// imoji
 // reactions and options to message
 // reply
 // avatar 
