@@ -7,21 +7,26 @@
     padding: 0.5rem;
     position: absolute;
     bottom: 4rem;
-    overflow-y: auto;
-    overflow-x: hidden;
     display: none;
+    overflow-y: auto;
 }
 #imoji_list{
     width: 100%;
-    overflow-x: hidden;
+    overflow-y: auto;
+    height: 150px;
 }
 .eachImoji{
-    margin: 1rem;
+    display: inline-block;
     cursor: pointer;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 2px;
-    background-color: rgba(128, 128, 128, 0.383);
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    padding-top: 0.4rem;
+    text-align: center;
+    transition: background-color 0.5s;
+}
+.eachImoji:hover{
+    background-color: rgba(128, 128, 128, 0.245);
 }
 #imoji_search{
     width: 100%;
@@ -29,6 +34,7 @@
     border-bottom: 1px solid gray;
     margin: 0.5rem 0;
     padding-bottom: 0.5rem;
+    overflow-y: auto;
 }
 #input_imoji { 
     border: none; 
@@ -47,5 +53,5 @@
 }
 #search_result{
     width: 250px;
-    background-color: rgba(224, 224, 224, 0.276);
+    overflow-y: auto;
 }
