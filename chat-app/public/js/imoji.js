@@ -5,6 +5,7 @@ const inputImoji = document.getElementById('input_imoji')
 const searchResult= document.getElementById('search_result')
 document.onclick = (e) => {
     if(e.target.className === 'eachImoji'){
+        inputController()
         addImojiToInput(e.target.id)
     }
     if(e.target === imojiBtn){
@@ -37,22 +38,16 @@ const addImojiToInput = (id) =>{
 inputImoji.addEventListener('input', function (e) {
     let resHtml = ''
     for(imojiName in imojiObject){
-        if(searchHandler(e.target.value, imojiName)){
+        if(searchHandler(e.target.value, imojiName))
             resHtml += `<span class='eachImoji' id=${imojiName}>${imojiObject[imojiName]}<span>`
-        }
     }
     searchResult.innerHTML ='Result: '+ resHtml
 })
 
 
-const searchHandler = (w, s) => {
-    let myString = s
-    let myWord = w
-    let myPattern = new RegExp('(\\w*'+myWord+'\\w*)','gi');
-
-    let matches = myString.match(myPattern);
-
+const searchHandler = (word, string) => {
+    let myPattern = new RegExp('(\\w*'+word+'\\w*)','gi');
+    let matches = string.match(myPattern);
     if (matches === null) return false
-
     return true
 }
