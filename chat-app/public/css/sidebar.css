@@ -1,6 +1,6 @@
 #sidebar{
     width: 30%;
-    height: 100vh;
+    /* height: 100vh; */
     padding: 10px;
     background: rgba(255, 255, 255, 0.874);
     box-shadow: 5px 3px 50px rgba(128, 128, 128, 0.371);
@@ -17,7 +17,7 @@
     to {left: 0;}
   }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
     #sidebar{
         display: none; 
         min-width: 200px;
