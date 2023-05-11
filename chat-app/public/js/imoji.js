@@ -27,7 +27,6 @@ fetch('../imojis/imojis.json')
             imojiObject = json
             htmlResult += `<span class='eachImoji' id=${imoji}>${imojiObject[imoji]}</span>`
         }
-        console.log(htmlResult);
         imojiList.innerHTML = htmlResult
     });
 
