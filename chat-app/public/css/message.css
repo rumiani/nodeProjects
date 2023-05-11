@@ -48,7 +48,7 @@
 /* admin */
 .admin_message{
     margin: 0 auto;
-    width: 300px;
+    width: 250px;
     border: 5px solid rgba(245, 7, 7, 0.843);
 }
 .admin_message > .message_username{

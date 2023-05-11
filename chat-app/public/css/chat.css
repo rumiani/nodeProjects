@@ -4,31 +4,35 @@
     flex-direction: row;
     justify-content:end;
     height: 4rem;
-    position: fixed;
-    right: 0;
-    justify-content: space-between;
+    position: relative;
+    margin: 0 auto;
     width: 70%;
+    justify-content: space-between;
     z-index: 10;
-    height: 2.5rem;
+    height: 3rem;
+    max-width: 500px;
+
     background: rgba(255, 255, 255, 0.214);
     border-bottom: 3px solid rgba(153, 152, 152, 0.256);
   }
   #chat_component{
-    min-width:400px;
-    max-width: 700px;
-    width:60%;
-    height: 100vh;
+    max-width: 500px;
+    width:70%;
     margin: 0 auto;
     position: relative;
+    height: 100%;
   }
   #messages { 
     flex-grow: 1;
     list-style-type: none; 
     margin: 0; 
-    padding: 0;
-    padding-bottom: 1rem;
+    padding: 4px;
+    position: absolute;
+    bottom: 5rem;
+    padding-bottom: 3rem;
     padding-top: 10vh;
-    max-height: 80%;
+    max-height: 100%;
+    width: 100%;
     overflow-y: scroll;
     animation: changeFade ease-in-out;
     animation-duration: 2s;
@@ -50,13 +54,14 @@
     100% { opacity: 0.1; }
 }
   #chat_options {
-    padding:0.5rem; 
+    padding:1rem; 
     padding-top: 0;
     box-shadow: 5px 5px 16px gray;
     position: absolute;
-    bottom: 0;
+    bottom: 4rem;
+    /* height: 2rem; */
     width: 100%;
-    background: rgba(255, 255, 255, 0.463);
+    background: white;
   }
   #chat_inputs{
     display: flex;
@@ -68,7 +73,8 @@
   position: absolute;
   left: 0;
   height: 0.25rem;
-  width: 0;
+  width: 0.1px;
+  display: block;
   transition: background-color 1s;
   background: green;
 }
@@ -82,6 +88,7 @@
   outline: none;
   transition:box-shadow 0.3s;
   word-wrap: break-word;
+  background: white;
 }
 
 .input_bg {
@@ -120,15 +127,14 @@
 }
 #send_btn { 
   border: none;
-  background: unset;
-  color: #fff; 
   cursor: pointer;
   height: 30px;
   transition: scale 0.3s;
   margin: 0.25rem; 
   padding: 0;
-  width: 30px;
+  width: 35px;
   height: 30px;
+  background: white;
   background-image: url('../images/send.png');
   cursor: pointer;
 }

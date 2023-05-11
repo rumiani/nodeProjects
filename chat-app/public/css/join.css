@@ -2,6 +2,9 @@
     text-align: center;
     margin: 1rem auto;
 }
+.join_container{
+    max-width: 1200px;
+}
 #join_form{
     max-width: 400px;
     display: flex;

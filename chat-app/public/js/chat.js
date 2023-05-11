@@ -1,3 +1,4 @@
+// import Mark from 'Mark' 
 const socket = io()
 const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix: true})
 const messages = document.getElementById('messages')
@@ -26,6 +27,11 @@ input.addEventListener('input', function() {
         chat_bar.style.background = 'yellow'
     }
     if(width > 100){
+        // var instance = new Mark(document.querySelector("span.message_input"));
+        // instance.mark("text", {
+        //     "element": "span",
+        //     "className": "highlight"
+        // });
         chat_bar.style.background = 'red'
         chat_bar.style.width = '100%'
         send_btn.setAttribute('disabled', 'disabled')
@@ -128,7 +134,6 @@ const appendMsg = (messageUsername,messageText,createdAt) =>{
     messages.scrollTop = messages.scrollHeight;
 }
 
-// mark library instead of writting lemititions
 // imoji
 // reactions and options to message
 // reply
