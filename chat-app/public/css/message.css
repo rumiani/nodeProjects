@@ -37,12 +37,13 @@
 
 /*other users message */
 .user_message{
-    border-radius:0 1rem 1rem 0;
+    border-radius:2rem 1rem 1rem 0;
     float: left;
     background: rgba(255, 242, 0, 0.246);
 }
 .user_message > .message_username{
     font-size: 16px;
+    margin-left: 0.5rem;
     color: rgb(0, 172, 0);
 }
 /* admin */
@@ -62,8 +63,9 @@
 
 /* self */
 .self_message{
-    border-radius: 1rem 0 0 1rem;
+    border-radius: 1rem 2rem 0 1rem;
     float: right;
+    background: whitesmoke;
 }
 .self_message > .message_username{
     margin: 0;
