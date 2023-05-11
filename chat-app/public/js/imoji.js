@@ -5,8 +5,8 @@ const inputImoji = document.getElementById('input_imoji')
 const searchResult= document.getElementById('search_result')
 document.onclick = (e) => {
     if(e.target.className === 'eachImoji'){
-        inputController()
         addImojiToInput(e.target.id)
+        inputController()
     }
     if(e.target === imojiBtn){
         imojiBox.style.display = 'inline'
@@ -25,8 +25,9 @@ fetch('../imojis/imojis.json')
         let htmlResult = ''
         for(imoji in json){
             imojiObject = json
-            htmlResult += `<span class='eachImoji' id=${imoji}>${imojiObject[imoji]}<span>`
+            htmlResult += `<span class='eachImoji' id=${imoji}>${imojiObject[imoji]}</span>`
         }
+        console.log(htmlResult);
         imojiList.innerHTML = htmlResult
     });
 
@@ -39,7 +40,7 @@ inputImoji.addEventListener('input', function (e) {
     let resHtml = ''
     for(imojiName in imojiObject){
         if(searchHandler(e.target.value, imojiName))
-            resHtml += `<span class='eachImoji' id=${imojiName}>${imojiObject[imojiName]}<span>`
+            resHtml += `<span class='eachImoji' id=${imojiName}>${imojiObject[imojiName]}</span>`
     }
     searchResult.innerHTML ='Result: '+ resHtml
 })

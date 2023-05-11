@@ -82,7 +82,7 @@
 }
 #message_input { 
   border: none; 
-  padding: 0.5rem; 
+  padding:1rem 0.5rem 0 0.5rem; 
   width: 90%;
   max-height: 200px;
   font-size: 20px;
@@ -99,7 +99,7 @@
 .input_bg::before{
   content: 'Message';
   position: absolute;
-  top: 50%;
+  top: 70%;
   left: 2.6rem;
   transform: translate(-50%, -50%);
   font-size: 16px;

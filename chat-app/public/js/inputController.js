@@ -6,7 +6,6 @@ const inputController = () =>{
     input.classList.add('input_bg')
     send_btn.setAttribute('disabled', 'disabled')
     chat_bar.style.background = 'green'
-
     const width = (input.innerText.length * 100) /limit
     if(width > 0 ){
         input.classList.remove('input_bg')

@@ -16,8 +16,12 @@
     overflow-x: hidden;
 }
 .eachImoji{
-    margin: 0.5rem;
+    margin: 1rem;
     cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 2px;
+    background-color: rgba(128, 128, 128, 0.383);
 }
 #imoji_search{
     width: 100%;

@@ -37,7 +37,7 @@ to {top: 0;}
 #join_btn { 
     outline: none; 
     border: none; 
-    background: #333; 
+    background: #4d4a4a; 
     padding: 5px; 
     margin: 20px; 
     border-radius: 0.5rem;
@@ -47,7 +47,10 @@ to {top: 0;}
     font-size: 16px;
     transition:box-shadow 0.3s;
 }
-.join_input:focus, #join_btn:hover{
+#join_btn:hover{
+    background:#232323 ;
+}
+.join_input:focus{
     background: rgba(128, 128, 128, 0.047);
 }
 @media all and (max-width: 640px) {
