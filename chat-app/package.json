@@ -1,7 +1,7 @@
 {
-  "name": "chat-app",
+  "name": "chatrum",
   "version": "1.0.0",
-  "description": "My chat app",
+  "description": "A chat app with socket.io",
   "main": "src/index.js",
   "scripts": {
     "start": "env-cmd -f ./config/dev.env node src/index.js",
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "nothing yet"
+    "url": "https://github.com/rumiani/nodeProjects/tree/master/chat-app"
   },
   "keywords": [
-    "chat-app"
+    "chatrum"
   ],
-  "author": "Rumiani",
+  "author": "Maziar Rumiani",
   "license": "MIT",
   "dependencies": {
     "bad-words": "^3.0.4",
