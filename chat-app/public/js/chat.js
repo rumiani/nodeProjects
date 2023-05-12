@@ -59,6 +59,8 @@ socket.emit('join', {username, room}, error => {
     }
 })
 
+
+// length of name and room
 // reactions and options to message
 // reply
 // avatar 

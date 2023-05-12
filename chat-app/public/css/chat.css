@@ -137,13 +137,13 @@
   width: 35px;
   height: 30px;
   background: white;
-  background-image: url('../images/send.png');
+  background-image: url('../assets/icons/send.png');
   cursor: pointer;
 }
 
 #send_btn:disabled{
   cursor: default;
-  background-image: url('../images/disabled_send.png');
+  opacity: 0.1;
 }
   
 #send_btn:hover{

@@ -8,12 +8,14 @@ const appendMsg = (messageUsername, messageText, createdAt) =>{
         messageOwner ='self_message';
         messageUsername = ''
     }
-    let avatar = './images/avatar.png'
-    let reaction = '❤️'
+    let adminAvatar = `<img id='admin_avatar' src='../assets/images/avatar.png' alt='admin avatar'>`
+    let userAvatar = `<img id='user_avatar' src='../assets/images/avatar.png' alt='user avatar'>`
+    let selfAvatar = `<img id='self_avatar' src='../assets/images/avatar.png' alt='Your avatar'>`
+
+    // let reaction = '❤️'
     li.innerHTML = `<div class=${messageOwner}>
                         <div>
-                            <img id='avatar' src=${avatar} alt='avatar'>
-                            <p id='reaction'>${reaction}</p>
+                            
                         </div>
                         <div>
                             <h2 class='message_username'>

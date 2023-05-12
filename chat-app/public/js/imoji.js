@@ -19,7 +19,7 @@ document.onclick = (e) => {
     }
 }
 let imojiObject;
-fetch('../imojis/imojis.json')
+fetch('../assets/imojis/imojis.json')
     .then((response) => response.json())
     .then((json) => {
         let htmlResult = ''
