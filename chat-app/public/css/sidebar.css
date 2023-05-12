@@ -20,7 +20,7 @@
     #sidebar{
         display: none; 
         min-width: 200px;
-        top: 3rem;
+        top: 3.5rem;
         position: absolute;
         z-index: 5;
         border-radius: 0 20px 20px 0;

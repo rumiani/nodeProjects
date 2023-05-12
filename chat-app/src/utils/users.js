@@ -1,10 +1,12 @@
+const {infoController} = require('../controllers/infoController')
 const users = []
 const addUser = ({id, username, room}) =>{
     username = username.trim().toLowerCase()
     room = room.trim().toLowerCase()
-    const existingUser = users.find((user) => user.room === room && user.username === username)
-    if(existingUser || username.toLowerCase() === 'admin') return {error: 'Username is in use'}
     
+    try {infoController(users,username, room)
+    } catch (error) { return {error:error.message}}
+
     const user = {id, username, room}
     users.push(user)
     return {user}
