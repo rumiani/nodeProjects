@@ -5,7 +5,6 @@ const nameInputError = document.querySelector('.name_input_error')
 const roomInputError = document.querySelector('.room_input_error')
 
 joinForm.onsubmit = ()=>{
-
     if(infoController(nameInput.value)){
         nameInputError.style.display = 'inline'
         nameInputError.innerText = infoController(nameInput.value)
@@ -26,8 +25,8 @@ const infoController = (value) =>{
     if(value.toLowerCase() === 'admin') return '"Admin" is not allowed as an input'
 }
 
-nameInput.addEventListener('input', (e) => hideErrorsHandler())
-roomInput.addEventListener('input', (e) => hideErrorsHandler())
+nameInput.addEventListener('input', () => hideErrorsHandler())
+roomInput.addEventListener('input', () => hideErrorsHandler())
 const hideErrorsHandler = () =>{
     nameInputError.style.display = 'none'
     roomInputError.style.display = 'none'

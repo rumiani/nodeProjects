@@ -1,6 +1,5 @@
 #messages > li { 
     width: 100%;
-    min-height: 100px;
     word-wrap: break-word;
     padding: 0.5;
 }
@@ -32,7 +31,8 @@
 .user_message{
     border-radius:2rem 1rem 1rem 0;
     float: left;
-    background: rgba(255, 242, 0, 0.246);
+    margin:  0.5rem 0;
+    background: rgba(255, 242, 0, 0.617);
 }
 .user_message  .message_username{
     font-size: 16px;
@@ -61,6 +61,7 @@
     border-radius: 1rem 2rem 0 1rem;
     float: right;
     background: whitesmoke;
+    margin:  0.5rem 0;
 }
 .self_message  .message_username{
     margin: 0;

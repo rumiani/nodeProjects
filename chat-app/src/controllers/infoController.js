@@ -1,5 +1,4 @@
 const infoController = (users, username, room) =>{
-    console.log(users, username, room);
     const existingUser = users.find((user) => user.room === room && user.username === username)
     if(existingUser || username === 'admin' || room === 'admin')
     throw new Error('Username is in use')
