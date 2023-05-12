@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatrum</title>
     <link rel="icon" type="image/x-icon" href="./assets//icons/fav.png">
-    <link rel="stylesheet" href="./css/general.css">
+    <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/join.css">
   </head>
   <body>
@@ -14,7 +14,9 @@
       <h3 id="title">Chat application</h3>
       <form id="join_form" action="./chat">
         <input class="join_input" name="username" id="username" autocomplete="off" required placeholder="Name"/>
+        <p class="name_input_error">test</p>
         <input class="join_input" name="room" id="room" autocomplete="off" required placeholder="Room's name"/>
+        <p class="room_input_error">test</p>
         <button id="join_btn">Join</button>
       </form>
       <footer>
@@ -22,5 +24,6 @@
         <p id="copyright">Rumiani &copy; Copyright 2023</p>
       </footer>
     </div>
+  <script type="text/javascript" src="./js/handlers/joinFormHandler.js"></script>
 </body>
 </html>

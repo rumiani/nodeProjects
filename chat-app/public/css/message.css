@@ -13,9 +13,7 @@
     width: fit-content;
     max-width: 300px;
     box-shadow: 1px 1px 2px gray;
-    padding:0.25rem 0.5rem;
-    
-    /* margin: 0.5rem; */
+    padding:0.25rem 0.5rem;    
 }
 .message_time, .message_status{
     color: gray;
@@ -30,8 +28,6 @@
 .message_username{
     margin: 0;
 }
-
-
 /*other users message */
 .user_message{
     border-radius:2rem 1rem 1rem 0;
@@ -60,7 +56,6 @@
 .admin_message  .message_text{
     text-align: center;
 }
-
 /* self */
 .self_message{
     border-radius: 1rem 2rem 0 1rem;

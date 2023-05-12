@@ -71,3 +71,11 @@ to {top: 0;}
     padding: 1rem;
     word-wrap: break-word;
   }
+  .name_input_error, .room_input_error{
+    color: red;
+    font-size: 0.75rem;
+    text-align: start;
+    margin-top: 0;
+    padding: 0 1rem;
+    display: none;
+  }
