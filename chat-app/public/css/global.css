@@ -17,13 +17,11 @@ body {
 .main{
     width:100% ;
     position: relative;
-    /* background: yellow; */
     height: 100vh;
   }
 @media all and (max-width: 640px) {
     .container{
       width: 100%;
-      /* background: red; */
     }
     .main{
         width: 100%;

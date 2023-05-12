@@ -1,0 +1,104 @@
+#chat_component{
+    max-width: 500px;
+    width:70%;
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+}
+#chat_options {
+    padding:1rem; 
+    padding-top: 0;
+    box-shadow: 5px 5px 16px gray;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    border-radius: 1rem 1rem 0 0;
+}
+#chat_inputs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+#chat_bar{
+    position: absolute;
+    left: 0;
+    height: 0.25rem;
+    width: 0.1px;
+    display: block;
+    transition: background-color 1s;
+    background: green;
+}
+#message_input { 
+    border: none; 
+    padding:1rem 0.5rem 0 0.5rem; 
+    width: 90%;
+    max-height: 200px;
+    font-size: 20px;
+    overflow-x: auto;
+    outline: none;
+    transition:box-shadow 0.3s;
+    word-wrap: break-word;
+    background: white;
+}
+.input_bg {
+  position: relative;
+}
+.input_bg::before{
+  content: 'Message';
+  position: absolute;
+  top: 70%;
+  left: 2.6rem;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: gray;
+  font-weight: bold;
+  cursor: text;
+}
+
+#imoji_btn{
+  font-size: 2rem;
+  font-weight: bold;
+  width: 2rem;
+  height: 2rem;
+  color: rgba(146, 139, 139, 0.77);
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: unset;
+}
+#imoji_btn:focus{
+  color: black;
+}
+#send_btn { 
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  transition: scale 0.3s;
+  margin: 0.25rem; 
+  padding: 0;
+  width: 35px;
+  height: 30px;
+  background: white;
+  background-image: url('../assets/icons/send.png');
+  cursor: pointer;
+}
+#send_btn:disabled{
+  cursor: default;
+  opacity: 0.4;
+} 
+#send_btn:hover{
+  scale: 1.1;
+}
+@media all and (max-width: 640px) {
+    #chat_component{
+      width:100%;
+    }
+    #chat_options{
+      width: 100%;
+    }
+}

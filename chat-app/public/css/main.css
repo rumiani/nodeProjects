@@ -1,0 +1,34 @@
+#messages { 
+  flex-grow: 1;
+  list-style-type: none; 
+  margin: 0; 
+  padding: 4px;
+  position: absolute;
+  bottom: 5rem;
+  padding-bottom: 3rem;
+  padding-top: 10vh;
+  max-height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  animation: changeFade ease-in-out;
+  animation-duration: 2s;
+}
+#bg_pic{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 0;
+  animation: fade-in-out 60s;
+  animation-iteration-count: infinite;
+}
+  @keyframes fade-in-out {
+    0% { opacity: 0.1; } 
+    50% { opacity: 0.6; } 
+    100% { opacity: 0.1; }
+}
+@media all and (max-width: 640px) {
+  #bg_pic{
+    width: 100%;
+  }
+}
