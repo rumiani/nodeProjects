@@ -1,23 +1,25 @@
 const appendMsg = (messageUsername, messageText, createdAt) =>{
     const messages = document.getElementById('messages')
-
     const li = document.createElement('li');
-    let messageOwner = 'user_message';
-    if(messageUsername === 'Admin') messageOwner ='admin_message';
-    if(messageUsername === username) {
-        messageOwner ='self_message';    console.log(users, username, room);
+    let avatarSrc = localStorage.getItem('myImageKey');
+    console.log(avatarSrc);
+    if(avatarSrc === null) avatarSrc = '../assets/icons/avatar.png'
 
+    let messageOwner = 'user_message';
+    if(messageUsername === 'Admin') {
+        messageOwner ='admin_message'
+        messageUsername = ''
+        avatarSrc = '../assets/icons/botAvatar.png'
+    };
+    if(messageUsername === username) {
+        messageOwner ='self_message';
         messageUsername = ''
     }
-    let adminAvatar = `<img id='admin_avatar' src='../assets/images/avatar.png' alt='admin avatar'>`
-    let userAvatar = `<img id='user_avatar' src='../assets/images/avatar.png' alt='user avatar'>`
-    let selfAvatar = `<img id='self_avatar' src='../assets/images/avatar.png' alt='Your avatar'>`
 
-    // let reaction = '❤️'
+    // let reaction = '❤️'    
+    
     li.innerHTML = `<div class=${messageOwner}>
-                        <div>
-                            
-                        </div>
+                        <img src=${avatarSrc} class='chat_avatar' />
                         <div>
                             <h2 class='message_username'>
                                 ${messageUsername}

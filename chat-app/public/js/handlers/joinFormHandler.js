@@ -46,12 +46,12 @@ uploadInput.addEventListener("change", function() {
     reader.readAsDataURL(uploadInput.files[0]);
     filenameSpan.textContent = uploadInput.files[0].name;
   } else {
-    joinPreviewAvatar.src = "";
-    filenameSpan.textContent = "";
+    // joinPreviewAvatar.src = "../../assets/icons/avatar.png";
+    filenameSpan.textContent = "Default";
   }
   // save it to local storage
   saveImageToLocalStorage(joinPreviewAvatar, "myImageKey");
-  alert("Image saved to local storage!");
+//   alert("Image saved to local storage!");
 });
 
 

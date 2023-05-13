@@ -13,6 +13,7 @@
     max-width: 300px;
     box-shadow: 1px 1px 2px gray;
     padding:0.25rem 0.5rem;    
+    position: relative;
 }
 .message_time, .message_status{
     color: gray;
@@ -67,3 +68,26 @@
     margin: 0;
 }
 
+
+
+.chat_avatar{
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.admin_message .chat_avatar{
+    /* position: relative; */
+    display: block;
+    margin: 0 auto;
+}
+
+.self_message .chat_avatar{
+    position: absolute;
+    bottom: 0;
+    right: -3rem;
+}
+.user_message .chat_avatar{
+    position: absolute;
+    bottom: 0;
+    left: -3rem;
+}
