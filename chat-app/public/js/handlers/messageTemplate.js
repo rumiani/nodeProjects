@@ -5,7 +5,8 @@ const appendMsg = (messageUsername, messageText, createdAt) =>{
     let messageOwner = 'user_message';
     if(messageUsername === 'Admin') messageOwner ='admin_message';
     if(messageUsername === username) {
-        messageOwner ='self_message';
+        messageOwner ='self_message';    console.log(users, username, room);
+
         messageUsername = ''
     }
     let adminAvatar = `<img id='admin_avatar' src='../assets/images/avatar.png' alt='admin avatar'>`

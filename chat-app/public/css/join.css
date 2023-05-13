@@ -53,15 +53,76 @@ to {top: 0;}
 .join_input:focus{
     background: rgba(128, 128, 128, 0.047);
 }
-@media all and (max-width: 640px) {
-    #join_form{
-      width: 100%;
-      height: 100%;
-      border-radius: 0;
-    }
+.required_star{
+    color:red;
+    width: fit-content;
+    position: relative;
+    top: 2.5rem;
+    right: 0.5rem;
+    font-size: 20px;
+}
+#avatar_input_join{
+    background-color: red;
+}
+input[type="file"] {
+    display: none;
+}
+.custom_file_upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
+
+.avatar_input_join {
+    position: relative;
+    display: inline-block;
   }
-#copyright{
-    text-align: center;
+  
+  .avatar_input_join input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .file_upload_lable {
+    display: inline-block;
+    background: rgba(128, 128, 128, 0.744);
+    color: #fff;
+    cursor: pointer;
+    padding: 0 1rem; 
+    border-radius: 0.5rem;
+    margin: 2rem 0.5rem; 
+    height: 40px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+  }
+  .file_upload_lable:hover{
+    background-color: gray;
+  }
+  .avatar_input_join #filename {
+    display: block;
+    margin-top: 10px;
+  }
+  #join_preview_avatar{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: none;
+  }
+
+
+
+
+  #copyright{
+      text-align: center;
     color: gray;
 }
 .limitition{
@@ -70,12 +131,25 @@ to {top: 0;}
     width: 100;
     padding: 1rem;
     word-wrap: break-word;
-  }
-  .name_input_error, .room_input_error{
+}
+.name_input_error, .room_input_error{
     color: red;
     font-size: 0.75rem;
     text-align: start;
     margin-top: 0;
     padding: 0 1rem;
     display: none;
-  }
+}
+@media all and (max-width: 640px) {
+    #join_form{
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    .join_input{
+        font-size: 16px;
+    }
+    .file_upload_lable{
+        font-size: 12px;
+    }
+}

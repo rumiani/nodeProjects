@@ -31,3 +31,40 @@ const hideErrorsHandler = () =>{
     nameInputError.style.display = 'none'
     roomInputError.style.display = 'none'
 }
+
+
+const uploadInput = document.getElementById("avatar_input_join");
+const filenameSpan = document.getElementById("filename");
+const joinPreviewAvatar = document.getElementById("join_preview_avatar")
+
+uploadInput.addEventListener("change", function() {
+  if (uploadInput.files.length > 0) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      joinPreviewAvatar.src = e.target.result;
+    };
+    reader.readAsDataURL(uploadInput.files[0]);
+    filenameSpan.textContent = uploadInput.files[0].name;
+  } else {
+    joinPreviewAvatar.src = "";
+    filenameSpan.textContent = "";
+  }
+  // save it to local storage
+  saveImageToLocalStorage(joinPreviewAvatar, "myImageKey");
+  alert("Image saved to local storage!");
+});
+
+
+function saveImageToLocalStorage(imageElement, key) {
+    const canvas = document.createElement("canvas");
+    const context = canvas.getContext("2d");
+    canvas.width = imageElement.width;
+    canvas.height = imageElement.height;
+    context.drawImage(imageElement, 0, 0);
+  
+    const dataURL = canvas.toDataURL("image/png"); // Convert image to base64-encoded string
+    localStorage.setItem(key, dataURL);
+  }
+  
+  
+  
