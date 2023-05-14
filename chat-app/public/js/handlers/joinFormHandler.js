@@ -33,6 +33,7 @@ const hideErrorsHandler = () =>{
 }
 
 
+
 const uploadInput = document.getElementById("avatar_input_join");
 const filenameSpan = document.getElementById("filename");
 const joinPreviewAvatar = document.getElementById("join_preview_avatar")
@@ -54,15 +55,15 @@ uploadInput.addEventListener("change", function() {
 //   alert("Image saved to local storage!");
 });
 
-
 function saveImageToLocalStorage(imageElement, key) {
+
     const canvas = document.createElement("canvas");
     const context = canvas.getContext("2d");
     canvas.width = imageElement.width;
     canvas.height = imageElement.height;
     context.drawImage(imageElement, 0, 0);
-  
     const dataURL = canvas.toDataURL("image/png"); // Convert image to base64-encoded string
+
     localStorage.setItem(key, dataURL);
   }
   

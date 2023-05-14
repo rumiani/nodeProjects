@@ -2,7 +2,6 @@ const appendMsg = (messageUsername, messageText, createdAt) =>{
     const messages = document.getElementById('messages')
     const li = document.createElement('li');
     let avatarSrc = localStorage.getItem('myImageKey');
-    console.log(avatarSrc);
     if(avatarSrc === null) avatarSrc = '../assets/icons/avatar.png'
 
     let messageOwner = 'user_message';
