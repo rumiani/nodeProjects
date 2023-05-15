@@ -18,7 +18,6 @@ joinForm.onsubmit = ()=>{
     }
     else{
       saveImageToLocalStorage('imgKey', joinPreviewAvatar);
-      console.log('save to local');
         return true
     }
 }

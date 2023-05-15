@@ -20,13 +20,17 @@ const roomName = document.getElementById('room')
 const usersList = document.getElementById('users_list')
 
 socket.on('roomData', roomData =>{
+    console.log(roomData);
     roomName.textContent = roomData.room
     let lis = ``
     roomData.users.forEach(user => {
+        const img = `<img class='avatar' src=${user.src} />` 
         if(user.username === username)
-            lis += `<li><h2>${user.username}</h2></li>`
+            lis += ` <li>${img}<h2>${user.username}</h2></li>`
         else
-            lis += `<li>${user.username}</li>`
+            lis += `<li>${img} ${user.username}</li>`
+
+        // add avatar
     })
     usersList.innerHTML = lis
 })

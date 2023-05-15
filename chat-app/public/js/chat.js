@@ -5,6 +5,7 @@ const shareLocation = document.getElementById('location_icon')
 const send_btn = document.getElementById('send_btn')
 const input = document.getElementById('message_input')
 const chat_bar = document.getElementById('chat_bar')
+const src = localStorage.getItem('imgKey')
 
 input.addEventListener('input', function(e) {
     inputController(e.target.innerText)
@@ -12,7 +13,6 @@ input.addEventListener('input', function(e) {
 
 input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
-        // Prevent the browser to add a </br> inside the editable tag:
         e.preventDefault()
         sendMessageHandler()
     }
@@ -23,8 +23,8 @@ send_btn.onclick = () => sendMessageHandler()
 const sendMessageHandler = ()=>{
     if(input.innerText === '') return alert('Input is empty')
     if(input.innerText.length > limit) return alert('Large input')
-    
-    socket.emit('sendMessage', input.innerText, (message) =>{
+    const base64img = localStorage.getItem('imgKey')
+    socket.emit('sendMessage', {text: input.innerText, src: base64img}, (message) =>{
     });
     chat_bar.style.width = '0'
     input.innerText = '';
@@ -34,25 +34,27 @@ const sendMessageHandler = ()=>{
 } 
 
 socket.on('message', (message) => {
-    appendMsg(message.username,message.text,message.createdAt)
+    appendMsg(message)
     // document.querySelectorAll(".message_status").lastElementChild.style.color = 'green'
 })
 
 shareLocation.onclick  = () =>{
     shareLocation.setAttribute('disabled', 'disabled')
+    const base64img = localStorage.getItem('imgKey')
     navigator.geolocation.getCurrentPosition(position =>{
-        socket.emit('sendLocation', {latitude: position.coords.latitude, longitude: position.coords.longitude}, ()=>{
+        socket.emit('sendLocation', {src:base64img,coords:{latitude: position.coords.latitude, longitude: position.coords.longitude}}, ()=>{
         shareLocation.removeAttribute('disabled')
     });
 })
 }
 
 socket.on('location', (message) => {
+    console.log('location message function',message);
     const link = `<a _blank href=${message.url}>My location</a>`
-    appendMsg(message.username, link, message.createdAt)
+    appendMsg(message)
 })
 
-socket.emit('join', {username, room}, error => {
+socket.emit('join', {username, room, src}, error => {
     if(error) {
         alert(error)
         location.href = '/'
@@ -60,7 +62,5 @@ socket.emit('join', {username, room}, error => {
 })
 
 
-// length of name and room client and server
 // reactions and options to message
 // reply
-// avatar 

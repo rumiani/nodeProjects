@@ -1,5 +1,5 @@
 const Filter = require('bad-words')
-const filter = new Filter();
+// const filter = new Filter();
 const {generateMessage, generateLocationMessage} = require('./utils/message')
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users')
 const path = require("path");
@@ -24,8 +24,8 @@ io.on('connection', (socket) =>{
         const {error, user} = addUser({id: socket.id, ...options})
         if(error) return callback(error)
         socket.join(user.room)
-        socket.emit('message',generateMessage('Admin' , `Welcome ${user.username}!`))
-        socket.broadcast.to(user.room).emit('message',generateMessage('Admin',`${user.username} has joined!`))
+        socket.emit('message',generateMessage('admin' , `Welcome ${user.username}!`))
+        socket.broadcast.to(user.room).emit('message',generateMessage('admin',`${user.username} has joined!`))
         io.to(user.room).emit('roomData', {
             room: user.room,
             users: getUsersInRoom(user.room)
@@ -33,15 +33,15 @@ io.on('connection', (socket) =>{
         callback()
     })
 
-    socket.on('sendMessage', (text , callback) => {
+    socket.on('sendMessage', (message , callback) => {
         const user = getUser(socket.id)
         // filter.clean(text)
-        io.to(user.room).emit('message', generateMessage(user.username, text))
+        io.to(user.room).emit('message', generateMessage(user.username, message.text, message.src))
         callback()
     })
-    socket.on('sendLocation', (coords, callback) =>{
+    socket.on('sendLocation', (message, callback) =>{
         const user = getUser(socket.id)
-        io.to(user.room).emit('location', generateLocationMessage(user.username, coords))
+        io.to(user.room).emit('location', generateLocationMessage(user.username, message.coords, message.src))
         callback()
     })
     socket.on('disconnect', () =>{

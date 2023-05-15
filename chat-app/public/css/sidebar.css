@@ -15,7 +15,22 @@
     from {left: -300px;}
     to {left: 0;}
   }
-
+  #sidebar > ul > li{
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin: 1rem 0;
+  }
+.avatar{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline;
+  margin-right: 1rem ;
+}
+#sidebar > ul > li h2{
+  margin: 0.25rem 0;
+}
 @media (max-width: 640px) {
     #sidebar{
         display: none; 

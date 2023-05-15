@@ -8,7 +8,7 @@
     margin: 15px 0;
 }
 /* general messages */
-.user_message , .admin_message, .self_message{
+.user , .admin, .self{
     width: fit-content;
     max-width: 90%;
     box-shadow: 1px 1px 2px gray;
@@ -29,19 +29,19 @@
     margin: 0;
 }
 /*other users message */
-.user_message{
+.user{
     border-radius:2rem 1rem 1rem 0;
     float: left;
     margin:  0.5rem 0;
     background: rgba(255, 242, 0, 0.617);
 }
-.user_message  .message_username{
+.user  .message_username{
     font-size: 16px;
     margin-left: 0.5rem;
     color: rgb(0, 172, 0);
 }
 /* admin */
-.admin_message{
+.admin{
     margin: 1rem auto;
     padding: 1rem;
     width: 250px;
@@ -49,22 +49,22 @@
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.438);
 }
-.admin_message  .message_username{
+.admin  .message_username{
     text-align: center;
     color: red;
     margin: 0;
 }
-.admin_message  .message_text{
+.admin  .message_text{
     text-align: center;
 }
 /* self */
-.self_message{
+.self{
     border-radius: 1rem 2rem 0 1rem;
     float: right;
     background: whitesmoke;
     margin:  0.5rem 0;
 }
-.self_message  .message_username{
+.self  .message_username{
     margin: 0;
 }
 .chat_avatar{
@@ -72,18 +72,18 @@
     width: 2.5rem;
     height: 2.5rem;
 }
-.admin_message .chat_avatar{
+.admin .chat_avatar{
     /* position: relative; */
     display: block;
     margin: 0 auto;
 }
 
-.self_message .chat_avatar{
+.self .chat_avatar{
     position: absolute;
     bottom: 0;
     right: -3rem;
 }
-.user_message .chat_avatar{
+.user .chat_avatar{
     position: absolute;
     bottom: 0;
     left: -3rem;

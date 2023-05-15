@@ -1,13 +1,13 @@
 const {infoController} = require('../controllers/infoController')
 const users = []
-const addUser = ({id, username, room}) =>{
+const addUser = ({id, username, room, src}) =>{
     username = username.trim().toLowerCase()
     room = room.trim().toLowerCase()
     
     try {infoController(users,username, room)
     } catch (error) { return {error:error.message}}
 
-    const user = {id, username, room}
+    const user = {id, username, room, src}
     users.push(user)
     return {user}
 }
