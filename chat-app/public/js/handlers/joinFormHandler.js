@@ -3,6 +3,7 @@ const nameInput = document.getElementById('username')
 const roomInput = document.getElementById('room')
 const nameInputError = document.querySelector('.name_input_error')
 const roomInputError = document.querySelector('.room_input_error')
+const joinPreviewAvatar = document.getElementById("join_preview_avatar")
 
 joinForm.onsubmit = ()=>{
     if(infoController(nameInput.value)){
@@ -16,6 +17,8 @@ joinForm.onsubmit = ()=>{
         return false
     }
     else{
+      saveImageToLocalStorage('imgKey', joinPreviewAvatar);
+      console.log('save to local');
         return true
     }
 }
@@ -33,10 +36,8 @@ const hideErrorsHandler = () =>{
 }
 
 
-
 const uploadInput = document.getElementById("avatar_input_join");
 const filenameSpan = document.getElementById("filename");
-const joinPreviewAvatar = document.getElementById("join_preview_avatar")
 
 uploadInput.addEventListener("change", function() {
   if (uploadInput.files.length > 0) {
@@ -50,22 +51,23 @@ uploadInput.addEventListener("change", function() {
     // joinPreviewAvatar.src = "../../assets/icons/avatar.png";
     filenameSpan.textContent = "Default";
   }
-  // save it to local storage
-  saveImageToLocalStorage(joinPreviewAvatar, "myImageKey");
-//   alert("Image saved to local storage!");
 });
 
-function saveImageToLocalStorage(imageElement, key) {
+const saveImageToLocalStorage = (key, img) =>{
+  const dataURL = base64Converter(img)
+  localStorage.setItem(key, dataURL);
+}
 
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
-    canvas.width = imageElement.width;
-    canvas.height = imageElement.height;
-    context.drawImage(imageElement, 0, 0);
-    const dataURL = canvas.toDataURL("image/png"); // Convert image to base64-encoded string
 
-    localStorage.setItem(key, dataURL);
-  }
+
+const base64Converter = (img) => {
+  const c = document.createElement("canvas");
+  c.width = img.width;
+  c.height = img.height;
+  const context = c.getContext("2d");
+  context.drawImage(img, 0, 0, c.width, c.height);
+  return c.toDataURL(); 
+}
   
   
   

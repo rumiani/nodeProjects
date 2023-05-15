@@ -10,7 +10,7 @@
 /* general messages */
 .user_message , .admin_message, .self_message{
     width: fit-content;
-    max-width: 300px;
+    max-width: 90%;
     box-shadow: 1px 1px 2px gray;
     padding:0.25rem 0.5rem;    
     position: relative;
@@ -67,9 +67,6 @@
 .self_message  .message_username{
     margin: 0;
 }
-
-
-
 .chat_avatar{
     border-radius: 50%;
     width: 2.5rem;
