@@ -1,5 +1,4 @@
 const appendMsg = (message) =>{
-
     const messages = document.getElementById('messages')
     const li = document.createElement('li');
     if(message.src === null) selfAvatar = '../assets/icons/avatar.png'
@@ -14,10 +13,9 @@ const appendMsg = (message) =>{
         owner ='self';
         message.username = ''
     }
-
-    // let reaction = '❤️'    
     
-    li.innerHTML = `<div class=${owner}>
+    li.innerHTML = `<div class="${owner}" data-timestamp=${message.createdAt} id=${message.id}>
+                        <div class='messageMenu'>❤️</div>
                         <img src=${message.src} class='chat_avatar' />
                         <div>
                             <h2 class='message_username'>
@@ -36,7 +34,7 @@ const appendMsg = (message) =>{
                             </div>
                         </div>
                     </div>`
-    
+    li.classList.add('message')
     messages.appendChild(li);
     messages.scrollTop = messages.scrollHeight;
 }

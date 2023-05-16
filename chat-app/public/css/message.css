@@ -2,6 +2,7 @@
     width: 100%;
     word-wrap: break-word;
     padding: 0.5;
+    position: relative;
 }
 #messages  li  a{
     display: block;

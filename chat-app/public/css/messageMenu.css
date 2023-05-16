@@ -1,0 +1,49 @@
+.messageMenu{
+    border-radius:1rem;
+    width:100px;
+    /* height:100px; */
+    border-radius: 0.25rem;
+    background:rgba(128, 128, 128, 0.796);
+    position: absolute;
+    top: 5rem;
+    z-index: 6;
+    transform: translate(-50%, -50%);
+    display: none;
+    -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  }
+  .reactions{
+    border-radius:1rem;
+    width:100px;
+    height:35px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .reactions > span{
+    margin: 0 0.5rem;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+  }
+  .reactions span:hover{
+  }
+  .options{
+    border-radius:0 0 1rem 1rem;
+    height:75px;
+    margin:0 auto;
+      text-align:center;
+  
+  }
+  .options span{
+    display:block;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: wheat;
+    border-radius: 0.25rem;
+  }
+  .options span:hover{
+    color: white;
+    /* background-color: rgba(0, 0, 0, 0.463); */
+  }

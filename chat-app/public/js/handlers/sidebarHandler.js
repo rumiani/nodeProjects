@@ -20,7 +20,6 @@ const roomName = document.getElementById('room')
 const usersList = document.getElementById('users_list')
 
 socket.on('roomData', roomData =>{
-    console.log(roomData);
     roomName.textContent = roomData.room
     let lis = ``
     roomData.users.forEach(user => {
