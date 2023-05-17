@@ -1,9 +1,11 @@
 const appendMsg = (message) =>{
     const messages = document.getElementById('messages')
     const li = document.createElement('li');
+    let usernameID;
     if(message.src === null) selfAvatar = '../assets/icons/avatar.png'
 
     let owner = 'user';
+    usernameID = message.username
     if(message.username === 'admin') {
         owner ='admin'
         message.username = ''
@@ -11,6 +13,7 @@ const appendMsg = (message) =>{
     };
     if(message.username === username) {
         owner ='self';
+        
         message.username = ''
     }
     
@@ -18,7 +21,7 @@ const appendMsg = (message) =>{
                         <div class='messageMenu'></div>
                         <img src=${message.src} class='chat_avatar' />
                         <div>
-                            <h2 class='message_username'>
+                            <h2 class='message_username' id=${usernameID}>
                                 ${message.username}
                             </h2>
                             <p class='message_text'>

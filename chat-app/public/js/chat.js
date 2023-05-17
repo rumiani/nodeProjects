@@ -15,22 +15,25 @@ input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
         e.preventDefault()
         sendMessageHandler()
+        closeInputReplyHandler()
     }
 });
 
 send_btn.onclick = () => sendMessageHandler()
 
-const sendMessageHandler = ()=>{
+const sendMessageHandler = ({to, reactions})=>{
+    console.log(to, reactions);
     if(input.innerText === '') return alert('Input is empty')
     if(input.innerText.length > limit) return alert('Large input')
     const base64img = localStorage.getItem('imgKey')
-    socket.emit('sendMessage', {text: input.innerText, src: base64img}, (message) =>{
+    socket.emit('sendMessage', {text: input.innerText, src: base64img, to, reactions}, (message) =>{
     });
     chat_bar.style.width = '0'
     input.innerText = '';
     input.classList.add('input_bg')
     input.focus()
     send_btn.setAttribute('disabled', 'disabled')
+    closeInputReplyHandler()
 } 
 
 socket.on('message', (message) => {
@@ -66,12 +69,21 @@ const sendReactionHandler = (id, reactions) =>{
     socket.emit('sendReactions', {id, reactions}, (message) =>{
     });
 }
+
 socket.on('reactions', ({id, reactions}) => {
-    console.log('reactions: ',{id, reactions});
     const targetMessage = document.getElementById(id)
     const messageReactions = targetMessage.querySelector('#message_reactions')
     messageReactions.innerHTML = `<span id='message_reactions_place'>${reactions}</span>`
-    // appendMsg(message)
+})
+const sendreplyHandler = (id,replyUsername, prevMsg) =>{
+    socket.emit('sendreply', {id,replyUsername, prevMsg}, (message) =>{
+    });
+}
+
+socket.on('reply', ({id, reactions}) => {
+    const targetMessage = document.getElementById(id)
+    const messageReactions = targetMessage.querySelector('#message_reactions')
+    messageReactions.innerHTML = `<span id='message_reactions_place'>${reactions}</span>`
 })
 
 // reply

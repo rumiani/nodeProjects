@@ -21,6 +21,7 @@ io.on('connection', (socket) =>{
     // console.log("New websocket connection");
     
     socket.on('join', (options, callback) =>{
+        console.log(options);
         const {error, user} = addUser({id: socket.id, ...options})
         if(error) return callback(error)
         socket.join(user.room)
@@ -36,7 +37,7 @@ io.on('connection', (socket) =>{
     socket.on('sendMessage', (message , callback) => {
         const user = getUser(socket.id)
         // filter.clean(text)
-        io.to(user.room).emit('message', generateMessage(user.username, message.text, message.src))
+        io.to(user.room).emit('message', generateMessage(user.username, ...message))
         callback()
     })
     socket.on('sendLocation', (message, callback) =>{
@@ -47,6 +48,11 @@ io.on('connection', (socket) =>{
     socket.on('sendReactions', ({id, reactions}, callback) =>{
         const user = getUser(socket.id)
         io.to(user.room).emit('reactions', (user.username, {id, reactions}))
+        callback()
+    })
+    socket.on('sendReply', ({id,replyUsername, prevMsg}, callback) =>{
+        const user = getUser(socket.id)
+        io.to(user.room).emit('reply', (user.username, {id, replyUsername, prevMsg}))
         callback()
     })
     socket.on('disconnect', () =>{

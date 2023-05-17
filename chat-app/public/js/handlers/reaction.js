@@ -29,11 +29,13 @@ document.onclick = (e) =>{
     }
     if(e.target.id === 'reply'){
         const fromPrevMsg = messageText.substring(0, 30)
-        console.log('reply',fromPrevMsg);
+        const replyUsername = messageElement.querySelector('.message_username').id
+        replyHandler(messageElement.id, replyUsername,fromPrevMsg)
         menu.style.display = 'none';
+        sendMessageHandler({to:{id:messageElement.id, replyUsername, fromPrevMsg}})
     }
     if(imojisArr[e.target.id]){
-        sendReactionHandler(messageElement.id, imojisArr[e.target.id])
+        sendMessageHandler({reactions:{id:messageElement.id, imojis:[imojisArr[e.target.id]]}})
         menu.style.display = 'none';
     }
 }
@@ -41,17 +43,15 @@ let reactions = ''
 for (const imoji in imojisArr) {
     reactions += `<span class='reaction' id=${imoji}>${imojisArr[imoji]}</span>`
 }
-// console.log(reactions);
-const reactionTemplate = `
-<div class='reactions'>
-    ${reactions}
-</div>
-<div class='options'>
-    <span id='copy'>Copy</span>
-    <span id='reply'>Reply</span>
-</div>
-`
 const loadReactoionMenuTemplate = (el) =>{
-    el.innerHTML= reactionTemplate
+    el.innerHTML= `
+    <div class='reactions'>
+        ${reactions}
+    </div>
+    <div class='options'>
+        <span id='copy'>Copy</span>
+        <span id='reply'>Reply</span>
+    </div>
+    `
 }
 
