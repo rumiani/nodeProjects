@@ -1,18 +1,18 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const reactionElement = document.querySelectorAll('.reaction')
-    const copyMsg = document.querySelector('#copy')
-    const replyMsg = document.querySelectorAll('#reply')
-    
-})
+// document.addEventListener('DOMContentLoaded', function() {
+//     const reactionElement = document.querySelectorAll('.reaction')
+//     const copyMsg = document.querySelector('#copy')
+//     const replyMsg = document.querySelectorAll('#reply')
+// })
 let messageElement;
 let messageText;
 let menu;
+let messageReactions;
 window.ondblclick = (e) =>{
     if(e.target.classList.contains('message')){
         messageElement = e.target.firstChild
-        messageText = messageElement.children[2].children[1].innerText
-        console.log(messageText);
-        menu = messageElement.firstElementChild
+        messageText = e.target.querySelector('.message_text').innerText
+        messageReactions = e.target.querySelector('#message_reactions')
+        menu = e.target.querySelector('.messageMenu')
         menu.style.display = 'inline';
         loadReactoionMenuTemplate(menu)
     }
@@ -33,7 +33,7 @@ document.onclick = (e) =>{
         menu.style.display = 'none';
     }
     if(imojisArr[e.target.id]){
-        console.log(e.target.id);
+        sendReactionHandler(messageElement.id, imojisArr[e.target.id])
         menu.style.display = 'none';
     }
 }

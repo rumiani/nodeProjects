@@ -3,6 +3,8 @@
     word-wrap: break-word;
     padding: 0.5;
     position: relative;
+    font-size: 1rem;
+    word-wrap: break-word;
 }
 #messages  li  a{
     display: block;
@@ -37,7 +39,6 @@
     background: rgba(255, 242, 0, 0.617);
 }
 .user  .message_username{
-    font-size: 16px;
     margin-left: 0.5rem;
     color: rgb(0, 172, 0);
 }
@@ -88,4 +89,16 @@
     position: absolute;
     bottom: 0;
     left: -3rem;
+}
+#message_reactions{
+}
+#message_reactions_place{
+    padding: 3px;
+    border-radius: 0.5rem;
+}
+#reactions_parent{
+    background-color: rgba(128, 128, 128, 0.628);
+    border-radius: 0.5rem;
+    cursor: default;
+    margin: 0 1rem;
 }

@@ -62,5 +62,16 @@ socket.emit('join', {username, room, src}, error => {
 })
 
 
-// reactions and options to message
+const sendReactionHandler = (id, reactions) =>{
+    socket.emit('sendReactions', {id, reactions}, (message) =>{
+    });
+}
+socket.on('reactions', ({id, reactions}) => {
+    console.log('reactions: ',{id, reactions});
+    const targetMessage = document.getElementById(id)
+    const messageReactions = targetMessage.querySelector('#message_reactions')
+    messageReactions.innerHTML = `<span id='message_reactions_place'>${reactions}</span>`
+    // appendMsg(message)
+})
+
 // reply

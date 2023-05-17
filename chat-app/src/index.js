@@ -44,6 +44,11 @@ io.on('connection', (socket) =>{
         io.to(user.room).emit('location', generateLocationMessage(user.username, message.coords, message.src))
         callback()
     })
+    socket.on('sendReactions', ({id, reactions}, callback) =>{
+        const user = getUser(socket.id)
+        io.to(user.room).emit('reactions', (user.username, {id, reactions}))
+        callback()
+    })
     socket.on('disconnect', () =>{
         const user = removeUser(socket.id)
         if(user) {

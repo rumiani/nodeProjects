@@ -15,7 +15,7 @@ const appendMsg = (message) =>{
     }
     
     li.innerHTML = `<div class="${owner}" data-timestamp=${message.createdAt} id=${message.id}>
-                        <div class='messageMenu'>❤️</div>
+                        <div class='messageMenu'></div>
                         <img src=${message.src} class='chat_avatar' />
                         <div>
                             <h2 class='message_username'>
@@ -25,6 +25,8 @@ const appendMsg = (message) =>{
                                 ${message.text}
                             </p>
                             <div class='message_info'>
+                                <div id='message_reactions'>
+                                </div>
                                 <span class='message_time'>
                                     ${moment(message.createdAt).format('hh:mm a')}
                                 </span>
