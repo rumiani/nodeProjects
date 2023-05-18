@@ -21,12 +21,13 @@ input.addEventListener('keydown', (e) => {
 
 send_btn.onclick = () => sendMessageHandler()
 
-const sendMessageHandler = ({to, reactions})=>{
-    console.log(to, reactions);
+const sendMessageHandler = (reactions = null)=>{
+    const to = replyObject
     if(input.innerText === '') return alert('Input is empty')
     if(input.innerText.length > limit) return alert('Large input')
     const base64img = localStorage.getItem('imgKey')
-    socket.emit('sendMessage', {text: input.innerText, src: base64img, to, reactions}, (message) =>{
+    // console.log('c:',{text: input.innerText, src: base64img});
+    socket.emit('sendMessage', {text: input.innerText, src: base64img,reactions, to}, (message) =>{
     });
     chat_bar.style.width = '0'
     input.innerText = '';
@@ -65,7 +66,7 @@ socket.emit('join', {username, room, src}, error => {
 })
 
 
-const sendReactionHandler = (id, reactions) =>{
+const sendReactionHandler = ({id, reactions}) =>{
     socket.emit('sendReactions', {id, reactions}, (message) =>{
     });
 }
@@ -73,17 +74,17 @@ const sendReactionHandler = (id, reactions) =>{
 socket.on('reactions', ({id, reactions}) => {
     const targetMessage = document.getElementById(id)
     const messageReactions = targetMessage.querySelector('#message_reactions')
-    messageReactions.innerHTML = `<span id='message_reactions_place'>${reactions}</span>`
+    messageReactions.innerHTML = `<span id='message_reactions_place'>${reactions.reaction}</span>`
 })
-const sendreplyHandler = (id,replyUsername, prevMsg) =>{
-    socket.emit('sendreply', {id,replyUsername, prevMsg}, (message) =>{
-    });
-}
+// const sendReplyHandler = ({id,replyUsername, prevMsg}) =>{
+//     socket.emit('sendreply', {id,replyUsername, prevMsg}, (message) =>{
+//     });
+// }
 
-socket.on('reply', ({id, reactions}) => {
-    const targetMessage = document.getElementById(id)
-    const messageReactions = targetMessage.querySelector('#message_reactions')
-    messageReactions.innerHTML = `<span id='message_reactions_place'>${reactions}</span>`
-})
+// socket.on('reply', ({id, reactions}) => {
+//     const targetMessage = document.getElementById(id)
+//     const messageReactions = targetMessage.querySelector('#message_reactions')
+//     messageReactions.innerHTML = `<span id='message_reactions_place'>${reactions}</span>`
+// })
 
 // reply

@@ -1,12 +1,8 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     const reactionElement = document.querySelectorAll('.reaction')
-//     const copyMsg = document.querySelector('#copy')
-//     const replyMsg = document.querySelectorAll('#reply')
-// })
 let messageElement;
 let messageText;
 let menu;
 let messageReactions;
+let replyObject;
 window.ondblclick = (e) =>{
     if(e.target.classList.contains('message')){
         messageElement = e.target.firstChild
@@ -30,23 +26,24 @@ document.onclick = (e) =>{
     if(e.target.id === 'reply'){
         const fromPrevMsg = messageText.substring(0, 30)
         const replyUsername = messageElement.querySelector('.message_username').id
-        replyHandler(messageElement.id, replyUsername,fromPrevMsg)
+        replyObject =  {id:messageElement.id, replyUsername,fromPrevMsg}
+        replyHandler({id:messageElement.id, replyUsername,fromPrevMsg})
         menu.style.display = 'none';
-        sendMessageHandler({to:{id:messageElement.id, replyUsername, fromPrevMsg}})
+        // sendMessageHandler({to:{id:messageElement.id, replyUsername, fromPrevMsg}})
     }
     if(imojisArr[e.target.id]){
-        sendMessageHandler({reactions:{id:messageElement.id, imojis:[imojisArr[e.target.id]]}})
+        sendReactionHandler({id:messageElement.id ,reactions:{reaction:imojisArr[e.target.id], number: 1}})
         menu.style.display = 'none';
     }
 }
-let reactions = ''
+let reactionsHtml = ''
 for (const imoji in imojisArr) {
-    reactions += `<span class='reaction' id=${imoji}>${imojisArr[imoji]}</span>`
+    reactionsHtml += `<span class='reaction' id=${imoji}>${imojisArr[imoji]}</span>`
 }
 const loadReactoionMenuTemplate = (el) =>{
     el.innerHTML= `
     <div class='reactions'>
-        ${reactions}
+        ${reactionsHtml}
     </div>
     <div class='options'>
         <span id='copy'>Copy</span>

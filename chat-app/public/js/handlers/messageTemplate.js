@@ -1,4 +1,5 @@
 const appendMsg = (message) =>{
+    console.log('msgTemplate: ', message);
     const messages = document.getElementById('messages')
     const li = document.createElement('li');
     let usernameID;
@@ -24,6 +25,9 @@ const appendMsg = (message) =>{
                             <h2 class='message_username' id=${usernameID}>
                                 ${message.username}
                             </h2>
+                            <p class='fromPrevMsg' for=${message.to.id}>
+                                ${message.to.fromPrevMsg}
+                            </p>
                             <p class='message_text'>
                                 ${message.text}
                             </p>

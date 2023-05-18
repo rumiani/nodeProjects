@@ -15,18 +15,16 @@ const PORT = process.env.PORT
 const publicDirectoryPath = path.join(__dirname+'../../public')
 app.use(express.static(publicDirectoryPath))
 
-
-
 io.on('connection', (socket) =>{
     // console.log("New websocket connection");
     
     socket.on('join', (options, callback) =>{
-        console.log(options);
+        // console.log('options',options);
         const {error, user} = addUser({id: socket.id, ...options})
         if(error) return callback(error)
         socket.join(user.room)
-        socket.emit('message',generateMessage('admin' , `Welcome ${user.username}!`))
-        socket.broadcast.to(user.room).emit('message',generateMessage('admin',`${user.username} has joined!`))
+        socket.emit('message',generateMessage({username: 'admin' ,text: `Welcome ${user.username}!`}))
+        socket.broadcast.to(user.room).emit('message',generateMessage({username:'admin',text:`${user.username} has joined!`}))
         io.to(user.room).emit('roomData', {
             room: user.room,
             users: getUsersInRoom(user.room)
@@ -37,9 +35,10 @@ io.on('connection', (socket) =>{
     socket.on('sendMessage', (message , callback) => {
         const user = getUser(socket.id)
         // filter.clean(text)
-        io.to(user.room).emit('message', generateMessage(user.username, ...message))
+        io.to(user.room).emit('message', generateMessage({username:user.username, ...message}))
         callback()
     })
+
     socket.on('sendLocation', (message, callback) =>{
         const user = getUser(socket.id)
         io.to(user.room).emit('location', generateLocationMessage(user.username, message.coords, message.src))
