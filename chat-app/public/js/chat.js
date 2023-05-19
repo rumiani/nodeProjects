@@ -26,7 +26,6 @@ const sendMessageHandler = (reactions = null)=>{
     if(input.innerText === '') return alert('Input is empty')
     if(input.innerText.length > limit) return alert('Large input')
     const base64img = localStorage.getItem('imgKey')
-    // console.log('c:',{text: input.innerText, src: base64img});
     socket.emit('sendMessage', {text: input.innerText, src: base64img,reactions, to}, (message) =>{
     });
     chat_bar.style.width = '0'
@@ -35,6 +34,8 @@ const sendMessageHandler = (reactions = null)=>{
     input.focus()
     send_btn.setAttribute('disabled', 'disabled')
     closeInputReplyHandler()
+    replyObject = null
+    document.getElementById('reply_input').innerHTML = ''
 } 
 
 socket.on('message', (message) => {
@@ -58,7 +59,7 @@ socket.on('location', (message) => {
     appendMsg(message)
 })
 
-socket.emit('join', {username, room, src}, error => {
+socket.emit('join', {username, room, src, to: null, reactions: null}, error => {
     if(error) {
         alert(error)
         location.href = '/'
@@ -76,15 +77,3 @@ socket.on('reactions', ({id, reactions}) => {
     const messageReactions = targetMessage.querySelector('#message_reactions')
     messageReactions.innerHTML = `<span id='message_reactions_place'>${reactions.reaction}</span>`
 })
-// const sendReplyHandler = ({id,replyUsername, prevMsg}) =>{
-//     socket.emit('sendreply', {id,replyUsername, prevMsg}, (message) =>{
-//     });
-// }
-
-// socket.on('reply', ({id, reactions}) => {
-//     const targetMessage = document.getElementById(id)
-//     const messageReactions = targetMessage.querySelector('#message_reactions')
-//     messageReactions.innerHTML = `<span id='message_reactions_place'>${reactions}</span>`
-// })
-
-// reply

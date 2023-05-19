@@ -8,7 +8,7 @@
 }
 #messages  li  a{
     display: block;
-    margin: 15px 0;
+    margin: -0.25rem 0 0.25rem -0.5rem;
 }
 /* general messages */
 .user , .admin, .self{
@@ -101,4 +101,14 @@
     border-radius: 0.5rem;
     cursor: default;
     margin: 0 1rem;
+}
+#fromPrevMsg{
+    border-left: rgb(62, 62, 251) 0.25rem solid ;
+    margin: -0.25rem 0 0.25rem -0.5rem;
+    border-radius: 1rem 50% 0 0 ;
+    padding: 0.25rem;
+    background: rgba(169, 169, 169, 0.032);
+    opacity: 0.5;
+    cursor: pointer;
+    display: block;
 }

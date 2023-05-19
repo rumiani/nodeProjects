@@ -1,8 +1,15 @@
+let repliedElementId;
+
 const appendMsg = (message) =>{
-    console.log('msgTemplate: ', message);
     const messages = document.getElementById('messages')
     const li = document.createElement('li');
     let usernameID;
+    let fromPrevMsg = '';
+    if(message.to ){
+        fromPrevMsg = `<a id='fromPrevMsg' href="#${message.to.id}">
+                                ${message.to.fromPrevMsg}
+                            </a>`
+    }
     if(message.src === null) selfAvatar = '../assets/icons/avatar.png'
 
     let owner = 'user';
@@ -10,14 +17,15 @@ const appendMsg = (message) =>{
     if(message.username === 'admin') {
         owner ='admin'
         message.username = ''
-        message.src = '../assets/icons/botAvatar.png'
+        message.src = '../assets/icons/botAvatar.png';
+        message.to = {}
+        fromPrevMsg = ''
     };
     if(message.username === username) {
         owner ='self';
         
         message.username = ''
     }
-    
     li.innerHTML = `<div class="${owner}" data-timestamp=${message.createdAt} id=${message.id}>
                         <div class='messageMenu'></div>
                         <img src=${message.src} class='chat_avatar' />
@@ -25,9 +33,7 @@ const appendMsg = (message) =>{
                             <h2 class='message_username' id=${usernameID}>
                                 ${message.username}
                             </h2>
-                            <p class='fromPrevMsg' for=${message.to.id}>
-                                ${message.to.fromPrevMsg}
-                            </p>
+                            ${fromPrevMsg}
                             <p class='message_text'>
                                 ${message.text}
                             </p>
@@ -46,4 +52,11 @@ const appendMsg = (message) =>{
     li.classList.add('message')
     messages.appendChild(li);
     messages.scrollTop = messages.scrollHeight;
+}
+
+window.onclick = (e) =>{
+    if(e.target === message.to.id){
+        const repliedElement = document.getElementById(message.to.id)
+        repliedElement.style.background = 'red'
+    }
 }

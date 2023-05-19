@@ -10,7 +10,7 @@ const replyHandler = ({id, replyUsername,fromPrevMsg}) =>{
     <span id='close_reply_icon'>&#215;</span>
     `
     replyInput.innerHTML = replyElement
-
+    document.getElementById('message_input').focus()
 }
 window.onclick = (e) =>{
     if(e.target.id === 'close_reply_icon'){
