@@ -1,8 +1,7 @@
 const users = document.getElementById('sidebar')
 const show_users_icon = document.querySelector('.show_users_icon')
 const hide_users_icon = document.querySelector('.hide_users_icon')
-
-window.onclick = (e) => {
+window.addEventListener('click', (e)=>{
     if(e.target === show_users_icon){
         hide_users_icon.style.display = 'inline'
         users.style.display = 'inline'
@@ -13,7 +12,7 @@ window.onclick = (e) => {
         hide_users_icon.style.display = 'none'
         users.style.display = 'none'
     }
-}
+})
 
 
 const roomName = document.getElementById('room')

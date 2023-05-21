@@ -4,7 +4,7 @@ const imojiList = document.getElementById('imoji_list')
 const inputImoji = document.getElementById('input_imoji')
 const searchResult= document.getElementById('search_result')
 
-window.onclick = (e) => {
+window.addEventListener('click', (e) => {
     if(e.target.className === 'eachImoji'){
         addImojiToInput(e.target.id)
         inputController()
@@ -18,7 +18,7 @@ window.onclick = (e) => {
     else if ( !imojiBox.contains(e.target)){
         imojiBox.style.display = 'none'
     }
-}
+})
 let imojiObject;
 fetch('../assets/imojis/imojis.json')
     .then((response) => response.json())

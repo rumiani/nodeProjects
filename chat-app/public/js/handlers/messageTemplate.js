@@ -1,7 +1,7 @@
 let repliedElementId;
 
 const appendMsg = (message) =>{
-    const messages = document.getElementById('messages')
+    const messages = document.getElementById('messages_container')
     const li = document.createElement('li');
     let usernameID;
     let fromPrevMsg = '';

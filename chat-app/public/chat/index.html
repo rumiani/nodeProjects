@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/imoji.css">
     <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/messages.css">
     <link rel="stylesheet" href="../css/messageMenu.css">
     <link rel="stylesheet" href="../css/reply.css">
 
@@ -32,29 +32,30 @@
           <img class="hide_users_icon" src="../assets/icons/close.png" title="Hide users" alt="Hide users">
           <img id="location_icon" src="../assets/icons//location.png" alt="Location" title="Location">
         </div>
-        <div id="chat_component">
-          <ul id="messages">
+        <div id="messages_container">
+          <ul id="messages_list">
           </ul>
-          <div id="chat_options">
-            <div id="chat_bar">
-            </div>
-            <div id="reply_input"></div>
-            <div id="chat_inputs">
-              <div id="imoji_box">
-                <div id="imoji_search">
-                  <input type="text" id="input_imoji" placeholder="Search imoji">
-                  <span id="search_result"></span>
-                </div>
-                <div id="imoji_list"></div>
+        </div>
+        <div id="chat_options">
+          <div id="reply_input">
+          </div>
+          <div id="chat_inputs">
+            <div id="imoji_box">
+              <div id="imoji_search">
+                <input type="text" id="input_imoji" placeholder="Search imoji">
+                <span id="search_result"></span>
               </div>
-              <button id="imoji_btn">
-                &#x263A;
-              </button>
-              <span role="textbox" id="message_input" class="input_bg" contenteditable>
-              </span>
-              <button id="send_btn" disabled>
-              </button>
+              <div id="imoji_list"></div>
             </div>
+            <button id="imoji_btn">
+              &#x263A;
+            </button>
+            <span role="textbox" dir=auto id="message_input" class="input_bg" contenteditable>
+            </span>
+            <button id="send_btn" disabled>
+            </button>
+          </div>
+          <div id="chat_bar">
           </div>
         </div>
       </main>

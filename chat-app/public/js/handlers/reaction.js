@@ -3,7 +3,7 @@ let messageText;
 let menu;
 let messageReactions;
 let replyObject;
-window.ondblclick = (e) =>{
+window.addEventListener('dblclick', (e) =>{
     if(e.target.classList.contains('message')){
         messageElement = e.target.firstChild
         messageText = e.target.querySelector('.message_text').innerText
@@ -12,7 +12,7 @@ window.ondblclick = (e) =>{
         menu.style.display = 'inline';
         loadReactoionMenuTemplate(menu)
     }
-}
+})
 const imojisArr = {like:'👍',dislike:'👎',love:'❤️',laugh:'🤣',angry:'😠',smile:'😊',kiss:'😘'}
 document.onclick = (e) =>{
     if(menu && !menu.contains(e.target)){

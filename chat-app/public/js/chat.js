@@ -12,7 +12,7 @@ input.addEventListener('input', function(e) {
 });
 
 input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault()
         sendMessageHandler()
         closeInputReplyHandler()

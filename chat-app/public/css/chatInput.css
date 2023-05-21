@@ -1,28 +1,21 @@
-#chat_component{
-    max-width: 500px;
-    width:70%;
-    margin: 0 auto;
-    position: relative;
-    height: 100%;
-}
 #chat_options {
-    padding:1rem; 
-    padding-top: 0;
-    box-shadow: 5px 5px 16px gray;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    width: 70%;
+    position: relative;
+    bottom:0;
     background: white;
     border-radius: 1rem 1rem 0 0;
+    max-width: 500px;
+    margin: 0 auto;
 }
-#chat_inputs{
+  #chat_inputs{
+  flex-shrink: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 100%;
+    background: white;
 }
 #chat_bar{
-    position: absolute;
     left: 0;
     height: 0.25rem;
     width: 0.1px;
@@ -34,13 +27,14 @@
     border: none; 
     padding:1rem 0.5rem 0 0.5rem; 
     width: 90%;
+    min-height: fit-content;
     max-height: 200px;
     font-size: 20px;
     overflow-x: auto;
     outline: none;
     transition:box-shadow 0.3s;
     word-wrap: break-word;
-    background: white;
+    /* background: white; */
 }
 .input_bg {
   position: relative;
@@ -70,6 +64,8 @@
   align-items: center;
   border: none;
   background: unset;
+  margin: 0.5rem;
+  padding: 0;
 }
 #imoji_btn:focus{
   color: black;
@@ -79,7 +75,7 @@
   cursor: pointer;
   height: 30px;
   transition: scale 0.3s;
-  margin: 0.25rem; 
+  margin: 0.5rem; 
   padding: 0;
   width: 35px;
   height: 30px;
