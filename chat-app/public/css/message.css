@@ -5,6 +5,8 @@
     position: relative;
     font-size: 1rem;
     word-wrap: break-word;
+    border-radius: 1rem;
+    transition: background-color 0.3s;
 }
 #messages_list  li  a{
     display: block;
@@ -89,8 +91,6 @@
     position: absolute;
     bottom: 0;
     left: -3rem;
-}
-#message_reactions{
 }
 #message_reactions_place{
     padding: 3px;

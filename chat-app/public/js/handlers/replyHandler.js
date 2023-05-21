@@ -16,6 +16,15 @@ window.onclick = (e) =>{
     if(e.target.id === 'close_reply_icon'){
         closeInputReplyHandler()
     }
+    if(e.target.id === 'fromPrevMsg'){
+        const id = e.target.getAttribute("href").slice(1)
+        const target = document.getElementById(id)
+        target.parentElement.style.background = 'rgba(0, 0, 0, 0.167)'
+        setTimeout(() => {
+            target.parentElement.style.background = 'unset'
+        }, 1000);
+        // console.log();
+    }
 }
 const closeInputReplyHandler = () =>{
     if(replyInput){

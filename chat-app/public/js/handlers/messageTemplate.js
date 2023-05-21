@@ -1,7 +1,7 @@
 let repliedElementId;
 
 const appendMsg = (message) =>{
-    const messages = document.getElementById('messages_container')
+    const messages = document.getElementById('messages_list')
     const li = document.createElement('li');
     let usernameID;
     let fromPrevMsg = '';
@@ -51,7 +51,8 @@ const appendMsg = (message) =>{
                     </div>`
     li.classList.add('message')
     messages.appendChild(li);
-    messages.scrollTop = messages.scrollHeight;
+    const container = document.getElementById('messages_container')
+    container.scrollTop = container.scrollHeight;
 }
 
 window.onclick = (e) =>{

@@ -5,8 +5,8 @@
     border-radius: 0.25rem;
     background:rgba(128, 128, 128, 0.796);
     position: absolute;
-    top: 5rem;
-    z-index: 6;
+    /* top: 5rem; */
+    z-index: 7;
     transform: translate(-50%, -50%);
     display: none;
     -webkit-user-select: none; /* Safari */
