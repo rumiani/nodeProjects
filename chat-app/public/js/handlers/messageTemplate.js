@@ -26,8 +26,9 @@ const appendMsg = (message) =>{
         
         message.username = ''
     }
-    li.innerHTML = `<div class="${owner}" data-timestamp=${message.createdAt} id=${message.id}>
-                        <div class='messageMenu'></div>
+    li.innerHTML = `
+                    <div class='messageMenu'></div>
+                    <div class="${owner}" data-timestamp=${message.createdAt} id=${message.id}>
                         <img src=${message.src} class='chat_avatar' />
                         <div>
                             <h2 class='message_username' id=${usernameID}>

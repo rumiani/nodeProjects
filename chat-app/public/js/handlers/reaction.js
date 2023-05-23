@@ -3,12 +3,13 @@ let messageText;
 let menu;
 let messageReactions;
 let replyObject;
-window.addEventListener('dblclick', (e) =>{
-    if(e.target.classList.contains('message')){
-        messageElement = e.target.firstChild
-        messageText = e.target.querySelector('.message_text').innerText
-        messageReactions = e.target.querySelector('#message_reactions')
-        menu = e.target.querySelector('.messageMenu')
+window.addEventListener('click', (e) =>{
+    const el = e.target.closest('.message')
+    if(el && el.contains(e.target) && !el.querySelector('.messageMenu').contains(e.target)){
+        messageElement = el.lastChild
+        messageText = messageElement.querySelector('.message_text').innerText
+        messageReactions = messageElement.querySelector('#message_reactions')
+        menu = el.querySelector('.messageMenu')
         menu.style.display = 'inline';
         loadReactoionMenuTemplate(menu)
     }
@@ -43,12 +44,18 @@ for (const imoji in imojisArr) {
 const loadReactoionMenuTemplate = (el) =>{
     el.innerHTML= `
     <div class='reactions'>
-        ${reactionsHtml}
+    ${reactionsHtml}
     </div>
     <div class='options'>
-        <span id='copy'>Copy</span>
-        <span id='reply'>Reply</span>
+    <span id='copy'>Copy</span>
+    <span id='reply'>Reply</span>
     </div>
     `
 }
 
+
+window.addEventListener('dblclick', (e) =>{
+    if(e.target.classList.contains('message')){
+        sendReactionHandler({id:messageElement.id ,reactions:{reaction:imojisArr[e.target.id], number: 1}})
+    }
+})

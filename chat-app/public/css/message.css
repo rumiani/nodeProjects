@@ -19,13 +19,19 @@
     box-shadow: 1px 1px 2px gray;
     padding:0.25rem 0.5rem;    
     position: relative;
+    display: flex;
 }
 .message_time, .message_status{
     color: gray;
+    font-size: 0.75rem;
 }
-.message_info{
+.self .message_info{
     display: flex;
-    justify-content: space-between;
+    justify-content:end;
+}
+.user .message_info{
+    display: flex;
+    justify-content:start;
 }
 .message_text{
     margin: 0.25rem;
@@ -35,12 +41,12 @@
 }
 /*other users message */
 .user{
-    border-radius:2rem 1rem 1rem 0;
+    border-radius:1rem 1rem 1rem 0;
     float: left;
     margin:  0.5rem 0;
     background: rgba(255, 242, 0, 0.617);
 }
-.user  .message_username{
+.user .message_username{
     margin-left: 0.5rem;
     color: rgb(0, 172, 0);
 }
@@ -63,7 +69,7 @@
 }
 /* self */
 .self{
-    border-radius: 1rem 2rem 0 1rem;
+    border-radius: 0 1rem 0 1rem;
     float: right;
     background: whitesmoke;
     margin:  0.5rem 0;
@@ -104,8 +110,8 @@
 }
 #fromPrevMsg{
     border-left: rgb(62, 62, 251) 0.25rem solid ;
-    margin: -0.25rem 0 0.25rem -0.5rem;
-    border-radius: 1rem 50% 0 0 ;
+    margin: 0.25rem 0 0.25rem -0.5rem;
+    /* border-radius: 1rem 50% 0 0 ; */
     padding: 0.25rem;
     background: rgba(169, 169, 169, 0.032);
     opacity: 0.5;
