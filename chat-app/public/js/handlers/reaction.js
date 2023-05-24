@@ -5,7 +5,10 @@ let messageReactions;
 let replyObject;
 window.addEventListener('click', (e) =>{
     const el = e.target.closest('.message')
-    if(el && el.contains(e.target) && !el.querySelector('.messageMenu').contains(e.target)){
+    if(menu){
+        return menu = null;
+    }
+    else if(!menu && el && el.contains(e.target) && !el.querySelector('.messageMenu').contains(e.target) && e.target.id !== 'fromPrevMsg'){
         messageElement = el.lastChild
         messageText = messageElement.querySelector('.message_text').innerText
         messageReactions = messageElement.querySelector('#message_reactions')

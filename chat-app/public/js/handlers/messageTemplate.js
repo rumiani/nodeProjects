@@ -56,9 +56,14 @@ const appendMsg = (message) =>{
     container.scrollTop = container.scrollHeight;
 }
 
-window.onclick = (e) =>{
-    if(e.target === message.to.id){
-        const repliedElement = document.getElementById(message.to.id)
-        repliedElement.style.background = 'red'
-    }
-}
+// window.onclick = (e) =>{
+//     if(e.target === message.to.id){
+//         const repliedElement = document.getElementById(message.to.id)
+//         repliedElement.style.background = 'red'
+//     }
+// }
+addEventListener('click', function (e) {
+    if (e.target.id === 'fromPrevMsg') {
+        e.preventDefault();
+    }   
+});

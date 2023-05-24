@@ -23,7 +23,7 @@ joinForm.onsubmit = ()=>{
 }
 
 const infoController = (value) =>{
-    if(value.length < 3 || value.length > 20) return 'Input must be 3-20 characters'
+    if(value.length < 3 || value.length > 25) return 'Input must be 3-20 characters'
     if(value.toLowerCase() === 'admin') return '"Admin" is not allowed as an input'
 }
 
