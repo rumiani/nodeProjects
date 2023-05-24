@@ -29,7 +29,7 @@ const appendMsg = (message) =>{
     li.innerHTML = `
                     <div class='messageMenu'></div>
                     <div class="${owner}" data-timestamp=${message.createdAt} id=${message.id}>
-                        <img src=${message.src} class='chat_avatar' />
+                    <img src=${message.src} class='chat_avatar' />
                         <div>
                             <h2 class='message_username' id=${usernameID}>
                                 ${message.username}
@@ -55,15 +55,3 @@ const appendMsg = (message) =>{
     const container = document.getElementById('messages_container')
     container.scrollTop = container.scrollHeight;
 }
-
-// window.onclick = (e) =>{
-//     if(e.target === message.to.id){
-//         const repliedElement = document.getElementById(message.to.id)
-//         repliedElement.style.background = 'red'
-//     }
-// }
-addEventListener('click', function (e) {
-    if (e.target.id === 'fromPrevMsg') {
-        e.preventDefault();
-    }   
-});

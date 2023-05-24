@@ -5,8 +5,6 @@
     background:rgba(128, 128, 128, 0.796);
     position: absolute;
     transform: translate(-50%, -50%);
-    /* right: 50%; */
-    /* top: 0; */
     top: 2rem;
     left: 50%;
     z-index: 7;
@@ -30,6 +28,7 @@
     cursor: pointer;
   }
   .reactions span:hover{
+    cursor: default;
   }
   .options{
     border-radius:0 0 1rem 1rem;

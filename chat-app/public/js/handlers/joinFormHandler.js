@@ -17,7 +17,6 @@ joinForm.onsubmit = ()=>{
         return false
     }
     else{
-      // saveImageToLocalStorage('imgKey', joinPreviewAvatar);
         return true
     }
 }
@@ -38,8 +37,6 @@ const uploadInput = document.getElementById("avatar_input_join");
 const filenameSpan = document.getElementById("filename");
 
 uploadInput.addEventListener("change", function() {
-  let src 
-  // console.log(uploadInput.files);
     if (uploadInput.files.length > 0) {
       const reader = new FileReader();
       reader.readAsDataURL(uploadInput.files[0]);
@@ -50,7 +47,6 @@ uploadInput.addEventListener("change", function() {
     }}
     if (localStorage.getItem('imgKey')) {
       const base64img = localStorage.getItem('imgKey');
-      // console.log(base64img);
       joinPreviewAvatar.src = base64img;
       console.log(base64img);
     }
@@ -58,21 +54,3 @@ uploadInput.addEventListener("change", function() {
     filenameSpan.textContent = "Default";
     }
 });
-
-const saveImageToLocalStorage = (key, img) =>{
-  // console.log(img);
-  // const dataURL = img// base64Converter(img)
-  localStorage.setItem(key, img);
-}
-
-// const base64Converter = (img) => {
-//   const c = document.createElement("canvas");
-//   c.width = img.width;
-//   c.height = img.height;
-//   const context = c.getContext("2d");
-//   context.drawImage(img, 0, 0, c.width, c.height);
-//   return c.toDataURL(); 
-// }
-  
-  
-  
