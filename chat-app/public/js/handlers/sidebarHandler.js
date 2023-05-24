@@ -32,3 +32,14 @@ socket.on('roomData', roomData =>{
     })
     usersList.innerHTML = lis
 })
+let avatarViewer = null;
+addEventListener('click', (e) =>{
+    const classlist = e.target.classList
+    if(classlist.contains('chat_avatar') || classlist.contains('avatar')){
+        avatarViewer = document.getElementById('avatar_viewer')
+        avatarViewer.style.display = 'block'
+        avatarViewer.innerHTML = `<img src=${e.target.src} alt=avatar>`
+    }else if(avatarViewer){
+        avatarViewer.style.display = 'none'
+    }
+})

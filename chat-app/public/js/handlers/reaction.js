@@ -8,7 +8,7 @@ window.addEventListener('click', (e) =>{
     if(menu){
         return menu = null;
     }
-    else if(!menu && el && el.contains(e.target) && !el.querySelector('.messageMenu').contains(e.target) && e.target.id !== 'fromPrevMsg'){
+    else if(!menu && el && el.contains(e.target) && !el.querySelector('.messageMenu').contains(e.target) && e.target.id !== 'fromPrevMsg' && !e.target.classList.contains('chat_avatar')){
         messageElement = el.lastChild
         messageText = messageElement.querySelector('.message_text').innerText
         messageReactions = messageElement.querySelector('#message_reactions')
