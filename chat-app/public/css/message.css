@@ -1,7 +1,7 @@
 #messages_list > li { 
     width: 100%;
     word-wrap: break-word;
-    padding: 0.5;
+    margin:0.5rem;
     position: relative;
     font-size: 1rem;
     word-wrap: break-word;
@@ -43,7 +43,7 @@
 .user{
     border-radius:1rem 1rem 1rem 0;
     float: left;
-    margin:  0.5rem 0;
+    /* margin:  0.5rem 0; */
     background: rgba(255, 242, 0, 0.617);
 }
 .user .message_username{
@@ -52,7 +52,7 @@
 }
 /* admin */
 .admin{
-    margin: 1rem auto;
+    margin: 0 auto;
     padding: 1rem;
     width: 250px;
     box-shadow: 3px 3px 6px gray;
@@ -72,7 +72,7 @@
     border-radius: 0 1rem 0 1rem;
     float: right;
     background: whitesmoke;
-    margin:  0.5rem 0;
+    /* margin:  0.5rem 0; */
 }
 .self  .message_username{
     margin: 0;
