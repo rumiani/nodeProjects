@@ -94,13 +94,15 @@ input[type="file"] {
     background: rgba(128, 128, 128, 0.744);
     color: #fff;
     cursor: pointer;
-    padding: 0 1rem; 
+    padding:  0.75rem; 
+    text-align: center;
     border-radius: 0.5rem;
     margin: 2rem 0.5rem 4rem 0.5rem; 
     height: 40px;
     font-size: 16px;
-    display: flex;
+    position: relative;
     align-items: center;
+    justify-content: center;
     transition: background-color 0.3s;
   }
   .file_upload_lable:hover{
@@ -113,13 +115,15 @@ input[type="file"] {
     margin-top: 2rem;
   }
   #join_preview_avatar{
-    position: relative;
     top: 4rem;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    margin: 1rem;
     border: none;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin: 0 auto;
   }
 
 
