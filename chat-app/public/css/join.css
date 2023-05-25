@@ -96,7 +96,7 @@ input[type="file"] {
     cursor: pointer;
     padding: 0 1rem; 
     border-radius: 0.5rem;
-    margin: 2rem 0.5rem; 
+    margin: 2rem 0.5rem 4rem 0.5rem; 
     height: 40px;
     font-size: 16px;
     display: flex;
@@ -106,15 +106,19 @@ input[type="file"] {
   .file_upload_lable:hover{
     background-color: gray;
   }
-  .avatar_input_join #filename {
-    display: block;
-    margin-top: 10px;
+  #filename {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-top: 2rem;
   }
   #join_preview_avatar{
+    position: relative;
+    top: 4rem;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    margin: 0 auto;
+    margin: 1rem;
     border: none;
   }
 

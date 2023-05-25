@@ -20,10 +20,11 @@
         <input class="join_input" name="room" id="room" autocomplete="off" required placeholder="Room's name" value="mychatrumonlyroomtotest"/>
         <p class="room_input_error">test</p>
 
-        <label class="file_upload_lable" for="avatar_input_join" >Upload a profile picture</label>
-        <input id="avatar_input_join" type="file" accept="image/*">
+        <label class="file_upload_lable" for="avatar_input_join" >Upload a profile picture
+          <img src="./assets/icons/avatar.png" id="join_preview_avatar"/>
+        </label>
         <span id="filename"></span>
-        <img src="./assets/icons/avatar.png" id="join_preview_avatar"/>
+        <input id="avatar_input_join" type="file" accept="image/*">
         
         <button id="join_btn">Join</button>
       </form>

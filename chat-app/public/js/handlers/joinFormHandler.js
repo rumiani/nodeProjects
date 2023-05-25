@@ -48,7 +48,6 @@ uploadInput.addEventListener("change", function() {
     if (localStorage.getItem('imgKey')) {
       const base64img = localStorage.getItem('imgKey');
       joinPreviewAvatar.src = base64img;
-      console.log(base64img);
     }
     else {
     filenameSpan.textContent = "Default";
