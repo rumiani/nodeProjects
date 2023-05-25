@@ -7,14 +7,13 @@ addEventListener('click', function (e) {
     }   
 });
 
-
 const containerEl = document.getElementById('messages_container')
 const scrollDown = document.getElementById('scrollDown')
 const diff = containerEl.scrollHeight - containerEl.scrollTop  
 containerEl.addEventListener('scroll', () =>{    
     const newDiff = containerEl.scrollHeight - containerEl.scrollTop
-    if (newDiff > diff) {
-        scrollDown.style.display = 'block'
+    if (newDiff - diff > 40) {
+        scrollDown.style.display = 'inline'
     }else{
         scrollDown.style.display = 'none'
     }
