@@ -5,6 +5,8 @@ const appendMsg = (message) =>{
     const li = document.createElement('li');
     let usernameID;
     let fromPrevMsg = '';
+    hideLastMsgAvatarFromThisOwner(message.username)
+
     if(message.to ){
         fromPrevMsg = `<a id='fromPrevMsg' href="#${message.to.id}">
                                 ${message.to.fromPrevMsg}
@@ -26,6 +28,8 @@ const appendMsg = (message) =>{
         
         message.username = ''
     }
+
+    
     li.innerHTML = `
                     <div class='messageMenu'></div>
                     <div class="${owner}" data-timestamp=${message.createdAt} id=${message.id}>
@@ -54,4 +58,13 @@ const appendMsg = (message) =>{
     messages.appendChild(li);
     const container = document.getElementById('messages_container')
     container.scrollTop = container.scrollHeight;
+}
+
+
+const hideLastMsgAvatarFromThisOwner = (owner) =>{
+    const messages = document.getElementsByClassName('message');
+    const lastMsg = messages[messages.length - 1];
+    if(lastMsg && lastMsg.querySelector('.message_username').id === owner){
+        lastMsg.querySelector('.chat_avatar').style.display = 'none'
+    }
 }
