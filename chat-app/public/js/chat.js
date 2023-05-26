@@ -8,14 +8,13 @@ const chat_bar = document.getElementById('chat_bar')
 const src = localStorage.getItem('imgKey')
 
 input.addEventListener('input', function(e) {
-    inputController(e.target.innerText)
+    inputController()
 });
 
 input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault()
         sendMessageHandler()
-        closeInputReplyHandler()
     }
 });
 
@@ -28,19 +27,17 @@ const sendMessageHandler = (reactions = null)=>{
     const base64img = localStorage.getItem('imgKey')
     socket.emit('sendMessage', {text: input.innerText, src: base64img,reactions, to}, (message) =>{
     });
-    chat_bar.style.width = '0'
-    input.innerText = '';
-    input.classList.add('input_bg')
-    input.focus()
-    send_btn.setAttribute('disabled', 'disabled')
+    
+    inputBtnsHandler('def')
     closeInputReplyHandler()
+    inputController()
+
     replyObject = null
     document.getElementById('reply_input').innerHTML = ''
 } 
 
 socket.on('message', (message) => {
     appendMsg(message)
-    // document.querySelectorAll(".message_status").lastElementChild.style.color = 'green'
 })
 
 shareLocation.onclick  = () =>{
