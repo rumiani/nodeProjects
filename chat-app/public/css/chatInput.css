@@ -33,12 +33,17 @@
   #imoji_btn:focus{
     color: black;
   }
-  #text_inputs{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+#text_inputs{
+    
     width: 100%;
-    display: none;
+    display: inline;
+}
+#text_inputs > div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: white;
+  position: relative;
 }
 
 #message_input { 
@@ -59,7 +64,7 @@
 .input_bg::before{
   content: 'Message';
   position: absolute;
-  top: 70%;
+  top: 60%;
   left: 2.6rem;
   transform: translate(-50%, -50%);
   font-size: 16px;
@@ -93,6 +98,7 @@
   padding: 0;
   width: 2rem;
   height: 2rem;
+  cursor: pointer;
 }
 #scrollDown{
   position: absolute;
@@ -114,9 +120,10 @@
   left: 0;
   height: 0.25rem;
   width: 0.1px;
-  display: block;
+  bottom: 0;
   transition: background-color 1s;
   background: green;
+  position: absolute;
 }
 @media all and (max-width: 640px) {
     #chat_component{

@@ -3,10 +3,10 @@ const inputBtnsHandler = (status)=>{
     const stopBtn = document.getElementById('stopBtn')
     const removeVoice = document.getElementById('removeVoice')
     const sendBtn = document.getElementById('send_btn')
+    sendBtn.setAttribute('disabled', 'disabled')
     const input = document.getElementById('message_input')
     const textInputs = document.getElementById('text_inputs')
     const voiceInputs = document.getElementById('voice_inputs')
-    sendBtn.setAttribute('disabled', 'disabled')
 
     switch (status) {
         case 'record':
@@ -14,11 +14,10 @@ const inputBtnsHandler = (status)=>{
             voiceInputs.style.display = 'inline'
         break;
         case 'type':
-            textInputs.style.display = 'inline'
-            stopBtn.style.display = 'none'
-            removeVoice.style.display = 'none'
+            voiceInputs.style.display = 'none'
             recordBtn.style.display = 'none'
             sendBtn.style.display = 'inline'
+            textInputs.style.display = 'inline'
             sendBtn.removeAttribute('disabled')
             input.classList.remove('input_bg')
             break;

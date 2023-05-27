@@ -52,6 +52,12 @@ io.on('connection', (socket) =>{
         io.to(user.room).emit('reply', (user.username, {id, replyUsername, prevMsg}))
         callback()
     })
+    socket.on('voiceMessage', (voiceBase64, callback) => {
+        const user = getUser(socket.id)
+        console.log(voiceBase64);
+        io.to(user.room).emit('voiceMessage', (user.username, voiceBase64))
+        callback()
+    });
     socket.on('disconnect', () =>{
         const user = removeUser(socket.id)
         if(user) {
