@@ -23,7 +23,6 @@ window.onclick = (e) =>{
         setTimeout(() => {
             target.parentElement.style.background = 'unset'
         }, 1000);
-        // console.log();
     }
 }
 const closeInputReplyHandler = () =>{
