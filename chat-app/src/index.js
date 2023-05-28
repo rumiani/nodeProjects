@@ -1,9 +1,11 @@
-const Filter = require('bad-words')
+// const Filter = require('bad-words')
 // const filter = new Filter();
 const {generateMessage, generateLocationMessage} = require('./utils/message')
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users')
 const path = require("path");
 const http = require('http')
+const hbs = require('hbs')
+
 const express = require("express");
 const socketio = require('socket.io')
 const app = express();
@@ -12,9 +14,25 @@ const io = socketio(server)
 
 const PORT = process.env.PORT
 
-const publicDirectoryPath = path.join(__dirname+'../../public')
-app.use(express.static(publicDirectoryPath))
+const publicDirectoryPath = path.join(__dirname,'../public')
+const viewsPath = path.join(__dirname,'../templates/views')
+const partialsPath = path.join(__dirname,'../templates/partials')
 
+app.set('view engine', 'hbs')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
+
+app.use(express.static(publicDirectoryPath))
+app.get('/', (req, res) => {
+    res.render('index', {
+        title: 'Chatrum'
+    })
+})
+app.get('/chat', (req, res) => {
+    res.render('chat/index', {
+        title: 'Chatrum'
+    })
+})
 io.on('connection', (socket) =>{
     
     socket.on('join', (options, callback) =>{
@@ -69,7 +87,6 @@ io.on('connection', (socket) =>{
         }
     })
 })
-
 server.listen(PORT, () =>{
     console.log('server is running on port: ', PORT);
 })

@@ -7,17 +7,19 @@
 }
 #join_form{
     max-width: 400px;
+    position: relative;
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    margin: 100px auto;
+    margin: 3rem auto;
     border-radius: 0.5rem;
+    background: white;
     box-shadow: 2px 2px 8px rgba(129, 118, 118, 0.162);
     animation:slow_fall 0.5s ease-in;
 }
 
 @keyframes slow_fall {
-from {top: -100px;}
+from {top: -10rem;}
 to {top: 0;}
 }
 .join_input { 
@@ -25,7 +27,7 @@ to {top: 0;}
     padding: 0 1rem; 
     flex-grow: 1; 
     border-radius: 0.5rem;
-    margin: 0.5rem; 
+    margin: 0 0.5rem; 
     height: 40px;
     font-size: 20px;
     overflow-y: scroll;
@@ -88,25 +90,10 @@ input[type="file"] {
     opacity: 0;
     cursor: pointer;
   }
-  
   .file_upload_lable {
-    display: inline-block;
-    background: rgba(128, 128, 128, 0.744);
-    color: #fff;
     cursor: pointer;
-    padding:  0.75rem; 
-    text-align: center;
-    border-radius: 0.5rem;
-    margin: 2rem 0.5rem 4rem 0.5rem; 
-    height: 40px;
-    font-size: 16px;
     position: relative;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
-  }
-  .file_upload_lable:hover{
-    background-color: gray;
+    margin: 3rem 0;
   }
   #filename {
     width: 90%;
@@ -115,7 +102,6 @@ input[type="file"] {
     margin-top: 2rem;
   }
   #join_preview_avatar{
-    top: 4rem;
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
@@ -125,28 +111,17 @@ input[type="file"] {
     right: 0; 
     margin: 0 auto;
   }
-
-
-
-
   #copyright{
       text-align: center;
     color: gray;
-}
-.limitition{
-    color: rgba(255, 0, 0, 0.886);
-    text-align: center;
-    width: 100;
-    padding: 1rem;
-    word-wrap: break-word;
 }
 .name_input_error, .room_input_error{
     color: red;
     font-size: 0.75rem;
     text-align: start;
-    margin-top: 0;
+    margin: 0.5rem 0;
     padding: 0 1rem;
-    display: none;
+    visibility: hidden;
 }
 @media all and (max-width: 640px) {
     #join_form{

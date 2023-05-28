@@ -7,12 +7,12 @@ const joinPreviewAvatar = document.getElementById("join_preview_avatar")
 
 joinForm.onsubmit = ()=>{
     if(infoController(nameInput.value)){
-        nameInputError.style.display = 'inline'
+        nameInputError.style.visibility = 'visible';
         nameInputError.innerText = infoController(nameInput.value)
         return false
     }
     if(infoController(roomInput.value)){
-        roomInputError.style.display = 'inline'
+        roomInputError.style.visibility = 'visible';
         roomInputError.innerText = infoController(roomInput.value)
         return false
     }
@@ -29,8 +29,8 @@ const infoController = (value) =>{
 nameInput.addEventListener('input', () => hideErrorsHandler())
 roomInput.addEventListener('input', () => hideErrorsHandler())
 const hideErrorsHandler = () =>{
-    nameInputError.style.display = 'none'
-    roomInputError.style.display = 'none'
+    nameInputError.style.visibility = 'hidden';
+    roomInputError.style.visibility = 'hidden';
 }
 
 const uploadInput = document.getElementById("avatar_input_join");

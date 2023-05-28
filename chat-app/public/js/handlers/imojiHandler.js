@@ -45,7 +45,6 @@ inputImoji.addEventListener('input', function (e) {
     searchResult.innerHTML ='Result: '+ resHtml
 })
 
-
 const searchHandler = (word, string) => {
     let myPattern = new RegExp('(\\w*'+word+'\\w*)','gi');
     let matches = string.match(myPattern);

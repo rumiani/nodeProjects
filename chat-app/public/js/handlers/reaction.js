@@ -3,7 +3,7 @@ let messageText;
 let menu;
 let messageReactions;
 let replyObject;
-window.addEventListener('click', (e) =>{
+addEventListener('click', (e) =>{
     const el = e.target.closest('.message')
     if(menu){
         return menu = null;
@@ -56,8 +56,7 @@ const loadReactoionMenuTemplate = (el) =>{
     `
 }
 
-
-window.addEventListener('dblclick', (e) =>{
+addEventListener('dblclick', (e) =>{
     if(e.target.classList.contains('message')){
         sendReactionHandler({id:messageElement.id ,reactions:{reaction:imojisArr[e.target.id], number: 1}})
     }
