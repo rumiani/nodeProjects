@@ -27,6 +27,7 @@
   border-radius: 50%;
   display: inline;
   margin-right: 1rem ;
+  cursor: pointer;
 }
 #sidebar > ul > li h2{
   margin: 0.25rem 0;

@@ -36,6 +36,7 @@ app.get('/chat', (req, res) => {
 io.on('connection', (socket) =>{
     
     socket.on('join', (options, callback) =>{
+        console.log(options);
         const {error, user} = addUser({id: socket.id, ...options})
         if(error) return callback(error)
         socket.join(user.room)

@@ -1,46 +1,21 @@
-let repliedElementId;
+// let repliedElementId;
 
 const appendMsg = (message) =>{
     const messages = document.getElementById('messages_list')
     const li = document.createElement('li');
-    let usernameID;
-    let fromPrevMsg = '';
-    hideLastMsgAvatarFromThisOwner(message.username)
-
-    if(message.to ){
-        fromPrevMsg = `<a id='fromPrevMsg' href="#${message.to.id}">
-                                ${message.to.fromPrevMsg}
-                            </a>`
-    }
-    if(message.src === null) selfAvatar = '../assets/icons/avatar.png'
-
-    let owner = 'user';
-    usernameID = message.username
-    if(message.username === 'admin') {
-        owner ='admin'
-        message.username = ''
-        message.src = '../assets/icons/botAvatar.png';
-        message.to = {}
-        fromPrevMsg = ''
-    };
-    if(message.username === username) {
-        owner ='self';
-        
-        message.username = ''
-    }
-
-    
+    console.log(message);
+    message = modifiedMsg(message)
     li.innerHTML = `
                     <div class='messageMenu'></div>
-                    <div class="${owner}" data-timestamp=${message.createdAt} id=${message.id}>
+                    <div class="${message.owner}" data-timestamp=${message.createdAt} id=${message.id}>
                     <img src=${message.src} class='chat_avatar' />
                         <div>
-                            <h2 class='message_username' id=${usernameID}>
+                            <h2 class='message_username' id=${message.usernameID}>
                                 ${message.username}
                             </h2>
-                            ${fromPrevMsg}
+                            ${message.fromPrevMsg}
                             <p class='message_text'>
-                                ${message.text}
+                                ${message.content}
                             </p>
                             <div class='message_info'>
                                 <div id='message_reactions'>
@@ -60,6 +35,38 @@ const appendMsg = (message) =>{
     container.scrollTop = container.scrollHeight;
 }
 
+
+const modifiedMsg = (message) => {
+    hideLastMsgAvatarFromThisOwner(message.username)
+    message.usernameID;
+    message.fromPrevMsg = '';
+    message.owner = 'user';
+    message.usernameID = message.username
+
+    if(message.to ){
+        fromPrevMsg = `<a id='fromPrevMsg' href="#${message.to.id}">
+                            ${message.to.fromPrevMsg}
+                      </a>`
+    }
+    if(message.src === null) {
+        selfAvatar = '../assets/icons/avatar.png'
+    }
+    if(message.username === 'admin') {
+        message.owner ='admin'
+        message.username = ''
+        message.src = '../assets/icons/botAvatar.png';
+        message.to = {}
+        message.fromPrevMsg = ''
+    };
+    if(message.username === username) {
+        message.owner ='self';
+        message.username = ''
+    }
+    // if(typeof message.content === 'string' ){
+
+    // }
+    return message
+}
 
 const hideLastMsgAvatarFromThisOwner = (owner) =>{
     const messages = document.getElementsByClassName('message');

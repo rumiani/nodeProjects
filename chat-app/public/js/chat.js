@@ -21,11 +21,24 @@ input.addEventListener('keydown', (e) => {
 send_btn.onclick = () => sendMessageHandler()
 
 const sendMessageHandler = (reactions = null)=>{
-    const to = replyObject
-    if(input.innerText === '') return alert('Input is empty')
-    if(input.innerText.length > limit) return alert('Large input')
     const base64img = localStorage.getItem('imgKey')
-    socket.emit('sendMessage', {text: input.innerText, src: base64img,reactions, to}, (message) =>{
+    const to = replyObject
+    let type = 'voice'
+    let voice
+    if(input && input.innerText === '') return alert('Input is empty')
+    if(input && input.innerText.length > limit) return alert('Large input')
+    if(input.innerText.length > 0){
+        type = 'text'
+    }
+    const message = {
+        type,
+        text: input.innerText,
+        voice,
+        src: base64img,
+        reactions,
+        to
+    }
+    socket.emit('sendMessage', message, (message) =>{
     });
     
     inputBtnsHandler('def')

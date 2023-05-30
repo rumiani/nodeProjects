@@ -46,7 +46,7 @@ socket.on('voiceMessage', (audioData) => {
     audio.src =audioData
     audio.controls = true;
     document.body.appendChild(audio);
-  });
+});
 
 
 
