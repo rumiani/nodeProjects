@@ -14,9 +14,7 @@ const appendMsg = (message) =>{
                                 ${message.username}
                             </h2>
                             ${message.fromPrevMsg}
-                            <p class='message_text'>
-                                ${message.content}
-                            </p>
+                            ${messageContent}
                             <div class='message_info'>
                                 <div id='message_reactions'>
                                 </div>
@@ -42,7 +40,6 @@ const modifiedMsg = (message) => {
     message.fromPrevMsg = '';
     message.owner = 'user';
     message.usernameID = message.username
-
     if(message.to ){
         fromPrevMsg = `<a id='fromPrevMsg' href="#${message.to.id}">
                             ${message.to.fromPrevMsg}
@@ -62,9 +59,16 @@ const modifiedMsg = (message) => {
         message.owner ='self';
         message.username = ''
     }
-    // if(typeof message.content === 'string' ){
-
-    // }
+    if(type === 'text' ){
+        messageContent = `<p class='message_text'>
+                                ${message.text}
+                            </p>`
+    }
+    if(type === 'voice'){
+        messageContent = `<p class='message_text'>
+                                ${message.text}
+                            </p>`
+    }
     return message
 }
 
