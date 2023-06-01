@@ -1,5 +1,3 @@
-// let repliedElementId;
-
 const appendMsg = (message) =>{
     const messages = document.getElementById('messages_list')
     const li = document.createElement('li');
@@ -32,7 +30,6 @@ const appendMsg = (message) =>{
     const container = document.getElementById('messages_container')
     container.scrollTop = container.scrollHeight;
 }
-
 
 const modifiedMsg = (message) => {
     hideLastMsgAvatarFromThisOwner(message.username)
