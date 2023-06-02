@@ -3,6 +3,7 @@ const appendMsg = (message) =>{
     const li = document.createElement('li');
     console.log(message);
     message = modifiedMsg(message)
+
     li.innerHTML = `
                     <div class='messageMenu'></div>
                     <div class="${message.owner}" data-timestamp=${message.createdAt} id=${message.id}>
@@ -12,7 +13,7 @@ const appendMsg = (message) =>{
                                 ${message.username}
                             </h2>
                             ${message.fromPrevMsg}
-                            ${messageContent}
+                            ${message.messageContent}
                             <div class='message_info'>
                                 <div id='message_reactions'>
                                 </div>
@@ -33,6 +34,7 @@ const appendMsg = (message) =>{
 
 const modifiedMsg = (message) => {
     hideLastMsgAvatarFromThisOwner(message.username)
+    let messageContent;
     message.usernameID;
     message.fromPrevMsg = '';
     message.owner = 'user';
@@ -56,12 +58,12 @@ const modifiedMsg = (message) => {
         message.owner ='self';
         message.username = ''
     }
-    if(type === 'text' ){
+    if(message.type === 'text' ){
         messageContent = `<p class='message_text'>
                                 ${message.text}
                             </p>`
     }
-    if(type === 'voice'){
+    if(message.type === 'voice'){
         messageContent = `<p class='message_text'>
                                 ${message.text}
                             </p>`

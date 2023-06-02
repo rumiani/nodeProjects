@@ -32,9 +32,10 @@ function stopRecording() {
     reader.onload = (event) => {
         let audioData = event.target.result;
         // Send the audio data to the server
-        socket.emit('voiceMessage', audioData, (message) =>{
-            console.log('voice was sent');
-        });
+        sendMessageHandler(audioData)
+        // socket.emit('voiceMessage', audioData, (message) =>{
+        //     console.log('voice was sent');
+        // });
     };
     reader.readAsDataURL(audioBlob);
     audioChunks = [];

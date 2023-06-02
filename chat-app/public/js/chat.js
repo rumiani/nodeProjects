@@ -20,11 +20,11 @@ input.addEventListener('keydown', (e) => {
 
 send_btn.onclick = () => sendMessageHandler()
 
-const sendMessageHandler = (reactions = null)=>{
+const sendMessageHandler = ({audioData ,reactions})=>{
     const base64img = localStorage.getItem('imgKey')
     const to = replyObject
     let type = 'voice'
-    let voice
+    let voice = audioData
     if(input && input.innerText === '') return alert('Input is empty')
     if(input && input.innerText.length > limit) return alert('Large input')
     if(input.innerText.length > 0){
