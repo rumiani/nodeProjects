@@ -3,7 +3,6 @@ const appendMsg = (message) =>{
     const li = document.createElement('li');
     console.log(message);
     message = modifiedMsg(message)
-
     li.innerHTML = `
                     <div class='messageMenu'></div>
                     <div class="${message.owner}" data-timestamp=${message.createdAt} id=${message.id}>
