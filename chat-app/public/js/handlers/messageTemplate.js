@@ -29,9 +29,11 @@ const appendMsg = (message) =>{
     messages.appendChild(li);
     const container = document.getElementById('messages_container')
     container.scrollTop = container.scrollHeight;
+    
 }
 
 const modifiedMsg = (message) => {
+    
     hideLastMsgAvatarFromThisOwner(message.username)
     message.fromPrevMsg = '';
     message.owner = 'user';
@@ -74,3 +76,9 @@ const hideLastMsgAvatarFromThisOwner = (owner) =>{
         lastMsg.querySelector('.chat_avatar').style.display = 'none'
     }
 }
+const wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: '#4F4A85',
+    progressColor: '#383351',
+    url: '/audio.mp3',
+  })

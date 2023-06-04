@@ -7,11 +7,12 @@ let mediaRecorder;
 let audioChunks = [];
         
 const startRecording = () => {
+    console.log(navigator);
     navigator.mediaDevices.getUserMedia({ audio: true })
     .then((stream) => {
         audioChunks = [];
 
-        // mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder = new MediaRecorder(stream);
         
         mediaRecorder.addEventListener('dataavailable', (e) => {
             audioChunks.push(e.data);
@@ -62,22 +63,29 @@ removeVoice.onclick = () =>{
 let timerInterval; 
 let second = 0;
 let minute = 0;
-
+let miliSec = 0
 const startTimer = () => {
-  timerInterval = setInterval(updateTimer, 1000);
+  timerInterval = setInterval(updateTimer, 100);
 }
 
 const updateTimer = () => {
+    let preMiliSec = ''
     let preSec = ''
     let preMin = ''
-    second++
-    if(second % 60 === 0){
-        minute++
-        second -= 60
+    miliSec++
+    if(miliSec % 10 === 0){
+        second++
+        miliSec -= 10
+        if(second % 60 === 0){
+            minute++
+            second -= 60
+        }
     }
     if (second < 10) preSec = '0'
     if (minute < 10) preMin = '0'
-    voiceLength.innerText = preMin + minute + ':' + preSec + second
+    if (miliSec < 10) preMiliSec = '0'
+
+    voiceLength.innerText = preMin + minute + ':' + preSec + second + ',' + preMiliSec + miliSec
 }
 
 const stopTimer = () => {

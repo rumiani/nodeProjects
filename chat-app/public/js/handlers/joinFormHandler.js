@@ -37,18 +37,16 @@ const uploadInput = document.getElementById("avatar_input_join");
 const filenameSpan = document.getElementById("filename");
 
 uploadInput.addEventListener("change", function() {
+    let imgBase64;
     if (uploadInput.files.length > 0) {
       const reader = new FileReader();
       reader.readAsDataURL(uploadInput.files[0]);
       reader.onload = function(e) {
-        const imageBase64 = e.target.result;
-        localStorage.setItem('imgKey', imageBase64);
+        imgBase64 = e.target.result;
+        localStorage.setItem('imgKey', imgBase64);
         filenameSpan.textContent = uploadInput.files[0].name;
+        joinPreviewAvatar.src = imgBase64;
     }}
-    if (localStorage.getItem('imgKey')) {
-      const base64img = localStorage.getItem('imgKey');
-      joinPreviewAvatar.src = base64img;
-    }
     else {
     filenameSpan.textContent = "Default";
     }
