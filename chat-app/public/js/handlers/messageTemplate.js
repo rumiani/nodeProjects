@@ -1,7 +1,7 @@
 const appendMsg = (message) =>{
     const messages = document.getElementById('messages_list')
     const li = document.createElement('li');
-    console.log(message);
+    // console.log(message);
     message = modifiedMsg(message)
     li.innerHTML = `
                     <div class='messageMenu'></div>
@@ -33,8 +33,6 @@ const appendMsg = (message) =>{
 
 const modifiedMsg = (message) => {
     hideLastMsgAvatarFromThisOwner(message.username)
-    let messageContent;
-    message.usernameID;
     message.fromPrevMsg = '';
     message.owner = 'user';
     message.usernameID = message.username
@@ -57,16 +55,15 @@ const modifiedMsg = (message) => {
         message.owner ='self';
         message.username = ''
     }
-    if(message.type === 'text' ){
-        messageContent = `<p class='message_text'>
+    if(message.text !== '' ){
+        message.messageContent = `<p class='message_text'>
                                 ${message.text}
                             </p>`
     }
-    if(message.type === 'voice'){
-        messageContent = `<p class='message_text'>
-                                ${message.text}
-                            </p>`
+    if(message.audioData !== undefined){
+        message.messageContent = `<audio controls src=${message.audioData} type="audio/ogg" class='voice_message'/>`
     }
+    // console.log('after: ',message);
     return message
 }
 

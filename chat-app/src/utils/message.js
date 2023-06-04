@@ -1,11 +1,10 @@
 const { v4: uuidv4 } = require('uuid');
 
-const generateMessage = ({type, username, text, voice, src, reactions,to}) =>{
+const generateMessage = ({username, text, audioData, src, reactions,to}) =>{
     return {
-        type,
         username,
         text,
-        voice,
+        audioData,
         src,
         reactions,
         to, 

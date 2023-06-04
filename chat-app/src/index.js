@@ -36,7 +36,7 @@ app.get('/chat', (req, res) => {
 io.on('connection', (socket) =>{
     
     socket.on('join', (options, callback) =>{
-        console.log(options);
+        // console.log(options);
         const {error, user} = addUser({id: socket.id, ...options})
         if(error) return callback(error)
         socket.join(user.room)
@@ -50,10 +50,11 @@ io.on('connection', (socket) =>{
     })
 
     socket.on('sendMessage', (message , callback) => {
+        console.log('message from server',Object.keys(message));
         const user = getUser(socket.id)
         // filter.clean(text)
         io.to(user.room).emit('message', generateMessage({username:user.username, ...message}))
-        callback()
+        callback(message)
     })
 
     socket.on('sendLocation', (message, callback) =>{
@@ -71,12 +72,6 @@ io.on('connection', (socket) =>{
         io.to(user.room).emit('reply', (user.username, {id, replyUsername, prevMsg}))
         callback()
     })
-    socket.on('voiceMessage', (voiceBase64, callback) => {
-        const user = getUser(socket.id)
-        console.log(voiceBase64);
-        io.to(user.room).emit('voiceMessage', (user.username, voiceBase64))
-        callback()
-    });
     socket.on('disconnect', () =>{
         const user = removeUser(socket.id)
         if(user) {

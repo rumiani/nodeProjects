@@ -9,7 +9,9 @@ let audioChunks = [];
 const startRecording = () => {
     navigator.mediaDevices.getUserMedia({ audio: true })
     .then((stream) => {
-        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
+
+        // mediaRecorder = new MediaRecorder(stream);
         
         mediaRecorder.addEventListener('dataavailable', (e) => {
             audioChunks.push(e.data);
@@ -21,35 +23,25 @@ const startRecording = () => {
     });
 }
 
-function stopRecording() {
+function stopRecording(status) {
     if (!mediaRecorder) return;
     mediaRecorder.stop();
-
+    console.log('stop');
     mediaRecorder.addEventListener('stop', function() {
-    let audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-    let reader = new FileReader();
-    
-    reader.onload = (event) => {
-        let audioData = event.target.result;
-        // Send the audio data to the server
-        sendMessageHandler(audioData)
-        // socket.emit('voiceMessage', audioData, (message) =>{
-        //     console.log('voice was sent');
-        // });
-    };
-    reader.readAsDataURL(audioBlob);
-    audioChunks = [];
+        let audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+        let reader = new FileReader();
+        
+        reader.onload = (event) => {
+            let audioData = event.target.result;
+            // Send the audio data to the server
+            if(status === 'send'){
+                sendMessageHandler({audioData})
+            }
+        };
+        reader.readAsDataURL(audioBlob);
+        audioChunks = [];
     });
 }
-
-socket.on('voiceMessage', (audioData) => {
-    var audio = new Audio();
-    audio.src =audioData
-    audio.controls = true;
-    document.body.appendChild(audio);
-});
-
-
 
 recordBtn.addEventListener('click',() =>{
     inputBtnsHandler('record')
@@ -58,13 +50,13 @@ recordBtn.addEventListener('click',() =>{
 });
 stopBtn.addEventListener('click', ()=>{
     inputBtnsHandler()
-    stopRecording()
+    stopRecording('send')
     stopTimer()
 });
 removeVoice.onclick = () =>{
     inputBtnsHandler()
     stopTimer()
-    stopRecording()
+    stopRecording('cancel')
 }
 
 let timerInterval; 
