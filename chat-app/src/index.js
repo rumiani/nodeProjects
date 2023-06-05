@@ -36,7 +36,6 @@ app.get('/chat', (req, res) => {
 io.on('connection', (socket) =>{
     
     socket.on('join', (options, callback) =>{
-        // console.log(options);
         const {error, user} = addUser({id: socket.id, ...options})
         if(error) return callback(error)
         socket.join(user.room)
@@ -50,7 +49,6 @@ io.on('connection', (socket) =>{
     })
 
     socket.on('sendMessage', (message , callback) => {
-        console.log('message from server',Object.keys(message));
         const user = getUser(socket.id)
         // filter.clean(text)
         io.to(user.room).emit('message', generateMessage({username:user.username, ...message}))

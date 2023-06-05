@@ -39,7 +39,7 @@ const modifiedMsg = (message) => {
     message.owner = 'user';
     message.usernameID = message.username
     if(message.to ){
-        fromPrevMsg = `<a id='fromPrevMsg' href="#${message.to.id}">
+        message.fromPrevMsg = `<a id='fromPrevMsg' href="#${message.to.id}">
                             ${message.to.fromPrevMsg}
                       </a>`
     }

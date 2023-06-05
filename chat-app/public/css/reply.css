@@ -8,6 +8,7 @@
     cursor:default;
     display: none;
     padding-top: 1rem;
+    background: rgba(255, 255, 255, 0.716);
   }
   #reply_icon{
     color: rgb(64, 64, 243);
