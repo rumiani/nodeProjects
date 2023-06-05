@@ -7,7 +7,7 @@ let mediaRecorder;
 let audioChunks = [];
         
 const startRecording = () => {
-    console.log(navigator);
+    // console.log(navigator);
     navigator.mediaDevices.getUserMedia({ audio: true })
     .then((stream) => {
         audioChunks = [];
@@ -27,8 +27,8 @@ const startRecording = () => {
 function stopRecording(status) {
     if (!mediaRecorder) return;
     mediaRecorder.stop();
-    console.log('stop');
     mediaRecorder.addEventListener('stop', function() {
+        console.log('yes stop');
         let audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
         let reader = new FileReader();
         
@@ -41,6 +41,11 @@ function stopRecording(status) {
         };
         reader.readAsDataURL(audioBlob);
         audioChunks = [];
+        
+        const tracks = mediaRecorder.stream.getTracks();
+        tracks.forEach(track=>{
+        track.stop()
+        })
     });
 }
 

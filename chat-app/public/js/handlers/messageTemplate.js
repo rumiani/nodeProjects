@@ -63,15 +63,7 @@ const modifiedMsg = (message) => {
                             </p>`
     }
     if(message.audioData !== undefined){
-        
-        const wavesurfer = WaveSurfer.create({
-            container: '#waveform',
-            waveColor: '#4F4A85',
-            progressColor: '#383351',
-            url: message.audioData,
-          })
-        //   <audio controls src=${message.audioData} type="audio/ogg" class='voice_message'/>
-        message.messageContent = `<div id='waveform'>audio</div>`
+        message.messageContent = `<audio controls src=${message.audioData} type="audio/ogg" class='voice_message'/>`
     }
     // console.log('after: ',message);
     return message
