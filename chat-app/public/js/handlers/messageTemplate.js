@@ -63,7 +63,15 @@ const modifiedMsg = (message) => {
                             </p>`
     }
     if(message.audioData !== undefined){
-        message.messageContent = `<audio controls src=${message.audioData} type="audio/ogg" class='voice_message'/>`
+        
+        const wavesurfer = WaveSurfer.create({
+            container: '#waveform',
+            waveColor: '#4F4A85',
+            progressColor: '#383351',
+            url: message.audioData,
+          })
+        //   <audio controls src=${message.audioData} type="audio/ogg" class='voice_message'/>
+        message.messageContent = `<div id='waveform'>audio</div>`
     }
     // console.log('after: ',message);
     return message
@@ -76,9 +84,3 @@ const hideLastMsgAvatarFromThisOwner = (owner) =>{
         lastMsg.querySelector('.chat_avatar').style.display = 'none'
     }
 }
-const wavesurfer = WaveSurfer.create({
-    container: '#waveform',
-    waveColor: '#4F4A85',
-    progressColor: '#383351',
-    url: '/audio.mp3',
-  })

@@ -35,17 +35,22 @@ const hideErrorsHandler = () =>{
 
 const uploadInput = document.getElementById("avatar_input_join");
 const filenameSpan = document.getElementById("filename");
-
+if (localStorage.getItem('localData')) {
+    const avatar = JSON.parse(localStorage.getItem('localData')).avatar
+    localStorage.getItem('localData');
+    filenameSpan.textContent = avatar.imgName;
+    joinPreviewAvatar.src = avatar.imageBase64;
+}
 uploadInput.addEventListener("change", function() {
-    let imgBase64;
     if (uploadInput.files.length > 0) {
-      const reader = new FileReader();
-      reader.readAsDataURL(uploadInput.files[0]);
-      reader.onload = function(e) {
-        imgBase64 = e.target.result;
-        localStorage.setItem('imgKey', imgBase64);
-        filenameSpan.textContent = uploadInput.files[0].name;
-        joinPreviewAvatar.src = imgBase64;
+        const reader = new FileReader();
+        reader.readAsDataURL(uploadInput.files[0]);
+        const imgName = uploadInput.files[0].name
+        reader.onload = function(e) {
+        const imageBase64 = e.target.result;
+        localStorage.setItem('localData', JSON.stringify({avatar:{imageBase64, imgName}}));
+        filenameSpan.textContent = imgName;
+        joinPreviewAvatar.src = imageBase64;
     }}
     else {
     filenameSpan.textContent = "Default";

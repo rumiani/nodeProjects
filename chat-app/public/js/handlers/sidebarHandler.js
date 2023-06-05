@@ -22,13 +22,11 @@ socket.on('roomData', roomData =>{
     roomName.textContent = roomData.room
     let lis = ``
     roomData.users.forEach(user => {
-        const img = `<img class='avatar' src=${user.src} />` 
-        if(user.username === username)
-            lis += ` <li>${img}<h2>${user.username}</h2></li>`
-        else
-            lis += `<li>${img} ${user.username}</li>`
-
-        // add avatar
+        let liClass = user.username === username?'selfInfo':'userInfo'
+        lis += ` <li class=${liClass}>
+                    <img class='avatar' src=${user.src} />
+                    <span>${user.username}</span>
+                </li>`
     })
     usersList.innerHTML = lis
 })
