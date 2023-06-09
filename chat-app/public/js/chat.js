@@ -5,7 +5,9 @@ const shareLocation = document.getElementById('location_icon')
 const send_btn = document.getElementById('send_btn')
 const input = document.getElementById('message_input')
 const chat_bar = document.getElementById('chat_bar')
-const base64img = JSON.parse(localStorage.getItem('localData')).avatar.imageBase64
+const localObject = JSON.parse(localStorage.getItem('localData'))
+let base64img = null
+if(localObject) base64img = localObject.avatar.imageBase64
 
 input.addEventListener('input', function(e) {
     inputController()

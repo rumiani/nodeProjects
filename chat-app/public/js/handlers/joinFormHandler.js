@@ -35,24 +35,39 @@ const hideErrorsHandler = () =>{
 
 const uploadInput = document.getElementById("avatar_input_join");
 const filenameSpan = document.getElementById("filename");
-if (localStorage.getItem('localData')) {
-    const avatar = JSON.parse(localStorage.getItem('localData')).avatar
+const localObj = JSON.parse(localStorage.getItem('localData'))
+if (localObj) {
     localStorage.getItem('localData');
-    filenameSpan.textContent = avatar.imgName;
-    joinPreviewAvatar.src = avatar.imageBase64;
+    filenameSpan.textContent = localObj.avatar.imgName;
+    joinPreviewAvatar.src = localObj.avatar.imageBase64;
+}else{
+    // const reader = new FileReader();
+    // console.log(joinPreviewAvatar);
+    // reader.readAsDataURL(joinPreviewAvatar)
+    // reader.onload = function(e) {
+    //     const imageBase64 = e.target.result;
+    //     console.log(imageBase64);
+    //     saveTolocal({avatar:{imageBase64, imgName:'default'}})
+    // }
 }
-uploadInput.addEventListener("change", function() {
+uploadInput.addEventListener("change", function(e) {
+    console.log(e.target.files[0]);
     if (uploadInput.files.length > 0) {
         const reader = new FileReader();
         reader.readAsDataURL(uploadInput.files[0]);
         const imgName = uploadInput.files[0].name
         reader.onload = function(e) {
-        const imageBase64 = e.target.result;
-        localStorage.setItem('localData', JSON.stringify({avatar:{imageBase64, imgName}}));
-        filenameSpan.textContent = imgName;
-        joinPreviewAvatar.src = imageBase64;
-    }}
+            const imageBase64 = e.target.result;
+            ;
+            filenameSpan.textContent = imgName;
+            joinPreviewAvatar.src = imageBase64;
+            saveTolocal({avatar:{imageBase64, imgName}})
+        }
+    }
     else {
     filenameSpan.textContent = "Default";
     }
 });
+const saveTolocal = (obj) =>{
+    localStorage.setItem('localData', JSON.stringify(obj))
+}
