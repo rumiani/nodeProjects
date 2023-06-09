@@ -1,0 +1,138 @@
+#title{
+    text-align: center;
+    margin: 1rem auto;
+}
+.join_container{
+    max-width: 1200px;
+}
+#join_form{
+    max-width: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 3rem auto;
+    border-radius: 0.5rem;
+    background: white;
+    box-shadow: 2px 2px 8px rgba(129, 118, 118, 0.162);
+    animation:slow_fall 0.5s ease-in;
+}
+
+@keyframes slow_fall {
+from {top: -10rem;}
+to {top: 0;}
+}
+.join_input { 
+    border: none; 
+    padding: 0 1rem; 
+    flex-grow: 1; 
+    border-radius: 0.5rem;
+    margin: 0 0.5rem; 
+    height: 40px;
+    font-size: 20px;
+    overflow-y: scroll;
+    background-color: white;
+    outline: none;
+    transition:box-shadow 0.3s;
+    box-shadow: 2px 2px 8px rgba(129, 118, 118, 0.162);
+}
+#join_btn { 
+    outline: none; 
+    border: none; 
+    background: #4d4a4a; 
+    padding: 5px; 
+    margin: 20px; 
+    border-radius: 0.5rem;
+    color: #fff; 
+    cursor: pointer;
+    height: 40px;
+    font-size: 16px;
+    transition:box-shadow 0.3s;
+}
+#join_btn:hover{
+    background:#232323 ;
+}
+.join_input:focus{
+    background: rgba(128, 128, 128, 0.047);
+}
+.required_star{
+    color:red;
+    width: fit-content;
+    position: relative;
+    top: 2.5rem;
+    right: 0.5rem;
+    font-size: 20px;
+}
+#avatar_input_join{
+    background-color: red;
+}
+input[type="file"] {
+    display: none;
+}
+.custom_file_upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
+
+.avatar_input_join {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .avatar_input_join input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .file_upload_lable {
+    cursor: pointer;
+    position: relative;
+    margin: 3rem 0;
+  }
+  #filename {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-top: 2rem;
+  }
+  #join_preview_avatar{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin: 0 auto;
+  }
+  #copyright{
+      text-align: center;
+    color: gray;
+}
+.name_input_error, .room_input_error{
+    color: red;
+    font-size: 0.75rem;
+    text-align: start;
+    margin: 0.5rem 0;
+    padding: 0 1rem;
+    visibility: hidden;
+}
+@media all and (max-width: 640px) {
+    #join_form{
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+    }
+    .join_input{
+        font-size: 16px;
+    }
+    .file_upload_lable{
+        font-size: 12px;
+    }
+}

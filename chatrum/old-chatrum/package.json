@@ -1,0 +1,34 @@
+{
+  "name": "chatrum",
+  "version": "1.0.0",
+  "description": "A chat app with socket.io",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "env-cmd -f ./config/dev.env node src/index.js",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js -e js,hbs",
+    "test": "env-cmd -f ./config/test.env jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rumiani/nodeProjects/tree/master/chat-app"
+  },
+  "keywords": [
+    "chatrum"
+  ],
+  "author": "Maziar Rumiani",
+  "license": "MIT",
+  "dependencies": {
+    "bad-words": "^3.0.4",
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "mark.js": "^8.11.1",
+    "node-emoji": "^2.0.2",
+    "socket.io": "^4.6.2",
+    "uuid": "^9.0.0",
+    "wavesurfer.js": "^6.6.3"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.22"
+  }
+}
