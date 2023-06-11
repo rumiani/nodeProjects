@@ -4,7 +4,7 @@ const imojiList = document.getElementById('imoji_list')
 const inputImoji = document.getElementById('input_imoji')
 const searchResult= document.getElementById('search_result')
 
-window.addEventListener('click', (e) => {
+addEventListener('click', (e) => {
     if(e.target.className === 'eachImoji'){
         addImojiToInput(e.target.id)
         inputController()

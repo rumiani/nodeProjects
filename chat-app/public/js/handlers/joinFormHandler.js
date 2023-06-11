@@ -40,18 +40,11 @@ if (localObj) {
     localStorage.getItem('localData');
     filenameSpan.textContent = localObj.avatar.imgName;
     joinPreviewAvatar.src = localObj.avatar.imageBase64;
-}else{
-    // const reader = new FileReader();
-    // console.log(joinPreviewAvatar);
-    // reader.readAsDataURL(joinPreviewAvatar)
-    // reader.onload = function(e) {
-    //     const imageBase64 = e.target.result;
-    //     console.log(imageBase64);
-    //     saveTolocal({avatar:{imageBase64, imgName:'default'}})
-    // }
 }
 uploadInput.addEventListener("change", function(e) {
-    console.log(e.target.files[0]);
+    const isSizeOk = Math.round(e.target.files[0].size) < 2000000 // 2 Meg
+    console.log(isSizeOk);
+
     if (uploadInput.files.length > 0) {
         const reader = new FileReader();
         reader.readAsDataURL(uploadInput.files[0]);
