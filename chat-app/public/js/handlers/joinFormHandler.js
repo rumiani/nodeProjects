@@ -4,7 +4,6 @@ const roomInput = document.getElementById('room')
 const nameInputError = document.querySelector('.name_input_error')
 const roomInputError = document.querySelector('.room_input_error')
 const joinPreviewAvatar = document.getElementById("join_preview_avatar")
-
 joinForm.onsubmit = ()=>{
     if(infoController(nameInput.value)){
         nameInputError.style.visibility = 'visible';

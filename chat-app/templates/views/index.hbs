@@ -12,12 +12,12 @@
   <body>
     <div class="join_container">
       <h3 id="title">Chat application</h3>
-      <form id="join_form" action="./chat">
+      <form id="join_form" method="post" action="./chat">
         <span class="required_star">*</span>
-        <input class="join_input" name="username" id="username" autocomplete="off" required placeholder="Name"/>
+        <input class="join_input" type="text" name="username" id="username" autocomplete="off" required placeholder="Name"/>
         <p class="name_input_error">test</p>
         <span class="required_star">*</span>
-        <input class="join_input" name="room" id="room" autocomplete="off" required placeholder="Room's name" value="mychatrumonlyroomtotest"/>
+        <input class="join_input" type="text" name="room" id="room" autocomplete="off" required placeholder="Room's name" value="mychatrumonlyroomtotest"/>
         <p class="room_input_error">test</p>
         <label class="file_upload_lable" for="avatar_input_join" >
           <img src="./assets/icons/avatar.png" id="join_preview_avatar"/>

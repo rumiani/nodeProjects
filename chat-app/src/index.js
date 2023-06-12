@@ -28,12 +28,22 @@ app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicDirectoryPath));
-app.get("/", (req, res) => {
+
+app.get('/', (req, res) => {
+  res.redirect('/login');
+});
+app.get("/login", (req, res) => {
   res.render("index", {
     title: "Chatrum",
   });
 });
-app.get("/chat", (req, res) => {
+app.post("/login", (req, res) => {
+  
+  res.redirect('/chat');
+});
+
+app.post("/chat", (req, res) => {
+  console.log('req body::::',req.body);
   res.render("chat/index", {
     title: "Chatrum",
   });
