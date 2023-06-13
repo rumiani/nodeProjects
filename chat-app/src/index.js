@@ -1,5 +1,6 @@
 // const Filter = require('bad-words')
 // const filter = new Filter();
+// require('env-cmd');
 const { generateMessage, generateLocationMessage } = require("./utils/message");
 const {
   addUser,
@@ -22,32 +23,30 @@ const PORT = process.env.PORT;
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
+console.log('LIARA_ENDPOINT',process.env.LIARA_ENDPOINT);
 
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicDirectoryPath));
-
-app.get('/', (req, res) => {
-  res.redirect('/login');
-});
-app.get("/login", (req, res) => {
+app.get("/", (req, res) => {
   res.render("index", {
     title: "Chatrum",
   });
 });
-app.post("/login", (req, res) => {
-  
-  res.redirect('/chat');
-});
-
-app.post("/chat", (req, res) => {
-  console.log('req body::::',req.body);
+app.get("/chat", (req, res) => {
+  console.log('get');
   res.render("chat/index", {
     title: "Chatrum",
   });
 });
+// app.post("/chat", (req, res) => {
+//   console.log('post');
+//   res.render("chat/index", {
+//     title: "Chatrum",
+//   });
+// });
 io.on("connection", (socket) => {
   socket.on("join", (options, callback) => {
     const { error, user } = addUser({ id: socket.id, ...options });
@@ -125,3 +124,4 @@ server.listen(PORT, () => {
   console.log("server is running on port: ", PORT);
 });
 
+module.exports = {app}

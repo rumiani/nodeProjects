@@ -1,6 +1,8 @@
 const AWS = require( 'aws-sdk')
 const multer = require( 'multer')
 const multerS3 = require( 'multer-s3')
+const app = require('../index')
+console.log(LIARA_ENDPOINT);
 const config = {
     endpoint: process.env(LIARA_ENDPOINT),
     accessKeyId: process.env(LIARA_ACCESS_KEY),
@@ -24,8 +26,8 @@ const upload = multer({
 
 
 // route
-app.post('/upload', upload.single('objectKey'), function (req, res) {
-  console.log(req.file);
+app.get('/chat', upload.single('objectKey'), function (req, res) {
+  console.log('chat');
 
   return res.send({
     status: 'success',
