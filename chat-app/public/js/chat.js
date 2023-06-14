@@ -1,5 +1,7 @@
+import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
 const socket = io()
-const {username, room} = Qs.parse(location.search, {ignoreQueryPrefix: true})
+// import qs from "qs.js";
+// const {username, room} = qs.parse(location.search, {ignoreQueryPrefix: true})
 const messages = document.getElementById('messages')
 const shareLocation = document.getElementById('location_icon')
 const send_btn = document.getElementById('send_btn')
@@ -63,13 +65,15 @@ socket.on('message', (message) => {
 //     const link = `<a _blank href=${message.url}>My location</a>`
 //     appendMsg(message)
 // })
-
-socket.emit('join', {username, room, src:base64img, to: null, reactions: null}, error => {
-    if(error) {
-        alert(error)
-        location.href = '/'
-    }
-})
+export const socketJoinHandler = ({username, room}) =>{
+    console.log({username, room});
+    socket.emit('join', {username, room, src:'base64img'}, error => {
+        if(error) {
+            alert(error)
+            location.href = '/'
+        }
+    })
+}
 
 
 const sendReactionHandler = ({id, reactions}) =>{

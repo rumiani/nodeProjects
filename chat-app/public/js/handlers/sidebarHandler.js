@@ -1,3 +1,5 @@
+import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
+const socket = io()
 const users = document.getElementById('sidebar')
 const show_users_icon = document.querySelector('.show_users_icon')
 const hide_users_icon = document.querySelector('.hide_users_icon')

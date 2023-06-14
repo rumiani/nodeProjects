@@ -10,4 +10,4 @@ const infoController = (users, username, room) =>{
     if(room !== 'mychatrumonlyroomtotest')
         throw new Error("Invalid room's name. Please contact @rumianist on twitter.")
 }
-module.exports = {infoController}
+export  {infoController};

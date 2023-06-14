@@ -12,7 +12,7 @@
   <body>
     <div class="join_container">
       <h3 id="title">Welcome to ChatRum</h3>
-      <form id="join_form" action="./chat">
+      <form id="join_form" method="post" action="./chat" enctype="multipart/form-data">
         <span class="required_star">*</span>
         <input class="join_input" name="username" id="username" autocomplete="off" required placeholder="Name" value="maz"/>
         <p class="name_input_error">test</p>
@@ -30,6 +30,6 @@
         <p id="copyright">Rumiani &copy; Copyright 2023</p>
       </footer>
     </div>
-  <script type="text/javascript" src="./js/handlers/joinFormHandler.js"></script>
+  <script type="module" src="./js/handlers/joinFormHandler.js"></script>
 </body>
 </html>

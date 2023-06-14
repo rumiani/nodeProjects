@@ -1,28 +1,33 @@
 // const Filter = require('bad-words')
 // const filter = new Filter();
 // require('env-cmd');
-const { generateMessage, generateLocationMessage } = require("./utils/message");
-const {
+import { generateMessage, generateLocationMessage } from "./utils/message.js";
+import {
   addUser,
   removeUser,
   getUser,
   getUsersInRoom,
-} = require("./utils/users");
-const path = require("path");
-const http = require("http");
-const hbs = require("hbs");
+} from "./utils/users.js";
+import path from "path";
+import http from "http";
+import hbs from "hbs";
 
-const express = require("express");
-const socketio = require("socket.io");
+import express from "express";
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+import { Server } from "socket.io";
+const io = new Server(server);
 
 const PORT = process.env.PORT;
 
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
+
 console.log('LIARA_ENDPOINT',process.env.LIARA_ENDPOINT);
 
 app.set("view engine", "hbs");
@@ -35,20 +40,21 @@ app.get("/", (req, res) => {
     title: "Chatrum",
   });
 });
-app.get("/chat", (req, res) => {
-  console.log('get');
-  res.render("chat/index", {
-    title: "Chatrum",
-  });
-});
 // app.post("/chat", (req, res) => {
-//   console.log('post');
+//   console.log(req.file);
+//   res.render("chat/index", {
+//     title: "Chatrum",
+//   });
+// });
+// app.get("/chat", (req, res) => {
+//   console.log('get');
 //   res.render("chat/index", {
 //     title: "Chatrum",
 //   });
 // });
 io.on("connection", (socket) => {
   socket.on("join", (options, callback) => {
+    console.log(options);
     const { error, user } = addUser({ id: socket.id, ...options });
     if (error) return callback(error);
     socket.join(user.room);
@@ -124,4 +130,4 @@ server.listen(PORT, () => {
   console.log("server is running on port: ", PORT);
 });
 
-module.exports = {app}
+export {app}

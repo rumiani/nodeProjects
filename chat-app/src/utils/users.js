@@ -1,4 +1,4 @@
-const {infoController} = require('../controllers/infoController')
+import {infoController} from '../controllers/infoController.js'
 const users = []
 const addUser = ({id, username, room, src}) =>{
     username = username.trim().toLowerCase()
@@ -20,7 +20,7 @@ const getUser = (id) => users.find(user => user.id === id)
 
 const getUsersInRoom = room => users.filter(user => user.room === room) 
 
-module.exports = {
+export {
     addUser,
     removeUser,
     getUser,

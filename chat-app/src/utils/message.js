@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require('uuid');
+import { v4 as uuidv4 } from 'uuid';
 
 const generateMessage = ({username, text, audioData, src, reactions,to}) =>{
     return {
@@ -23,4 +23,4 @@ const generateLocationMessage = (username, coords, src, to, reactions) =>{
         id: uuidv4()
     }
 }
-module.exports = { generateMessage , generateLocationMessage}
+export { generateMessage , generateLocationMessage}

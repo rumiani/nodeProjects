@@ -1,3 +1,4 @@
+import {socketJoinHandler} from '../chat.js'
 const joinForm = document.getElementById('join_form')
 const nameInput = document.getElementById('username')
 const roomInput = document.getElementById('room')
@@ -5,6 +6,7 @@ const nameInputError = document.querySelector('.name_input_error')
 const roomInputError = document.querySelector('.room_input_error')
 const joinPreviewAvatar = document.getElementById("join_preview_avatar")
 joinForm.onsubmit = ()=>{
+    console.log('s');
     if(infoController(nameInput.value)){
         nameInputError.style.visibility = 'visible';
         nameInputError.innerText = infoController(nameInput.value)
@@ -16,6 +18,8 @@ joinForm.onsubmit = ()=>{
         return false
     }
     else{
+        console.log('form submit');
+        socketJoinHandler({username: nameInput, room: roomInput})
         return true
     }
 }
