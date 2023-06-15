@@ -10,7 +10,7 @@ const chat_bar = document.getElementById('chat_bar')
 const localObject = JSON.parse(localStorage.getItem('localData'))
 let base64img = null
 if(localObject) base64img = localObject.avatar.imageBase64
-
+console.log(messages);
 input.addEventListener('input', function(e) {
     inputController()
 });
