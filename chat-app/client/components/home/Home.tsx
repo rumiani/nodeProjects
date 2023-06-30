@@ -1,16 +1,18 @@
 import React from 'react'
-import LoginFooter from './joinFooter/joinFooter'
 import JoinHeader from './joinHeader/JoinHeader'
 import Form from './lobby/Form'
-import Login from './login/Login'
+import JoinFooter from './joinFooter/joinFooter'
+import Google from './google'
 
 function Landing() {
+
   return (
     <div className="max-w-5xl text-center animate-fallDown">
         <JoinHeader/>
-        <Login/>
         {/* <Form/> */}
-        <LoginFooter/>
+
+        <Google/>
+        <JoinFooter/>
     </div>
   )
 }

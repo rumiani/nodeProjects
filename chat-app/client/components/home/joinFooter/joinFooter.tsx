@@ -1,11 +1,11 @@
 import React from 'react'
 
-function LoginFooter() {
+function JoinFooter() {
   return (
-    <footer>
+    <footer className='absolute bottom-0 py-8'>
         <p id="copyright" className='text-center text-gray-600'>Rumiani &copy; Copyright 2023</p>
     </footer>
   )
 }
 
-export default LoginFooter
+export default JoinFooter
