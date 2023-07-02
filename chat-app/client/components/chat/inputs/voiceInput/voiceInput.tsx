@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
-import { timerHandler } from './timer'
+import { Timer } from './timer'
 
-const VoiceInputs = () => {
-  const[timer, setTimer] = useState('00:00')
+const VoiceInput = () => {
+  const[recording, setRecording] = useState(false)
 //   const stopBtn = document.getElementById('stopBtn')
 // const recordBtn = document.getElementById('recordBtn')
 // const removeVoice = document.getElementById('removeVoice')
@@ -73,21 +73,21 @@ const VoiceInputs = () => {
   return (
     <div id="voice_inputs"
     className='w-full bg-white flex flex-row justify-end p-1'>
-      {timer === '00:00'?
-          <Image onClick={()=>timerHandler('start')} width={24} height={24}  
-          id="recordBtn" src="/assets/icons/mic.png" alt="mic"
-          className='w-8 h-8 cursor-pointer' />
-          :<>
-              <span id="voiceLength" className='flex-grow p-1 text-center'>{timer}</span>
-              <Image onClick={()=>timerHandler('cancel')} width={24} height={24} id="removeVoice" src="/assets/icons/close.png" title="delete voice" alt="delete_voice" 
+      {recording?
+          <>
+              <Timer/>
+              <Image onClick={()=> setRecording(false)} width={24} height={24} id="removeVoice" src="/assets/icons/close.png" title="delete voice" alt="delete_voice" 
               className='mx-2 cursor-pointer'/>
-              <Image onClick={()=>timerHandler('stop')} width={24} height={24} id="stopBtn"
+              <Image onClick={()=> setRecording(false)} width={24} height={24} id="stopBtn"
               src="/assets/icons/send.png" title="stop voice" alt="stop_voice" 
               className='mx-2 cursor-pointer'/>
-          </>
+          </>:
+          <Image onClick={()=> setRecording(true)} width={24} height={24}  
+          id="recordBtn" src="/assets/icons/mic.png" alt="mic"
+          className='w-8 h-8 cursor-pointer' />
       }
     </div>
   )
 }
 
-export default VoiceInputs
+export default VoiceInput

@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import List from './list/List'
 import Search from './search/Search'
 
 const Imoji = () => {
-    const[showImoji, setShowImoji] = useState(true)
+    const[showImoji, setShowImoji] = useState(false)
     const[imojiArray, setImojiArray] = useState([])
+    const imojiBox = useRef()
 
     useEffect(() =>{
         fetch('/assets/imojis/imojis.json')
@@ -14,8 +15,15 @@ const Imoji = () => {
             setImojiArray(array)}
         )
         .catch(err => console.log(err));
-    },[])
 
+        onclick = clickOutsideHandler
+    },[showImoji])
+    
+const clickOutsideHandler  = (e) =>{ 
+    if (imojiBox.current && !imojiBox.current.contains(e.target)) {
+        setShowImoji(false)
+    }
+}
 //     const imojiBtn = document.getElementById('imoji_btn')
 // const imojiBox = document.getElementById('imoji_box')
 // const inputImoji = document.getElementById('input_imoji')
@@ -53,11 +61,11 @@ const Imoji = () => {
 
 
   return (
-    <div>
+    <div ref={imojiBox}>
         <button id="imoji_btn" onClick={() => setShowImoji(!showImoji)}
         className='w-8 h-8 font-bold text-3xl text-center'>&#x263A;</button>
         {showImoji?
-            <div className='absolute bg-white bottom-12 left-8 w-60 h-60 rounded-lg shadow-gray-300 shadow-lg p-1 overflow-hidden'>
+            <div  className=' absolute bg-white bottom-12 left-8 w-60 h-60 rounded-lg shadow-gray-300 shadow-lg p-1 overflow-hidden'>
                 <Search imojiArray={imojiArray}/>
                 <List imojiArray={imojiArray} />
             </div>
