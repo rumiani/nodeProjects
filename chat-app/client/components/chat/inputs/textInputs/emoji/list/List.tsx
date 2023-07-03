@@ -1,17 +1,17 @@
 import React from 'react'
 interface objType {
-    imojiArray:[] | null
+    emojiArray:[] | null
 }
-const List = ({imojiArray}:objType) => {
+const List = ({emojiArray}:objType) => {
     
   return (
-    <div id="imoji_list" className='h-96 overflow-auto'>
+    <div id="emoji_list" className='h-96 overflow-auto'>
         <ul id="search_result" className=' w-full flex flex-wrap justify-around'>
-            {imojiArray && imojiArray.map((imoji,index) => {                                            
+            {emojiArray && emojiArray.map((emoji,index) => {                                            
                 return(
-                    <li key={index+imoji.value} title={imoji.key} 
+                    <li key={index + emoji.value} title={emoji.key} 
                         className=' flex justify-center align-middle cursor-pointer w-8 h-8 m-1 shadow-gray-400  hover:scale-150 transition-all duration-300 rounded-full'>
-                        {imoji.value}
+                        {emoji.value}
                     </li>
                 )
             })}

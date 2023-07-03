@@ -1,8 +1,13 @@
 import React from 'react'
+import Scroll from './Scroll'
+import Menu from './menu/Menu'
 
 const Messages = () => {
   return (
-    <div>Messages</div>
+    <div>Messages
+      <Menu/>
+      <Scroll/>
+    </div>
   )
 }
 

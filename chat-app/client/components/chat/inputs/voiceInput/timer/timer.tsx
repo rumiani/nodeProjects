@@ -25,6 +25,6 @@ export const Timer = () =>{
     },[])
 
     return(
-    <span id="voiceLength" className='flex-grow p-1 text-center'>{timer}</span>
+    <span id="voiceLength" className='w-full p-1 text-center'>{timer}</span>
     )
 }

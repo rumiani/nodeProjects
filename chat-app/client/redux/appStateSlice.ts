@@ -2,24 +2,35 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface AppStateState {
-    inputText: string
+    inputText: string,
+    recording:boolean,
+    inputIsLong:boolean,
+
 }
 
 const initialState: AppStateState = {
   inputText: '',
+  recording:false,
+  inputIsLong:false,
 }
 
 export const appStateSlice = createSlice({
   name: 'appState',
   initialState,
   reducers: {
-    inputText: (state, action: PayloadAction<string>) => {
+    inputTextReducer: (state, action: PayloadAction<string>) => {
       state.inputText = action.payload
+    },
+    recordingReducer: (state) => {
+      state.recording = !state.recording
+    },
+    inputIsLongReducer: (state) => {
+      state.inputIsLong = !state.inputIsLong
     },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { inputText } = appStateSlice.actions
+export const { inputTextReducer, recordingReducer, inputIsLongReducer } = appStateSlice.actions
 
 export default appStateSlice.reducer

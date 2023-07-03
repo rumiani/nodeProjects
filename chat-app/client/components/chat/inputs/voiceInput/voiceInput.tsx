@@ -1,9 +1,12 @@
-import Image from 'next/image'
-import React, { useState } from 'react'
-import { Timer } from './timer'
+import React from 'react'
+import { Timer } from './timer/timer'
+import SendVoice from './btns/sendVoice/SendVoice'
+import Cancel from './btns/cancel/Cancel'
+import { useSelector } from 'react-redux'
 
 const VoiceInput = () => {
-  const[recording, setRecording] = useState(false)
+  const{recording, inputText} = useSelector(state => state.appState)
+
 //   const stopBtn = document.getElementById('stopBtn')
 // const recordBtn = document.getElementById('recordBtn')
 // const removeVoice = document.getElementById('removeVoice')
@@ -72,19 +75,13 @@ const VoiceInput = () => {
 
   return (
     <div id="voice_inputs"
-    className='w-full bg-white flex flex-row justify-end p-1'>
-      {recording?
-          <>
+  className={`${recording?'w-full':'w-fit'} bg-white flex flex-row justify-end p-1`}>
+      {recording &&
+          <div className='w-full flex flex-row'>
               <Timer/>
-              <Image onClick={()=> setRecording(false)} width={24} height={24} id="removeVoice" src="/assets/icons/close.png" title="delete voice" alt="delete_voice" 
-              className='mx-2 cursor-pointer'/>
-              <Image onClick={()=> setRecording(false)} width={24} height={24} id="stopBtn"
-              src="/assets/icons/send.png" title="stop voice" alt="stop_voice" 
-              className='mx-2 cursor-pointer'/>
-          </>:
-          <Image onClick={()=> setRecording(true)} width={24} height={24}  
-          id="recordBtn" src="/assets/icons/mic.png" alt="mic"
-          className='w-8 h-8 cursor-pointer' />
+              <Cancel/>
+              <SendVoice/>
+          </div>
       }
     </div>
   )

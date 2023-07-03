@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 interface objType {
-    imojiArray:[] | null
+    emojiArray:[] | null
 }
-const Search = ({imojiArray}:objType) => {
+const Search = ({emojiArray}:objType) => {
     const[searchWord, setSearchWord] = useState('')
     const[searchResult,setsearchResult] = useState([])
     const searchInput = useRef()
@@ -15,7 +15,7 @@ const Search = ({imojiArray}:objType) => {
         setSearchWord('')
     }
     const changeHandler = (e) =>{
-        const res = imojiArray?.filter( imoji => searchHandler(e.target.value, imoji.key))      
+        const res = emojiArray?.filter( emoji => searchHandler(e.target.value, emoji.key))      
         setSearchWord(e.target.value.trim())
         setsearchResult(res)
     }
@@ -28,8 +28,8 @@ const Search = ({imojiArray}:objType) => {
     }
     return (
     <>
-        <div id="imoji_search" className='relative  w-full max-h-40 p-1 mb-2 bg-gray-100 rounded-md border-gray border-b-1 overflow-auto'>
-                    <input type="text" id="input_imoji" placeholder="Search imoji" autoComplete='off'
+        <div id="Emoji_search" className='relative  w-full max-h-40 p-1 mb-2 bg-gray-100 rounded-md border-gray border-b-1 overflow-auto'>
+                    <input type="text" id="input_emoji" placeholder="Search emoji" autoComplete='off'
                         onChange={(e) => changeHandler(e)} value={searchWord} ref={searchInput}
                         className='w-full p-1 pr-10 rounded-md outline-none sticky top-0 bg-gray-50 focus:bg-white'/>
                     {searchWord === ''? null:
@@ -42,11 +42,11 @@ const Search = ({imojiArray}:objType) => {
                         <ul id="search_result" className=' w-full flex flex-wrap justify-around overflow-auto'>
                         <span className='text-gray-500 px-2 text-sm cursor-default'> Search result:</span>
 
-                            {searchResult.map((imoji,index) => {                            
+                            {searchResult.map((emoji,index) => {                            
                                 return(
-                                    <li key={index} title={imoji.key}
+                                    <li key={index} title={emoji.key}
                                     className=' flex justify-center align-middle cursor-pointer w-8 h-8 m-1 shadow-gray-400  hover:scale-150 transition-all duration-300 rounded-full'>
-                                        {imoji.value}
+                                        {emoji.value}
                                     </li>
                                 )
                             })

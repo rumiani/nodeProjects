@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+const limit:number = +process.env.NEXT_PUBLIC_TEXT_LIMIT!
 
 const Bar = () => {
+    const{inputText} = useSelector(state => state.appState)
+
     const[barProgress, setBarProgress] = useState(0)
     const[barColor, setBarColor] = useState('green')
-    const input = `Hi, Isf sdfd sfds fs fs dfds s fsf sf df dfd'm maziassff sdf dsf  fds fds f sf s f sdf sdfsd df dsf dsf ds fds r lurom.`
-    const limit = 100
-    const width = (input.length * 100) /limit
+    const width = (inputText.length * 100) /limit
+    
     useEffect(() =>{
         setBarColor('green')
         setBarProgress(0)
@@ -18,8 +22,9 @@ const Bar = () => {
     },[width])
 
   return (
-    <div id="chat_bar" className='absolute bottom-0 h-1 w-10'
-    style={{background:barColor, width:barProgress + "%"}}></div>
+    <div id="chat_bar" className=' bg-red-700 h-1 w-10'
+    style={{background:barColor, width:barProgress + "%"}}
+    ></div>
   )
 }
 

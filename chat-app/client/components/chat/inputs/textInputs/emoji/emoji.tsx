@@ -2,55 +2,55 @@ import React, { useEffect, useRef, useState } from 'react'
 import List from './list/List'
 import Search from './search/Search'
 
-const Imoji = () => {
-    const[showImoji, setShowImoji] = useState(false)
-    const[imojiArray, setImojiArray] = useState([])
-    const imojiBox = useRef()
+const Emoji = () => {
+    const[showEmoji, setShowEmoji] = useState(false)
+    const[emojiArray, setEmojiArray] = useState([])
+    const emojiBox = useRef()
 
     useEffect(() =>{
-        fetch('/assets/imojis/imojis.json')
+        fetch('/assets/emojis/emojis.json')
         .then((response) => response.json())
         .then((obj) => {
             const array = Object.entries(obj).map(([key, value]) => ({ key, value }))
-            setImojiArray(array)}
+            setEmojiArray(array)}
         )
         .catch(err => console.log(err));
 
         onclick = clickOutsideHandler
-    },[showImoji])
+    },[showEmoji])
     
 const clickOutsideHandler  = (e) =>{ 
-    if (imojiBox.current && !imojiBox.current.contains(e.target)) {
-        setShowImoji(false)
+    if (emojiBox.current && !emojiBox.current.contains(e.target)) {        
+        setShowEmoji(false)
     }
 }
-//     const imojiBtn = document.getElementById('imoji_btn')
-// const imojiBox = document.getElementById('imoji_box')
-// const inputImoji = document.getElementById('input_imoji')
+//     const emojiBtn = document.getElementById('emoji_btn')
+// const emojiBox = document.getElementById('emoji_box')
+// const inputEmoji = document.getElementById('input_emoji')
 // const searchResult= document.getElementById('search_result')
 
 // addEventListener('click', (e) => {
-//     if(e.target.className === 'eachImoji'){
-//         addImojiToInput(e.target.id)
+//     if(e.target.className === 'eachEmoji'){
+//         addEmojiToInput(e.target.id)
 //         inputController()
 //     }
-//     // if(e.target === imojiBtn){
-//     //     imojiBox.style.display = 'inline'
+//     // if(e.target === EmojiBtn){
+//     //     emojiBox.style.display = 'inline'
 //     // }
-//     else if ( !imojiBox.contains(e.target)){
-//         imojiBox.style.display = 'none'
+//     else if ( !emojiBox.contains(e.target)){
+//         emojiBox.style.display = 'none'
 //     }
-//     else if ( !imojiBox.contains(e.target)){
-//         imojiBox.style.display = 'none'
+//     else if ( !emojiBox.contains(e.target)){
+//         emojiBox.style.display = 'none'
 //     }
 // })
-// let imojiArray;
+// let emojiArray;
 
 
 
-// const addImojiToInput = (id) =>{
+// const addEmojiToInput = (id) =>{
 //     const messageInput = document.getElementById('message_input')
-//     messageInput.innerText = messageInput.innerText + imojiArray[id]
+//     messageInput.innerText = messageInput.innerText + emojiArray[id]
 // }
 
 
@@ -61,20 +61,20 @@ const clickOutsideHandler  = (e) =>{
 
 
   return (
-    <div ref={imojiBox}>
-        <button id="imoji_btn" onClick={() => setShowImoji(!showImoji)}
-        className='w-8 h-8 font-bold text-3xl text-center'>&#x263A;</button>
-        {showImoji?
+    <div ref={emojiBox}>
+        <button id="emoji_btn" onClick={() => setShowEmoji(!showEmoji)}
+            className='w-10 h-10 flex justify-center align-middle font-bold text-3xl text-center'>&#x263A;</button>
+        {showEmoji?
             <div  className=' absolute bg-white bottom-12 left-8 w-60 h-60 rounded-lg shadow-gray-300 shadow-lg p-1 overflow-hidden'>
-                <Search imojiArray={imojiArray}/>
-                <List imojiArray={imojiArray} />
+                <Search emojiArray={emojiArray}/>
+                <List emojiArray={emojiArray} />
             </div>
         :null}
     </div>
   )
 }
 /**
-#imoji_search{
+#emoji_search{
     width: 100%;
     min-height:20px ;
     border-bottom: 1px solid gray;
@@ -82,7 +82,7 @@ const clickOutsideHandler  = (e) =>{
     padding-bottom: 0.5rem;
     overflow-y: auto;
 }
-#input_imoji { 
+#input_Emoji { 
     border: none; 
     padding: 1rem;
     flex-grow: 1; 
@@ -102,4 +102,4 @@ const clickOutsideHandler  = (e) =>{
     overflow-y: auto;
 }
  */
-export default Imoji
+export default Emoji
