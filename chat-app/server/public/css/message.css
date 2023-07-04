@@ -1,0 +1,120 @@
+#messages_list > li { 
+    width: 100%;
+    word-wrap: break-word;
+    margin:0.25rem 0;
+    position: relative;
+    font-size: 1rem;
+    word-wrap: break-word;
+    border-radius: 1rem;
+    transition: background-color 0.3s;
+}
+#messages_list  li  a{
+    display: block;
+    margin: -0.25rem 0 0.25rem -0.5rem;
+}
+/* general messages */
+.user , .admin, .self{
+    width: fit-content;
+    max-width: 90%;
+    box-shadow: 1px 1px 2px gray;
+    padding:0.25rem 0.5rem;    
+    position: relative;
+}
+.message_time, .message_status{
+    color: gray;
+    font-size: 0.75rem;
+}
+.self .message_info{
+    display: flex;
+    justify-content:end;
+}
+.user .message_info{
+    display: flex;
+    justify-content:start;
+}
+.message_text{
+    margin: 0.25rem;
+}
+.message_username{
+    margin: 0;
+}
+/*other users message */
+.user{
+    border-radius:1rem 1rem 1rem 0;
+    float: left;
+    margin-left: 3rem;
+    background: rgba(255, 242, 0, 0.617);
+}
+.user .message_username{
+    margin-left: 0.5rem;
+    font-size: 0.8rem;
+    color: rgb(0, 172, 0);
+}
+/* admin */
+.admin{
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 250px;
+    box-shadow: 3px 3px 6px gray;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.438);
+}
+.admin  .message_username{
+    text-align: center;
+    color: red;
+    margin: 0;
+}
+.admin  .message_text{
+    text-align: center;
+}
+/* self */
+.self{
+    border-radius: 0 1rem 0 1rem;
+    float: right;
+    background: whitesmoke;
+    margin-right: 3rem;
+}
+.self  .message_username{
+    margin: 0;
+}
+.chat_avatar{
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+}
+.admin .chat_avatar{
+    display: block;
+    margin: 0 auto;
+}
+
+.self .chat_avatar{
+    position: absolute;
+    bottom: 0;
+    right: -2.75rem;
+}
+.user .chat_avatar{
+    position: absolute;
+    bottom: 0;
+    left: -2.75rem;
+}
+#message_reactions_place{
+    padding: 3px;
+    border-radius: 0.5rem;
+}
+#reactions_parent{
+    background-color: rgba(128, 128, 128, 0.628);
+    border-radius: 0.5rem;
+    cursor: default;
+    margin: 0 1rem;
+}
+#fromPrevMsg{
+    border-left: rgb(62, 62, 251) 0.25rem solid ;
+    margin: 0.25rem 0 0.25rem -0.5rem;
+    /* border-radius: 1rem 50% 0 0 ; */
+    padding: 0.25rem;
+    background: rgba(169, 169, 169, 0.032);
+    opacity: 0.5;
+    cursor: pointer;
+    display: block;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    {{>favicon}}
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/join.css">
+  </head>
+  <body>
+    <div class="join_container">
+      <h3 id="title">Welcome to ChatRum</h3>
+      <form id="join_form" method="post" action="./chat" enctype="multipart/form-data">
+        <span class="required_star">*</span>
+        <input class="join_input" name="username" id="username" autocomplete="off" required placeholder="Name" value="maz"/>
+        <p class="name_input_error">test</p>
+        <span class="required_star">*</span>
+        <input class="join_input" name="room" id="room" autocomplete="off" required placeholder="Room's name" value="mychatrumonlyroomtotest"/>
+        <p class="room_input_error">test</p>
+        <label class="file_upload_lable" for="avatar_input_join" >
+          <img src="./assets/icons/avatar.png" id="join_preview_avatar"/>
+        </label>
+        <span id="filename"></span>
+        <input id="avatar_input_join" type="file" accept="image/*">
+        <button id="join_btn">Join</button>
+      </form>
+      <footer>
+        <p id="copyright">Rumiani &copy; Copyright 2023</p>
+      </footer>
+    </div>
+  <script type="module" src="./js/handlers/joinFormHandler.js"></script>
+</body>
+</html>

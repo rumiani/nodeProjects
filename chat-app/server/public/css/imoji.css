@@ -1,0 +1,57 @@
+#imoji_box{
+    width: 250px;
+    height: 200px;
+    border-radius: 1rem;
+    background: white;
+    box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.633);
+    padding: 0.5rem;
+    position: absolute;
+    bottom: 4rem;
+    display: none;
+    overflow-y: auto;
+}
+#imoji_list{
+    width: 100%;
+    overflow-y: auto;
+    height: 150px;
+}
+.eachImoji{
+    display: inline-block;
+    cursor: pointer;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    padding-top: 0.4rem;
+    text-align: center;
+    transition: background-color 0.5s;
+}
+.eachImoji:hover{
+    background-color: rgba(128, 128, 128, 0.245);
+}
+#imoji_search{
+    width: 100%;
+    min-height:20px ;
+    border-bottom: 1px solid gray;
+    margin: 0.5rem 0;
+    padding-bottom: 0.5rem;
+    overflow-y: auto;
+}
+#input_imoji { 
+    border: none; 
+    padding: 1rem;
+    flex-grow: 1; 
+    border-radius: 0.5rem;
+    margin: 0 auto; 
+    height: 20px;
+    width: 100%;
+    font-size: 14px;
+    overflow-y: scroll;
+    background-color: white;
+    outline: none;
+    transition:box-shadow 0.3s;
+    box-shadow: 2px 2px 8px rgba(129, 118, 118, 0.162);
+}
+#search_result{
+    width: 250px;
+    overflow-y: auto;
+}

@@ -1,0 +1,54 @@
+#sidebar{
+    width: 30%;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.874);
+    box-shadow: 5px 3px 50px rgba(128, 128, 128, 0.371);
+    animation: merge ease-out;
+    animation-duration: 0.5s;
+    word-wrap: break-word;
+    overflow-y: auto;
+  }
+  #sidebar > ul{
+    padding-left: 1rem;
+  }
+  @keyframes merge {
+    from {left: -300px;}
+    to {left: 0;}
+  }
+  #sidebar > ul > li{
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin: 1rem 0;
+  }
+.avatar{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline;
+  margin-right: 1rem ;
+  cursor: pointer;
+}
+
+#sidebar > ul > li span{
+  margin: 0.25rem 0;
+}
+#sidebar > ul > .selfInfo img{
+  border: 2px green solid;
+}
+#sidebar > ul > .selfInfo span{
+  font-weight: bold;
+}
+
+@media (max-width: 640px) {
+    #sidebar{
+        display: none; 
+        min-width: 200px;
+        top: 3.5rem;
+        position: absolute;
+        z-index: 5;
+        border-radius: 0 20px 20px 0;
+        height: 80vh;
+        padding: 10px;
+    }
+}
