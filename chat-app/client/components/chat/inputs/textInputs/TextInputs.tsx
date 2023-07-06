@@ -7,7 +7,7 @@ import Send from './sendBtn/Send'
 import Bar from './bar/bar'
 
 const TextInputs = () => {
-  const{recording} = useSelector(state => state.appState)
+  const{inputText} = useSelector(state => state.appState)
 
   return (
     <div className='flex flex-col'>
@@ -19,7 +19,7 @@ const TextInputs = () => {
         <TextInput/>
       </div>
       <div>
-        {recording? <Record /> : <Send/>}
+        {inputText === '' ?  <Record /> : <Send/>}
       </div>
     </div>
       <Bar/>

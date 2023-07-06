@@ -16,7 +16,7 @@ const Sidebar = () => {
     <ul id="users_list" className='pl-4'>
       {user.map((user, index) => {
         return (<>
-                <li key={index} className='flex flex-row h-fit my-2 mx-0'>
+                <li key={index+user.name} className='flex flex-row h-fit my-2 mx-0'>
                 <Image className="avatar  w-6 h-6 m-2 cursor-pointer" width={24} height={24} src={user.src} title="Show users" alt={user.name} />
                     <span>{user.name}</span>
                 </li>
