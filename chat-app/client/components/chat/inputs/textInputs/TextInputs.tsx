@@ -12,16 +12,16 @@ const TextInputs = () => {
   return (
     <div className='flex flex-col'>
       <div className='flex w-full'>
-      <div className='w-10'>
-        <Emoji/>
+        <div className='w-10'>
+          <Emoji/>
+        </div>
+        <div className='flex-grow'>
+          <TextInput/>
+        </div>
+        <div>
+          {inputText === '' ?  <Record /> : <Send/>}
+        </div>
       </div>
-      <div className='flex-grow'>
-        <TextInput/>
-      </div>
-      <div>
-        {inputText === '' ?  <Record /> : <Send/>}
-      </div>
-    </div>
       <Bar/>
     </div>
   )

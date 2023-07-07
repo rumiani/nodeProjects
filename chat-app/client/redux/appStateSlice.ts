@@ -5,7 +5,6 @@ export interface AppStateState {
     inputText: string,
     recording:boolean,
     inputIsLong:boolean,
-
 }
 
 const initialState: AppStateState = {
@@ -30,7 +29,5 @@ export const appStateSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { inputTextReducer, recordingReducer, inputIsLongReducer } = appStateSlice.actions
-
 export default appStateSlice.reducer
