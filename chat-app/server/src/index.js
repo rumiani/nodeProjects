@@ -15,6 +15,9 @@ import cors from 'cors';
 
 import express from "express";
 const app = express();
+app.use(cors({
+  origin: 'http://localhost:3000', // Replace with your allowed origin
+}));
 const server = http.createServer(app);
 import { Server } from "socket.io";
 const io = new Server(server);
@@ -29,7 +32,6 @@ const publicDirectoryPath = path.join(__dirname, "../public");
 const viewsPath = path.join(__dirname, "../templates/views");
 const partialsPath = path.join(__dirname, "../templates/partials");
 
-app.use(cors());
 app.set("view engine", "hbs");
 app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
@@ -41,6 +43,26 @@ app.get("/admin", (req, res) => {
     title: "Chatrum",
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
+
+
 // app.post("/chat", (req, res) => {
 //   console.log(req.file);
 //   res.render("chat/index", {
@@ -54,6 +76,7 @@ app.get("/admin", (req, res) => {
 //   });
 // });
 io.on("connection", (socket) => {
+  console.log('server connection');
   console.log('server connection...');
   socket.on("join", (options, callback) => {
     console.log(options);
