@@ -10,33 +10,34 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   console.log('client');
   
-  // useEffect(() => {
-  //   // const socket = io(); // Connect to the same origin
-  //   const socket = io('http://localhost:8000');
+  useEffect(() => {
+    // const socket = io(); // Connect to the same origin
+    const socket = io('http://localhost:8000');
   
-  //   // Event handlers
-  //   socket.on('connect', () => {
-  //     console.log('Connected to server');
-  //   });
+    // Event handlers
+    socket.on('connect', () => {
+      console.log('Connected to server');
+    });
   
-  //   socket.on('message', (data) => {
-  //     console.log('Received message:', data);
-  //   });
+    socket.on('message', (data) => {
+      console.log('Received message:', data);
+    });
   
-  //   return () => {
-  //     socket.disconnect(); // Disconnect when the component unmounts
-  //   };
-  // }, []);
+    return () => {
+      socket.disconnect(); // Disconnect when the component unmounts
+    };
+  }, []);
   
   return (
     <>
     <Head>
         <link rel="icon" href="/assets/favicon.ico" /> 
         <title>Chatrum | Login</title>
+        <meta name="author" content="Maziar Rumiani" />
+        <meta name="keywords" content="chatrum, chat, text, messenger, chatroom" />
+        <meta name="description" content="Chat with your friends." />
       </Head>
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}
-    >
+    <main className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}>
       <Chat/>
       {/* <Landing/> */}
     </main>

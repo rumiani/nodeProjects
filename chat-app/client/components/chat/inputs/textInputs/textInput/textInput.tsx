@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { inputTextReducer } from '@/redux/appStateSlice'
+
 const limit: number = +process.env.NEXT_PUBLIC_TEXT_LIMIT!
 
 const TextInput = () => {
