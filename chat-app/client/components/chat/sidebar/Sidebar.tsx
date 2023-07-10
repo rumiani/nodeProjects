@@ -14,13 +14,12 @@ const Sidebar = () => {
     <span id="room">room: roomName</span>
     <h2>Users:</h2>
     <ul id="users_list" className='pl-4'>
-      {user.map((user, index) => {
-        return (<>
-                <li key={index+user.name} className='flex flex-row h-fit my-2 mx-0'>
+      {user.map( user => {
+        return (<li key={user.id} className='flex flex-row h-fit my-2 mx-0'>
                 <Image className="avatar  w-6 h-6 m-2 cursor-pointer" width={24} height={24} src={user.src} title="Show users" alt={user.name} />
                     <span>{user.name}</span>
                 </li>
-              </>)
+              )
       })}
     </ul>
 </div>
