@@ -9,6 +9,7 @@ const initialState: initialStateTypes = {
   inputText: '',
   to:null,
   recording:false,
+  userPreview:false,
 }
 
 export const appStateSlice = createSlice({
@@ -21,8 +22,11 @@ export const appStateSlice = createSlice({
     recordingReducer: (state) => {
       state.recording = !state.recording
     },
+    userPreviewReducer: (state) => {      
+      state.userPreview = !state.userPreview
+    },
   },
 })
 
-export const { inputTextReducer, recordingReducer } = appStateSlice.actions
+export const { inputTextReducer, recordingReducer, userPreviewReducer } = appStateSlice.actions
 export default appStateSlice.reducer

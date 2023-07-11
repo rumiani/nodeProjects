@@ -27,4 +27,5 @@ export interface initialStateTypes {
     inputText: string,
     to:null,
     recording:boolean,
+    userPreview:boolean,
 }
