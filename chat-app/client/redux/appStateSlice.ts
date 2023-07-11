@@ -1,16 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { initialStateTypes } from './interfaces'
 
-export interface AppStateState {
-    inputText: string,
-    recording:boolean,
-    inputIsLong:boolean,
-}
-
-const initialState: AppStateState = {
+const initialState: initialStateTypes = {
+  user:null,
+  users:[],
+  messages:[],
   inputText: '',
+  to:null,
   recording:false,
-  inputIsLong:false,
 }
 
 export const appStateSlice = createSlice({
@@ -23,11 +21,8 @@ export const appStateSlice = createSlice({
     recordingReducer: (state) => {
       state.recording = !state.recording
     },
-    inputIsLongReducer: (state) => {
-      state.inputIsLong = !state.inputIsLong
-    },
   },
 })
 
-export const { inputTextReducer, recordingReducer, inputIsLongReducer } = appStateSlice.actions
+export const { inputTextReducer, recordingReducer } = appStateSlice.actions
 export default appStateSlice.reducer
