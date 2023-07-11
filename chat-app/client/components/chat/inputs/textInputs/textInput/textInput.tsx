@@ -14,6 +14,8 @@ const TextInput = () => {
   }
   const enterKeyHandler = (e:any) => {
     if (e.key === 'Enter' && !e.shiftKey) {
+      console.log('enter: ', user);
+      
         sendMsgHandler({inputText, user,to})
     }
 }

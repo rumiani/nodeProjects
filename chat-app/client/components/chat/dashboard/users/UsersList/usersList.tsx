@@ -6,14 +6,14 @@ import { useDispatch } from 'react-redux'
 const UsersList = ({users}) => {
   const dispatch = useDispatch()
     
-  const dispatchHandler = (user) => {
+  const dispatchUserPreview = (user) => {
     dispatch(userPreviewReducer(user))
   }
   return (
     <div className='w-full h-96 mt-2 overflow-y-scroll break-words animate-fallDown shadow-lg pt-8 px-20'>
       <ul className='pl-4'>
         {users.map( (user , index) => {
-          return (<li key={user.id} onClick={()=> dispatchHandler(user)}
+          return (<li key={user.id} onClick={()=> dispatchUserPreview(user)}
                     className='flex flex-row justify-between h-fit p-1 my-2 mx-0 cursor-pointer w-full rounded-lg transition-all duration-300'>
                   <span className='self-center'>{index + 1} -  </span>
                   <Image className="w-6 h-6 m-2" width={24} height={24} src={user.src} alt={user.name} />

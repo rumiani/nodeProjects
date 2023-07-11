@@ -3,9 +3,29 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { initialStateTypes } from './interfaces'
 
 const initialState: initialStateTypes = {
-  user:null,
-  users:[],
-  messages:[],
+  user:{
+    id:null, 
+    name:',',
+    role:'',
+    joinTime:'',
+    permission:false,
+    joined:false,
+    loggedIn:false,
+  },
+  room:{
+    id:'',
+    name:'',
+    users:[],
+    messages:[]
+  },
+  messages:[
+    {
+      id: '',
+      sender: '',
+      content: '',
+      timestamp: 1626032855000
+    }
+  ],
   inputText: '',
   to:null,
   recording:false,
@@ -24,6 +44,9 @@ export const appStateSlice = createSlice({
     },
     userPreviewReducer: (state) => {      
       state.userPreview = !state.userPreview
+    },
+    userLoggedInReducer: (state) => {      
+      state.user = {...state.user}
     },
   },
 })

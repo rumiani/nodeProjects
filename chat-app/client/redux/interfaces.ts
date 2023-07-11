@@ -1,15 +1,16 @@
 export interface userTypes {
     id:null, 
-    name:null, 
-    role:null,
-    joinTime:null,
-    permission:null,
-    inputText:string,
+    name:string, 
+    role:string,
+    joinTime:string,
+    permission:boolean,
+    joined:boolean,
+    loggedIn:boolean,
 }
 export interface reactionsTypes{
   id:null,
-  value:null,
-  reps:null,
+  value:string,
+  reps:number,
 }
 export interface messagesTypes {
   id: null;
