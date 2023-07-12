@@ -22,7 +22,7 @@ export default function Home() {
         <meta name="description" content="Chat with your friends." />
       </Head>
     <main className={`flex min-h-screen flex-col items-center justify-between ${inter.className}`}>
-      <Chat/>
+      {/* <Chat/> */}
       <Landing/>
     </main>
     </>

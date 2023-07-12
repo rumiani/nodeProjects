@@ -26,16 +26,16 @@ const TextInput = ({id, value, name, placeHolder,element}:InputObj) => {
   return (
     <>
       <span className="text-red-500 w-fit relative top-10 right-2 text-lg">*</span>
-      <input 
-        className="border-none py-0 px-2 rounded-lg my-0 mx-2 h-10 overflow-y-auto bg-white shadow-lg transition-shadow duration-1000" 
+      <input
+        className="border-none py-0 px-2 rounded-lg my-0 mx-2 h-10 overflow-y-auto shadow-lg transition-all duration-300 outline-none focus:bg-white bg-gray-50" 
         onChange={changeHandler}
-        id={id} 
-        name={name} 
+        id={id}
+        name={name}
         value={currentValue}
         placeholder={placeHolder}
         ref={element}
-        autoComplete="off" 
-        required 
+        autoComplete="off"
+        required
       />
       {errorText?<p className="text-red-500 py-0 px-2 mt-2 mx-0 align-left text-sm">{errorText}</p>:null}
     </>
