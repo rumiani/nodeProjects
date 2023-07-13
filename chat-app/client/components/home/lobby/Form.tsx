@@ -30,12 +30,13 @@ const Form: React.FC = () => {
   
   return (
       <form onSubmit={submitHandler} id="join_form" method="post"  encType="multipart/form-data" 
-      className='max-w-md relative flex flex-col my-12 mx-auto p-4 rounded-lg bg-white shadow-lg'>
+      className='max-w-md relative flex flex-col my-2 mx-auto p-2 rounded-lg bg-white shadow-lg'>
         <FileInput/>
         <TextInput element={nameInput} id='username' name='username' value='maz' placeHolder='Name' />
         <Rooms/>
         {/* <TextInput element={roomInput} id='room' name='room' value='mychatrumonlyroomtotest' placeHolder='Room'/> */}
         {/* <Submit/> */}
+
       </form>      
   )
 }

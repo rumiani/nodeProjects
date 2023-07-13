@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Join from './join/join'
 import Cancel from './cancel/cancel'
+import Create from './create/create'
 const rooms = [
     {name:'Karaj',id:'0'},
     {name:'Tehran',id:'1'},
@@ -24,10 +25,14 @@ const Rooms = () => {
             setClickedIndex(index);
         }
     };
+    const createHandler = () =>{
+        setClickedIndex(null)
+        console.log('Creating a new room');
+    }
   return (
-    <div className='p-4 overflow-scroll h-64'>
+    <div className='p-4'>
         <span>{rooms.length} rooms to join:</span>
-        <ul>
+        <ul className=' overflow-scroll h-64'>
             {rooms.map((room, index:string) => {
                 return (
                     <li key={room.id} className='w-full flex justify-between my-2 shadow-sm p-2'>
@@ -43,6 +48,8 @@ const Rooms = () => {
                 )
             })}
         </ul>
+        <Create createHandler={createHandler}/>
+
     </div>
   )
 }
