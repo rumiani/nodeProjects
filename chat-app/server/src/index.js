@@ -11,16 +11,19 @@ import {
 import path from "path";
 import http from "http";
 import hbs from "hbs";
-import cors from 'cors';
+// import cors from 'cors';
 
 import express from "express";
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:3000', // Replace with your allowed origin
-}));
+ 
 const server = http.createServer(app);
 import { Server } from "socket.io";
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: 'http://localhost:3000',
+    methods: ["GET", "POST"]
+  }
+});
 
 const PORT = process.env.PORT;
 
@@ -60,7 +63,7 @@ app.get("/admin", (req, res) => {
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   next();
 // });
-
+ 
 
 
 // app.post("/chat", (req, res) => {
@@ -76,7 +79,6 @@ app.get("/admin", (req, res) => {
 //   });
 // });
 io.on("connection", (socket) => {
-  console.log('server connection');
   console.log('server connection...');
   socket.on("join", (options, callback) => {
     console.log(options);
