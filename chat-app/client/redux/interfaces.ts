@@ -5,7 +5,7 @@ export interface userTypes {
     joinTime:string,
     permission:boolean,
     joined:boolean,
-    loggedIn:boolean,
+    session:null,
 }
 export interface reactionsTypes{
   id:null,
@@ -22,7 +22,7 @@ export interface messagesTypes {
 }
 
 export interface initialStateTypes {
-    user:userTypes | null,
+    user:userTypes,
     users:userTypes[],
     messages:messagesTypes[],
     inputText: string,

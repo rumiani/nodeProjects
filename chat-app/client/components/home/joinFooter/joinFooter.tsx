@@ -2,7 +2,7 @@ import React from 'react'
 
 function JoinFooter() {
   return (
-    <footer className='absolute py-8'>
+    <footer className=' p-4 h-20 bottom-0 w-full'>
         <p id="copyright" className='text-center text-gray-600'>Rumiani &copy; Copyright 2023</p>
     </footer>
   )

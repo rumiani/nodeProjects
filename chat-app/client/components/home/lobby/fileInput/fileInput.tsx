@@ -1,8 +1,10 @@
 import useLocalStorage from '@/hooks/useLocalStorage/useLocalStorage';
 import Image from 'next/image'
 import React, { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux';
 
 function FileInput() {
+  const{user} = useSelector(state => state.appState)
   const[avatar,setAvatar] = useLocalStorage('avatar',null)
   const[previewAvatar, setPreviewAvatar] = useState('/assets/icons/avatar.png')
   const[isLarge, setIsLarge] = useState(false)

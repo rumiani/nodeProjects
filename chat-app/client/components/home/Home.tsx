@@ -2,46 +2,37 @@ import React, { useEffect, useState } from 'react'
 import JoinHeader from './joinHeader/JoinHeader'
 import Form from './lobby/Form'
 import JoinFooter from './joinFooter/joinFooter'
-import { GoogleLogin } from '@react-oauth/google';
 import useLocalStorage from '@/hooks/useLocalStorage/useLocalStorage';
 import jwt_decode from "jwt-decode";
+import GoogleLoginComp from './login/googleLogin';
+import { useSelector } from 'react-redux';
  
 function Landing() {
-  const[session, setSession] = useLocalStorage('userSession', null)
+  const{user} = useSelector(state => state.appState)
+  
   const[showForm, setShowForm] = useState(false)
-
+  setTimeout(() => {
+    console.log('session:',user.session);
+  }, 5000);
   useEffect(() => {
-    if(session){
-      // console.log(session);
+    if(user.session){
+      console.log('user.session:',user.session);
       setShowForm(true)
-      const decoded:object = jwt_decode(session.credential);
+      // const decoded:object = jwt_decode(session.credential);
       // console.log(decoded);
     }else{
+      console.log('nothing here yet');
+      
       setShowForm(false)  
     }
     
-  },[session])
+  },[user.session])
 
   return (
-    <div className="max-w-5xl text-center animate-fallDown">
+    <div className="relative max-w-5xl text-center animate-fallDown w-screen h-screen">
         <JoinHeader/>
-        {showForm? 
-          <>
-            <Form/>
-            <button onClick={() =>setSession(null)} className='text-blue-500 underline'>
-              Sign out
-            </button>
-          </>
-        :
-          <GoogleLogin 
-            onSuccess={credentialResponse => {                            
-              setSession(credentialResponse)
-            }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
-          />
-        }
+          {!!user.session && <Form/>}
+          <GoogleLoginComp/>
         <JoinFooter/>
     </div>
   )

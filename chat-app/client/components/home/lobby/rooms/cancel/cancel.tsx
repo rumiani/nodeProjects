@@ -8,7 +8,7 @@ const Cancel = ({joinHandler, room, id}:{joinHandler:Function,room:string, id:st
         <span className='mr-2 '>
             Cancel
         </span>
-        <Spinner size='12px'/>
+        <Spinner/>
     </div>
   )
 }

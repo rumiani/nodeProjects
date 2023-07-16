@@ -10,7 +10,7 @@ const initialState: initialStateTypes = {
     joinTime:'',
     permission:false,
     joined:false,
-    loggedIn:false,
+    session:null,
   },
   room:{
     id:'',
@@ -45,11 +45,11 @@ export const appStateSlice = createSlice({
     userPreviewReducer: (state) => {      
       state.userPreview = !state.userPreview
     },
-    userLoggedInReducer: (state) => {      
-      state.user = {...state.user}
+    userLoggedInReducer: (state, action: PayloadAction<object>) => {      
+      state.user.session = action.payload
     },
   },
 })
 
-export const { inputTextReducer, recordingReducer, userPreviewReducer } = appStateSlice.actions
+export const { inputTextReducer, recordingReducer, userPreviewReducer,userLoggedInReducer } = appStateSlice.actions
 export default appStateSlice.reducer
