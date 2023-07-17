@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import JoinHeader from './joinHeader/JoinHeader'
-import Form from './lobby/Form'
-import JoinFooter from './joinFooter/joinFooter'
+import Form from '../home/lobby/Form'
 import useLocalStorage from '@/hooks/useLocalStorage/useLocalStorage';
 import jwt_decode from "jwt-decode";
-import GoogleLoginComp from './login/googleLogin';
+import GoogleLoginComp from './googleLogin/googleLogin';
 import { useSelector } from 'react-redux';
+import Header from '../general/header/header';
+import Footer from '../general/footer/footer';
  
-function Landing() {
+function Login() {
   const{user} = useSelector(state => state.appState)
   
   const[showForm, setShowForm] = useState(false)
@@ -30,12 +30,12 @@ function Landing() {
 
   return (
     <div className="relative max-w-5xl text-center animate-fallDown w-screen h-screen">
-        <JoinHeader/>
-          {!!user.session && <Form/>}
+        <Header/>
+          {user.loggedIn && <Form/>}
           <GoogleLoginComp/>
-        <JoinFooter/>
+        <Footer/>
     </div>
   )
 }
 
-export default Landing
+export default Login

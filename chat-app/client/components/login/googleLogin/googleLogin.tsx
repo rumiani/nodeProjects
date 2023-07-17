@@ -6,30 +6,32 @@ import { useDispatch } from 'react-redux';
 import { userLoggedInReducer } from '@/redux/appStateSlice';
 import { useSelector } from 'react-redux';
 import jwt_decode from "jwt-decode";
+import { useRouter } from 'next/router';
 
 const GoogleLoginComp = () => {
     const[session, setSession] = useLocalStorage('userSession', null)
     const{user} = useSelector(state => state.appState)
-
     const dispatch = useDispatch()
+    const router = useRouter()
 
-    useEffect(()=>{
-      console.log(!!session);
-      
-      postData(process.env.NEXT_PUBLIC_SERVER_URL, session)
-      .then( (res)=>{
-        const resJson = res
-        console.log('res',res);
+    useEffect(()=>{  
+      if(user.loggedIn){
+        router.push('/')
+      }else{
+        dispatch(userLoggedInReducer(true))
+      }
+      // postData(process.env.NEXT_PUBLIC_SERVER_URL, session)
+      // .then( (res)=>{
+      //   const resJson = res        
         
-        const decoded:object = jwt_decode(session.credential)
-        dispatch(userLoggedInReducer(session))
-          console.log('Data was sent and here is the result:', resJson.msg)
-        })
-        .catch( err => console.log(err))
-},[session, dispatch])
+      //   const decoded:object = jwt_decode(session.credential)
+      //     // console.log('Data was sent and here is the result:', resJson.msg)
+      //   })
+      //   .catch( err => console.log(err))
+},[user, dispatch, session])
   return (
     <div className='w-fit mx-auto m-4'>
-      {!user.session? 
+      {!user.loggedIn? 
         <GoogleLogin
             onSuccess={credentialResponse => {                            
               setSession(credentialResponse)

@@ -4,7 +4,7 @@ import Inputs from './inputs/inputs'
 import Dashboard from './dashboard/dashboard'
 import UserPreview from './userPreview/userPreview'
 
-const Chat = () => {
+const Room = () => {
 
   return (
     <>
@@ -16,4 +16,4 @@ const Chat = () => {
   )
 }
 
-export default Chat
+export default Room

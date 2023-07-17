@@ -10,7 +10,7 @@ const postData = (url, data) => {
       .then(response => { 
         console.log(response);
         
-        return response.json();
+        return response;
       })
       .catch(error => {
         console.error('Error posting data:', error);

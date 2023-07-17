@@ -5,7 +5,7 @@ export interface userTypes {
     joinTime:string,
     permission:boolean,
     joined:boolean,
-    session:null,
+    loggedIn:boolean,
 }
 export interface reactionsTypes{
   id:null,
