@@ -9,41 +9,34 @@ import jwt_decode from "jwt-decode";
 import { useRouter } from 'next/router';
 
 const GoogleLoginComp = () => {
+  //   const decoded:object = jwt_decode(session.credential)
     const[session, setSession] = useLocalStorage('userSession', null)
     const{user} = useSelector(state => state.appState)
     const dispatch = useDispatch()
     const router = useRouter()
 
     useEffect(()=>{  
-      if(user.loggedIn){
+      if(session){
         router.push('/')
-      }else{
-        dispatch(userLoggedInReducer(true))
       }
       // postData(process.env.NEXT_PUBLIC_SERVER_URL, session)
       // .then( (res)=>{
       //   const resJson = res        
         
-      //   const decoded:object = jwt_decode(session.credential)
       //     // console.log('Data was sent and here is the result:', resJson.msg)
       //   })
       //   .catch( err => console.log(err))
-},[user, dispatch, session])
+},[user, dispatch, session, router])
   return (
     <div className='w-fit mx-auto m-4'>
-      {!user.loggedIn? 
-        <GoogleLogin
+      <GoogleLogin
             onSuccess={credentialResponse => {                            
               setSession(credentialResponse)
             }}
             onError={() => {
               console.log('Login Failed');
             }}
-        />:
-        <button onClick={() =>setSession(null)} className='text-blue-500 underline'>
-            Sign out
-          </button>
-      }
+        />
     </div>
   )
 }

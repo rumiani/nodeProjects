@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react'
 import FileInput from './fileInput/fileInput'
+import Submit from './lobby/submit/Submit'
+import Rooms from './roomsList/Rooms'
 import TextInput from './textInput/TextInput'
-import Submit from './submit/Submit'
-import { infoValitaor } from './infoValidator'
-import Rooms from './rooms/Rooms'
+import { infoValitaor } from './infoValidator/infoValidator'
 
 // import {socketJoinHandler} from '../chat.js'
 
@@ -30,13 +30,11 @@ const Form: React.FC = () => {
   
   return (
       <form onSubmit={submitHandler} id="join_form" method="post"  encType="multipart/form-data" 
-      className='max-w-md relative flex flex-col my-2 mx-auto p-2 rounded-lg bg-white shadow-lg'>
+      className='max-w-md relative flex flex-col my-2 mx-auto p-2 rounded-lg '>
         <FileInput/>
-        <TextInput element={nameInput} id='username' name='username' value='maz' placeHolder='Name' />
+        {/* <TextInput element={nameInput} id='username' name='username' value='maz' placeHolder='Name' /> */}
         <Rooms/>
-        {/* <TextInput element={roomInput} id='room' name='room' value='mychatrumonlyroomtotest' placeHolder='Room'/> */}
         {/* <Submit/> */}
-
       </form>      
   )
 }

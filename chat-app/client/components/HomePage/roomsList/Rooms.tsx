@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
-import Join from './join/join'
-import Cancel from './cancel/cancel'
-import Create from './create/create'
+import EachRoom from './eachRoom/eachRoom'
 const rooms = [
     {name:'Karaj',id:'0'},
     {name:'Tehran',id:'1'},
@@ -32,24 +30,13 @@ const Rooms = () => {
   return (
     <div className='p-4'>
         <span>{rooms.length} rooms to join:</span>
-        <ul className=' overflow-scroll h-64'>
+        <ul className=' overflow-scroll h-64 p-4 shadow-xl rounded-lg'>
             {rooms.map((room, index:string) => {
                 return (
-                    <li key={room.id} className='w-full flex justify-between my-2 shadow-sm p-2'>
-                        <span title={room.name} className='cursor-default h-8 px-1 mr-4 w-full text-left overflow-x-auto '>{room.name}</span>
-                        <div className='text-sm'>
-                            {clickedIndex !== index ? 
-                                <Join id={index} room={room.id} joinHandler={(e) => joinHandler(e,index)}/>
-                            :
-                                <Cancel id={index} room={room.id} joinHandler={(e) => joinHandler(e,index)}/>
-                            }
-                        </div>
-                    </li>
+                    <EachRoom room={room} />
                 )
             })}
         </ul>
-        <Create createHandler={createHandler}/>
-
     </div>
   )
 }

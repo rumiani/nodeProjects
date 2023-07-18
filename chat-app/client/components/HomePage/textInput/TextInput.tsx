@@ -1,5 +1,5 @@
 import React, { LegacyRef, useState } from 'react'
-import { infoValitaor } from '../infoValidator'
+import { infoValitaor } from '../infoValidator/infoValidator'
 
 interface InputObj{
     id:string,
