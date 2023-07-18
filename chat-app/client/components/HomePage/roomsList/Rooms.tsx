@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
-import EachRoom from './eachRoom/eachRoom'
+import Join from './join/join'
+import Cancel from './cancel/cancel'
 const rooms = [
-    {name:'Karaj',id:'0'},
-    {name:'Tehran',id:'1'},
-    {name:'Roomiani',id:'2'},
-    {name:'Rasht',id:'3'},
-    {name:'Boroojerd',id:'4'},
-    {name:'Kermanshah',id:'5'},
-    {name:'Zahedandddddddddddddddwwewerwrwrwrwrwrwr2131564897',id:'6'},
+    {name:'room1',id:'1'},
+    {name:'room2',id:'2'},
+    {name:'room3',id:'3'},
+    {name:'room4',id:'4'},
+    {name:'room5',id:'5'},
+    {name:'room6',id:'6'},
 ]
 const Rooms = () => {
     const [clickedIndex, setClickedIndex] = useState(null);
@@ -23,17 +23,22 @@ const Rooms = () => {
             setClickedIndex(index);
         }
     };
-    const createHandler = () =>{
-        setClickedIndex(null)
-        console.log('Creating a new room');
-    }
   return (
-    <div className='p-4'>
+    <div className='p-4 overflow-scroll h-64'>
         <span>{rooms.length} rooms to join:</span>
-        <ul className=' overflow-scroll h-64 p-4 shadow-xl rounded-lg'>
+        <ul>
             {rooms.map((room, index:string) => {
                 return (
-                    <EachRoom room={room} />
+                    <li key={room.id} className='w-full flex justify-between my-2 shadow-sm p-2'>
+                        <span title={room.name} className='cursor-default h-8 px-1 mr-4 w-full text-left overflow-x-auto '>{room.name}</span>
+                        <div className='text-sm'>
+                            {clickedIndex !== index ? 
+                                <Join id={index} room={room.id} joinHandler={(e) => joinHandler(e,index)}/>
+                            :
+                                <Cancel id={index} room={room.id} joinHandler={(e) => joinHandler(e,index)}/>
+                            }
+                        </div>
+                    </li>
                 )
             })}
         </ul>
