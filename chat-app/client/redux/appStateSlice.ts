@@ -30,6 +30,7 @@ const initialState: initialStateTypes = {
   to:null,
   recording:false,
   userPreview:false,
+  waitingID:null,
 }
 
 export const appStateSlice = createSlice({
@@ -48,8 +49,17 @@ export const appStateSlice = createSlice({
     userLoggedInReducer: (state, action: PayloadAction<boolean>) => {          
       state.user.loggedIn = action.payload
     },
+    waitingIDReducer: (state, action: PayloadAction<null>) => {          
+      state.waitingID = action.payload
+    },
   },
 })
 
-export const { inputTextReducer, recordingReducer, userPreviewReducer,userLoggedInReducer } = appStateSlice.actions
+export const { 
+  inputTextReducer, 
+  recordingReducer, 
+  userPreviewReducer,
+  userLoggedInReducer,
+  waitingIDReducer,
+} = appStateSlice.actions
 export default appStateSlice.reducer

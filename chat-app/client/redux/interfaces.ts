@@ -29,4 +29,5 @@ export interface initialStateTypes {
     to:null,
     recording:boolean,
     userPreview:boolean,
+    waitingID:null
 }

@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import useLocalStorage from '@/hooks/useLocalStorage/useLocalStorage';
+import React from 'react'
 import jwt_decode from "jwt-decode";
 import GoogleLoginComp from './googleLogin/googleLogin';
-import { useSelector } from 'react-redux';
-import Header from '../general/header/header';
-import Footer from '../general/footer/footer';
- 
-function Login() {
+import Header from '../generalCom/header/header';
+import Footer from '../generalCom/footer/footer';
+
+function LoginPage() {
   // const decoded:object = jwt_decode(session.credential);
   return (
     <div className="relative max-w-5xl text-center animate-fallDown w-screen h-screen">
@@ -17,4 +15,4 @@ function Login() {
   )
 }
 
-export default Login
+export default LoginPage

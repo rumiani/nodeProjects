@@ -1,7 +1,6 @@
-import useLocalStorage from '@/hooks/useLocalStorage/useLocalStorage'
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 
-const Logout = ({logout}) => {
+const Logout = ({logout}:{logout:MouseEventHandler}) => {
   return (
     <div className='text-center'>
         <button onClick={logout} className='text-blue-500 underline'>

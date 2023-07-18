@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import Join from './join/join'
-import Cancel from './cancel/cancel'
+import EachRoom from './eachRoom/eachRoom'
 const rooms = [
     {name:'room1',id:'1'},
     {name:'room2',id:'2'},
@@ -10,35 +9,33 @@ const rooms = [
     {name:'room6',id:'6'},
 ]
 const Rooms = () => {
-    const [clickedIndex, setClickedIndex] = useState(null);
+    const joinHandler = (id)=>{
+        console.log('join',id);
+    }
+    // const [requestedID, setRequestedID] = useState(false)
+    // const joinHandler =(e) =>{
+    //     console.log(e.currentTarget);
+        
+    //     setRequestedID(!requested)
+    // }
+    // const joinHandler = (e,id) => {
+    //     if (requestedID === index) {
+    //         console.log('request to room with ID:' + e.currentTarget.dataset.room + ' was canceled. :(');
 
-    const joinHandler = (e,index) => {
-        if (clickedIndex === index) {
-            console.log('request to room with ID:' + e.currentTarget.dataset.room + ' was canceled. :(');
-
-            setClickedIndex(null); // Reset if clicked again
-        } else {
-            console.log('request to room with ID:' + clickedIndex + ' was canceled. :(');
-            console.log('request to room with ID:' + e.currentTarget.dataset.room);
-            setClickedIndex(index);
-        }
-    };
+    //         setRequestedID(null); // Reset if clicked again
+    //     } else {
+    //         console.log('request to room with ID:' + clickedIndex + ' was canceled. :(');
+    //         console.log('request to room with ID:' + e.currentTarget.dataset.room);
+    //         setRequestedID(index);
+    //     }
+    // };
   return (
-    <div className='p-4 overflow-scroll h-64'>
-        <span>{rooms.length} rooms to join:</span>
-        <ul>
+    <div className='p-4 text-center'>
+        <span className='my-2'>{rooms.length} rooms to join:</span>
+        <ul className='overflow-scroll h-64'>
             {rooms.map((room, index:string) => {
                 return (
-                    <li key={room.id} className='w-full flex justify-between my-2 shadow-sm p-2'>
-                        <span title={room.name} className='cursor-default h-8 px-1 mr-4 w-full text-left overflow-x-auto '>{room.name}</span>
-                        <div className='text-sm'>
-                            {clickedIndex !== index ? 
-                                <Join id={index} room={room.id} joinHandler={(e) => joinHandler(e,index)}/>
-                            :
-                                <Cancel id={index} room={room.id} joinHandler={(e) => joinHandler(e,index)}/>
-                            }
-                        </div>
-                    </li>
+                    <EachRoom key={room.id} room={room} joinHandler={joinHandler}/>
                 )
             })}
         </ul>

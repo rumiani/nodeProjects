@@ -27,6 +27,7 @@ const GoogleLoginComp = () => {
       //   })
       //   .catch( err => console.log(err))
 },[user, dispatch, session, router])
+
   return (
     <div className='w-fit mx-auto m-4'>
       <GoogleLogin

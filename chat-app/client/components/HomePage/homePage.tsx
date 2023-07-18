@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import Form from './Form'
-import Logout from '../general/logout/logout'
 import useLocalStorage from '@/hooks/useLocalStorage/useLocalStorage'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { userLoggedInReducer } from '@/redux/appStateSlice'
-import Spinner from '../general/spinner/spinner'
+import Logout from '../generalCom/logout/logout'
+import Create from './create/create'
+import Spinner from '../generalCom/spinner/spinner'
 
-const Lobby = () => {
+const HomePage = () => {
   const[session, setSession] = useLocalStorage('userSession', null)
   const{user} = useSelector(state => state.appState)
 
     const dispatch = useDispatch()
     const router = useRouter()
     const[joined, setJoined] = useState(false)
-  useEffect(()=>{    
+  useEffect(()=>{     
+    console.log(session);
+       
     if(session){
       dispatch(userLoggedInReducer(true))
     }if(!session){
@@ -28,10 +31,9 @@ const Lobby = () => {
   return (
     <>
     {user.loggedIn?
-      <div>
+      <div className='w-full sm:w-1/2 max-w-md'>
         <Form/>
-        <Create createHandler={createHandler}/>
-
+        <Create/>
         <Logout logout={()=>setSession(null)}/>
       </div>:
       <Spinner size={100}/>
@@ -40,4 +42,4 @@ const Lobby = () => {
   )
 }
 
-export default Lobby
+export default HomePage
