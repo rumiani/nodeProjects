@@ -8,6 +8,7 @@ import { userLoggedInReducer } from '@/redux/appStateSlice'
 import Logout from '../generalCom/logout/logout'
 import Create from './create/create'
 import Spinner from '../generalCom/spinner/spinner'
+import Rooms from './roomsList/Rooms'
 
 const HomePage = () => {
   const[session, setSession] = useLocalStorage('userSession', null)
@@ -16,25 +17,30 @@ const HomePage = () => {
     const dispatch = useDispatch()
     const router = useRouter()
     const[joined, setJoined] = useState(false)
-  useEffect(()=>{     
-    console.log(session);
-       
+  useEffect(()=>{            
     if(session){
+      console.log('s');
+      
       dispatch(userLoggedInReducer(true))
-    }if(!session){
+    }else{
+      
       dispatch(userLoggedInReducer(false))
       router.push('/login')
-    }else{
     }
     // connectToServer()
   }, [user, router, dispatch,session]);
+
+  const logoutHandler = ()=>{
+    if(confirm('Are you sure you want to log out?'))
+     setSession(null)
+  }
   return (
     <>
     {user.loggedIn?
       <div className='w-full sm:w-1/2 max-w-md'>
         <Form/>
-        <Create/>
-        <Logout logout={()=>setSession(null)}/>
+        <Rooms/>
+        <Logout logoutHandler={logoutHandler}/>
       </div>:
       <Spinner size={100}/>
     }

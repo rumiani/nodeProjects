@@ -1,12 +1,11 @@
 import React, { MouseEventHandler } from 'react'
 
-const Logout = ({logout}:{logout:MouseEventHandler}) => {
+const Logout = ({logoutHandler}:{logoutHandler:MouseEventHandler}) => {
+
   return (
-    <div className='text-center'>
-        <button onClick={logout} className='text-blue-500 underline'>
+        <button onClick={logoutHandler} className='text-blue-500 underline mx-auto'>
             Log out
-          </button>
-    </div>
+        </button>
   )
 }
 

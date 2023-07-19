@@ -18,12 +18,14 @@ const app = express();
  
 const server = http.createServer(app);
 import { Server } from "socket.io";
-const io = new Server(server, {
+const io = new Server(server
+  , {
   cors: {
     origin: 'http://localhost:3000',
     methods: ["GET", "POST"]
   }
-});
+}
+);
 
 const PORT = process.env.PORT;
 
@@ -40,38 +42,25 @@ app.set("views", viewsPath);
 hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicDirectoryPath));
-app.get("/admin", (req, res) => {
-  console.log(req.query);
-  res.render("index", {
-    title: "Chatrum",
-  });
+
+
+
+
+
+
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
  
 
 
-// app.post("/chat", (req, res) => {
-//   console.log(req.file);
-//   res.render("chat/index", {
-//     title: "Chatrum",
-//   });
-// });
+app.post("/", (req, res) => {
+  console.log(1);
+  res.json(req);
+});
 // app.get("/chat", (req, res) => {
 //   console.log('get');
 //   res.render("chat/index", {

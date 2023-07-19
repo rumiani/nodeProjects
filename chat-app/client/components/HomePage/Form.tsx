@@ -33,7 +33,6 @@ const Form: React.FC = () => {
       className='max-w-md relative flex flex-col my-2 mx-auto p-2 rounded-lg '>
         <FileInput/>
         {/* <TextInput element={nameInput} id='username' name='username' value='maz' placeHolder='Name' /> */}
-        <Rooms/>
         {/* <Submit/> */}
       </form>      
   )
