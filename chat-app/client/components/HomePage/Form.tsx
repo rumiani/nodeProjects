@@ -47,7 +47,7 @@ const Form: React.FC = () => {
   return (
       <form onSubmit={submitHandler} id="join_form" method="post"  encType="multipart/form-data" 
       className='max-w-md relative flex flex-col my-2 mx-auto p-2 rounded-lg '>
-        welcome {userInfo && userInfo.given_name}
+        {userInfo && userInfo.given_name}
         <FileInput src={userInfo.picture}/>
         {/* <TextInput element={nameInput} id='username' name='username' value='maz' placeHolder='Name' /> */}
         {/* <Submit/> */}
